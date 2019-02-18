@@ -1,0 +1,33 @@
+{
+  "name": "personal_project",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "src/App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wakoong/personal_website.git"
+  },
+  "author": "Woosik Koong <woosik.koong@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wakoong/personal_website/issues"
+  },
+  "homepage": "https://github.com/wakoong/personal_website#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "parcel-bundler": "^1.9.7",
+    "prettier": "^1.14.2"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
