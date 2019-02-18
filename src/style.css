@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0
+}
+
+html,
+body {
+    background-color: skyblue;
+    position: relative;
+    height: 100%;
+    margin: 0;
+}
+
+.header {
+    height: 200px;
+    width: 100%;
+    position: sticky;
+    background-color: yellowgreen;
+}
+
+.navTabs {
+    display: flex;
+}
+
+.tab {
+    display: inline-block;
+    margin: 0 25px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.tab:hover {
+    border-bottom: 2px solid #fff;
+}
