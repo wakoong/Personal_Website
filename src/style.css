@@ -1,11 +1,12 @@
 * {
     box-sizing: border-box;
-    margin: 0
+    margin: 0;
+    text-decoration: none
 }
 
 html,
 body {
-    background-color: skyblue;
+    background-color: #2e59a6;
     position: relative;
     height: 100%;
     margin: 0;
@@ -15,7 +16,7 @@ body {
     height: 200px;
     width: 100%;
     position: sticky;
-    background-color: yellowgreen;
+    margin: 50px 0;
 }
 
 .navTabs {

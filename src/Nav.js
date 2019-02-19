@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from "@reach/router";
 
 class Nav extends React.Component {
     render() {
         const { nav } = this.props;
         return(
-            <div className="tab">
+            <Link to={`/${nav}`.toLowerCase()} className="tab">
                 {nav}
-            </div>
+            </Link>
         )
     }
 }
