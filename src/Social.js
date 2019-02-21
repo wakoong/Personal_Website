@@ -1,6 +1,6 @@
 import React from 'react';
 
-import instagram from './instagram.png';
+// import instagram from './instagram.png';
 
 
 class Social extends React.Component {

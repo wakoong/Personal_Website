@@ -1,7 +1,7 @@
 import React from "react";
 
 import Nav from "./Nav";
-import Social from "./Social";
+// import Social from "./Social";
 
 class Header extends React.Component {
     state = {
@@ -13,11 +13,11 @@ class Header extends React.Component {
         const navTabs = ["About", "Projects", "Basketball", "Contact"]
         return (
             <div className="header">
-                <div className="social">
+                {/* <div className="social">
                     {socialMedia.map(social => {
                         return <Social key={social} social={social} />
                     })}
-                </div>
+                </div> */}
                 <div className="navTabs">
                 <Nav nav="Woosik Koong" />
                     {navTabs.map(nav => {
