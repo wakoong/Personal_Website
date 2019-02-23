@@ -5,15 +5,17 @@
 }
 
 html,
-body {
-    background-color: #2e59a6;
+body,
+#root,
+.app {
+    background-color: #2ea6a6;
     position: relative;
     height: 100%;
     margin: 0;
 }
 
 .header {
-    height: 200px;
+    height: 25%;
     width: 100%;
     position: sticky;
 }
@@ -31,7 +33,7 @@ body {
 }
 
 .tab:hover {
-    border-bottom: 2px solid #2ea0a6;
+    border-bottom: 2px solid white;
 }
 
 .social {
@@ -45,3 +47,28 @@ body {
     width: 25px;
     cursor: pointer;
 }
+
+/* Programming */
+
+.main-content {
+    display: flex;
+}
+
+#article-feed,
+#article-feed-content,
+.sidebar {
+    height: 100%;
+}
+
+#article-feed {
+    width: 75%
+}
+
+.sidebar {
+    width: 25%;
+}
+
+.article-content {
+    height: 15%;
+}
+
