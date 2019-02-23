@@ -24,6 +24,7 @@ app.use((req, res) => {
         </ServerLocation>
     );
 
+    // stream - multiple chunks renders at the same time
     const stream = renderToNodeStream(reactMarkup)
     stream.pipe(res, { end: false })
     stream.on("end", () => {
