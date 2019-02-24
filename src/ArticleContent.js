@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from "@reach/router";
 
 class ArticleContent extends React.Component {
     render() {
         const { article } = this.props
         return(
-            <div className="article-content">
+            <Link to="/contact" className="article-btn">
                 {`ARTICLE #${article}`}
-            </div>
+            </Link>
         )
     }
 }

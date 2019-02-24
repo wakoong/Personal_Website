@@ -7,16 +7,17 @@
 html,
 body,
 #root,
-.app {
-    background-color: #2ea6a6;
+.app>div {
+    background-color: white;
     position: relative;
     height: 100%;
     margin: 0;
 }
 
 .header {
-    height: 25%;
+    height: 100px;
     width: 100%;
+    background-color: #2b2c2d;
     position: sticky;
 }
 
@@ -24,12 +25,23 @@ body,
     display: flex;
 }
 
+.tab-wrapper {
+    height: 50px;
+}
+
 .tab {
-    display: inline-block;
     margin: 0 25px;
-    font-size: 30px;
+    font-size: 25px;
     color: white;
     cursor: pointer;
+}
+
+.tab-wrapper > span:first-of-child {
+    margin-left: 35px;
+} 
+
+.navTabs > a:first-of-type > span:first-of-type {
+    font-size: 35px;
 }
 
 .tab:hover {
@@ -38,6 +50,10 @@ body,
 
 .social {
     height: 50px;
+}
+
+.social-btn-wrapper {
+    float: right;
 }
 
 .social-btn {
@@ -52,23 +68,37 @@ body,
 
 .main-content {
     display: flex;
+    background-color: #edeef0;
 }
 
-#article-feed,
-#article-feed-content,
+#article,
+#article-list,
 .sidebar {
-    height: 100%;
+    margin: 10px 0px;
 }
 
-#article-feed {
-    width: 75%
+#article-list {
+    width: 300px;
+    background-color: white;
+    margin-left: 35px;
+    overflow-y: scroll;
 }
 
-.sidebar {
-    width: 25%;
+#article {
+    width: 100%;
+    margin-right: 35px;
+    background-color: white;
 }
 
-.article-content {
-    height: 15%;
+.article-btn {
+    display: block;
+    height: 100px;
+    font-size: 20px;
+    color: grey;
+    cursor: pointer;
+    text-align: center;
+    line-height: 5;
+    border-bottom: grey 1px solid;
 }
+
 
