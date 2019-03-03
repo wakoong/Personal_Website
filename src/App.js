@@ -18,6 +18,9 @@ class App extends React.Component {
                     <Programming path="/projects" />
                     <Contact path="/contact" /> 
                 </Router>  
+                <footer>
+                    
+                </footer>
             </div>
         )
     }

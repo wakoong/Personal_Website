@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 import Nav from "./Nav";
 import Social from "./Social";
@@ -11,17 +12,19 @@ class Header extends React.Component {
     render() {
         const navTabs = ["About", "Projects", "Basketball", "Contact"]
         return (
-            <div className="header">
-                <div className="social">
+            <React.Fragment>
+                {/* <div className="social">
                     <Social />
-                </div> 
-                <div className="navTabs">
-                <Nav nav="Woosik Koong" />
-                    {navTabs.map(nav => {
-                        return <Nav key={nav} nav={nav} />
-                    })}
-                </div>
-            </div>
+                </div>  */}
+                <nav>
+                    <ul>
+                    <Nav nav="" tab="Woosik Koong" />
+                        {navTabs.map(nav => {
+                            return <Nav key={nav} nav={nav} tab={nav} />
+                        })}
+                    </ul>
+                </nav>
+            </React.Fragment>
         )
     }
 }
