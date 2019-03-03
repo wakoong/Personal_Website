@@ -54,7 +54,6 @@ html,
 body,
 #root,
 .app,
-.app>div,
 .main-background {
     background-color: white;
     position: relative;
@@ -72,8 +71,8 @@ img {
     text-decoration: none;
 }
 
-body {
-    background-color: #f3f3f3;
+.app > div {
+    height: (100vh - 100px);
 }
 
 /* Header */
@@ -115,10 +114,66 @@ header > nav > ul > li {
 } 
 
 header > nav > ul > li > a {
-    font-weight: 900;
+    font-weight: 100;
     font-size: 16px;
     color: #111;
 } 
+
+/* Index */
+
+.index-banner {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-image: url('./assets/images/Woosik.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* centering the text */
+    display: table;
+}
+
+/* .vertical-center {
+    display: table-cell;
+    vertical-align: middle;
+} */
+
+.index-banner h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    text-shadow: 2px 2px 8px #111;
+    line-height: 70px;
+}
+
+.index-banner h1 {
+    font-family: fantasy;
+    font-size: 28px;
+    font-style: italic;
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+    text-shadow: 2px 2px 8px #111;
+    line-height: 40px;
+}
+
+.index-boxlink {
+    font-family: fantasy;
+    margin: 16px 16px 0;
+    width: calc(100% - 32px);
+    height: 100px;
+    line-height: 100px;
+    background-color: #f2f2f2;
+    font-weight: 600;
+    font-size: 28px;
+    color: #111;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
 
 
 

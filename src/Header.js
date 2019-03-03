@@ -18,7 +18,7 @@ class Header extends React.Component {
                 </div>  */}
                 <nav>
                     <ul>
-                    <Nav nav="" tab="Woosik Koong" />
+                    <Nav nav="" tab="WK" />
                         {navTabs.map(nav => {
                             return <Nav key={nav} nav={nav} tab={nav} />
                         })}
