@@ -1,8 +1,16 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 class Footer extends React.Component {
     render() {
-        return()
+        const { link } = this.props;
+        return(
+            <React.Fragment>
+                <li>
+                    <Link to={`/${link}`.toLowerCase()}>{link}</Link>
+                </li>
+            </React.Fragment>
+        )
     }
 }
 

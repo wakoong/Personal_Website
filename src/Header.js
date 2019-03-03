@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "@reach/router";
+// import { Link } from "@reach/router";
 
 import Nav from "./Nav";
-import Social from "./Social";
+// import Social from "./Social";
 
 class Header extends React.Component {
     state = {

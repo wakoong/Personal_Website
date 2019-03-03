@@ -4,18 +4,8 @@ import Banner from './Banner';
 
 class About extends React.Component {
     render() {
-        const banners = ["Projects", "Programming", "Basketball"]
+        const { links } = this.props;
         return(
-            // <div className="main-background">
-            //     <div className="main-block">
-            //         <div className="profile-image">
-            //             <img src={profile} alt="instagram" />
-            //         </div>
-            //         <div className="description">
-            //         Welcome!
-            //         </div>
-            //     </div>
-            // </div>
             <main>
                 <section className="index-banner">
                     <div className="vertical-center">
@@ -24,8 +14,8 @@ class About extends React.Component {
                     </div>
                 </section>
                 <section className="index-links">
-                    {banners.map(banner => {
-                        return <Banner key={banner} banner={banner} />
+                    {links.map(link => {
+                        return <Banner key={link} banner={link} />
                     })}
                 </section>
             </main>
