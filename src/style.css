@@ -21,7 +21,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+    vertical-align: baseline;
+    font-family: 'Work Sans', sans-serif
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -119,18 +120,41 @@ header > nav > ul > li > a {
     color: #111;
 } 
 
+@media only screen and (min-width: 1000px) {
+    header > nav > ul {
+        width: 100%;
+        float: left;
+        margin: 0;
+    }
+
+    header > nav > ul > li:first-child > a {
+        margin: 10px 0;
+        text-align: left;
+        padding: 0px 20px 0px 40px;
+        border-right: 3px solid #111;
+        line-height: 38px;
+        float: left;
+    }
+
+    header > nav > ul > li:not(:first-child) {
+        float: left;
+        line-height: 20px;
+    }
+}
+
 /* Index */
 
 .index-banner {
     width: 100%;
     height: calc(100vh - 100px);
-    background-image: url('./assets/images/Woosik.png');
+    background-image: url('./assets/images/main.jpeg');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 0 -10%;
     background-size: cover;
     /* centering the text */
     display: table;
 }
+
 
 /* .vertical-center {
     display: table-cell;
@@ -138,7 +162,6 @@ header > nav > ul > li > a {
 } */
 
 .index-banner h2 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 60px;
     color: #fff;
     text-align: center;
@@ -148,9 +171,7 @@ header > nav > ul > li > a {
 }
 
 .index-banner h1 {
-    font-family: fantasy;
     font-size: 28px;
-    font-style: italic;
     color: #fff;
     text-align: center;
     font-weight: 100;
@@ -159,7 +180,6 @@ header > nav > ul > li > a {
 }
 
 .index-boxlink {
-    font-family: fantasy;
     margin: 16px 16px 0;
     width: calc(100% - 32px);
     height: 100px;
@@ -171,6 +191,109 @@ header > nav > ul > li > a {
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.main-description {
+    height: calc(100vh - 700px);
+    background-color: #80808042;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+}
+
+.main-description > .quote {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.main-description > .quote-1 {
+    font-size: 18px;
+}
+
+.main-description > p {
+    margin-bottom: 10px;
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+    .wrapper  {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .wrapper > .index-banner {
+        position: absolute;
+        width: 100%;
+    }
+
+    .index-banner {
+        width: 100%;
+        height: 500px;
+        background-image: url('./assets/images/main.jpeg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        /* centering the text */
+        display: table;
+        position: relative;
+    }
+
+    .main-description {
+        height: calc(100vh - 600px);
+        background-color: #80808042;
+        text-align: center;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+    .main-description > .quote {
+        line-height: 80px;
+    }
+
+    .index-banner h2 {
+        position: absolute;
+        display: block;
+        bottom: 70px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .index-banner h1 {
+        position: absolute;
+        bottom: 25px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .index-boxlink {
+        margin: 10px 10px 0;
+        height: 230px;
+        background-color: #f2f2f2;
+        float: left;
+        line-height: 230px;
+    }
+
+    .index-boxlink:first-child,
+    .index-boxlink:nth-child(4) {
+        width: calc(35% - 20px) !important;
+    }
+
+    .index-boxlink:nth-child(2),
+    .index-boxlink:nth-child(3) {
+        width: calc(65% - 20px) !important;
+    }
+
+    /* Not sure how this works */
+    .index-links {
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .index-banner {
+        background-position: 75%;
+    }
 }
 
 /* footer */
@@ -196,12 +319,13 @@ footer ul li {
 footer ul li a {
     font-size: 20px;
     color: white;
-    line-height: 40px;
+    line-height: 30px;
 }
 
 .footer-sm {
     width: 30px;
     float: right;
+    
 }
 
 .footer-sm img {
@@ -210,9 +334,24 @@ footer ul li a {
 }
 
 
-
-
-
+@media only screen and (min-width: 1000px) {
+    footer ul {
+        width: fit-content;
+        float: left;
+        padding-left: 20px;
+    }
+    
+    footer ul li {
+        display: block;
+        list-style: none;
+    }
+    
+    footer ul li a {
+        font-size: 25px;
+        color: white;
+        line-height: 35px;
+    }
+}
 
 
 /* .navTabs {

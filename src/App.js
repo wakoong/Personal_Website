@@ -2,7 +2,7 @@ import React from "react";
 import { Router } from "@reach/router";
 
 import Header from "./Header";
-import About from "./About";
+import Main from "./Main";
 import Contact from "./Contact";
 import Programming from "./Programming";
 import Footer from "./Footer";
@@ -16,21 +16,23 @@ class App extends React.Component {
                 <header>
                     <Header />
                 </header>
-                <Router>
-                    <About path="/" links={links} /> 
-                    <Programming path="/projects" />
-                    <Contact path="/contact" /> 
-                </Router>  
-                <footer>
-                    <ul className="footer-links-main">
-                        {links.map(link => {
-                        return <Footer key={link} link={link} /> 
-                        })}
-                    </ul>
-                    <div className="footer-sm">
-                        <Social />
-                    </div>
-                </footer> 
+                    <Router>
+                        <Main path="/" links={links} /> 
+                        <Programming path="/projects" />
+                        <Contact path="/contact" /> 
+                    </Router>  
+                {/* <div className="wrapper">
+                    <footer>
+                        <ul className="footer-links-main">
+                            {links.map(link => {
+                            return <Footer key={link} link={link} /> 
+                            })}
+                        </ul>
+                        <div className="footer-sm">
+                            <Social />
+                        </div>
+                    </footer>
+                </div> */}
             </div>
         )
     }
