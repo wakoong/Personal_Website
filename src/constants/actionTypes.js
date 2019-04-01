@@ -1,0 +1,4 @@
+export const TYPE_SENDER_NAME = 'TYPE_SENDER_NAME'
+export const TYPE_SENDER_EMAIL = 'TYPE_SENDER_EMAIL'
+
+export const SEND_EMAIL = 'SEND_EMAIL';

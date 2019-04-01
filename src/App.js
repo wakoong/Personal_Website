@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from 'react-dom'
 import { Router } from "@reach/router";
+import { Provider as ReduxProvider } from 'react-redux';
+import store from './store';
 
 import Header from "./Header";
 import Main from "./Main";
@@ -15,11 +17,14 @@ class App extends React.Component {
                 <header>
                     <Header />
                 </header>
+                <ReduxProvider store={store}>
                     <Router>
                         <Main path="/" links={links} /> 
                         <Programming path="/projects" />
                         <Contact path="/contact" /> 
-                    </Router>  
+                    </Router> 
+                </ReduxProvider>
+                     
                 {/* <div className="wrapper">
                     <footer>
                         <ul className="footer-links-main">
