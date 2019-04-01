@@ -1,12 +1,11 @@
 import React from "react";
+import ReactDOM from 'react-dom'
 import { Router } from "@reach/router";
 
 import Header from "./Header";
 import Main from "./Main";
 import Contact from "./Contact";
 import Programming from "./Programming";
-import Footer from "./Footer";
-import Social from "./Social";
 
 class App extends React.Component {
     render() {
@@ -38,4 +37,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+ReactDOM.render(React.createElement(App), document.getElementById('root'))

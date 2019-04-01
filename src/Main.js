@@ -1,6 +1,7 @@
 import React from 'react';
 
 // import Banner from './Banner';
+import Social from './Social';
 
 class Main extends React.Component {
     render() {
@@ -12,8 +13,7 @@ class Main extends React.Component {
                         <h1>Follow my journey</h1> */}
                 </section>
                 <div className="main-description">
-                    <p className="quote">I used to think I was indecisive, but now I'm not too sure.</p> 
-                    <p className="quote-1">- some decisive person</p>
+                    <Social />
                 </div>
                 {/* <div className="wrapper">
                     <section className="index-links">
