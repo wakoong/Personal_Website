@@ -1,37 +1,36 @@
-// Source: Intermediat React from FrontendMasters Brian Holts
-import express from "express";
-import React from "react";
-import { renderToNodeStream } from "react-dom/server";
-import { ServerLocation } from "@reach/router";
-import fs from "fs";
-import App from './src/App';
+const express = require('express')
+const { json, urlencoded } = require('body-parser')
+const morgan = require('morgan')
+const cors = require('cors')
 
-const PORT = process.env.PORT || 3000;
+const app = express()
+const router = express.Router()
 
-const html = fs.readFileSync('dist/index.html').toString();
-const parts = html.split("not rendered")
+app.disable('x-powered-by')
 
-const app = express();
+app.use(cors())
+app.use(json())
+app.use(urlencoded({ extended: true }))
+app.use(morgan('dev'))
 
-app.use("/dist", express.static("dist"));
-app.use((req, res) => {
-    // download css first instead of waiting for all files to render
-    res.write(parts[0]);
+const log = (req, res, next) => {
+    console.log('logging')
+    next()
+}
 
-    const reactMarkup = (
-        <ServerLocation url={req.url}>
-            <App />
-        </ServerLocation>
-    );
+app.use(log)
 
-    // stream - multiple chunks renders at the same time
-    const stream = renderToNodeStream(reactMarkup)
-    stream.pipe(res, { end: false })
-    stream.on("end", () => {
-        res.write(parts[1]);
-        res.end();
-    })
+
+app.get('/data', (req, res) => {
+    res.send({ data: [1, 2, 3] })
 })
 
-console.log(`listening on ${PORT}`);
-app.listen(PORT);
+app.post('/data', (req, res) => {
+    res.send(req.body)
+})
+
+
+app.listen(3000, () => {
+    console.log('server is on 3000')
+})
+

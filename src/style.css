@@ -49,8 +49,6 @@ table {
 }
 
 
-
-
 html,
 body,
 #root,
@@ -72,8 +70,9 @@ img {
     text-decoration: none;
 }
 
+/* React tabindex - don't know the appropriate workaround */
 .app > div {
-    height: (100vh - 100px);
+    height: calc(100vh - 100px);
 }
 
 /* Header */
@@ -419,6 +418,126 @@ input[type=submit] {
     height: 50px;
     width: 50px;
 }
+
+/* main layout for articles */
+.main-background {
+    position: relative;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+.main-block {
+    position: absolute;
+    display: flex;
+    height: 97.5%;
+    width: 95%;
+    top: 0; bottom: 0; right: 0; left: 0;
+    margin: auto;
+    overflow: hidden;
+    background-color: white;
+}
+
+.article-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 30px 200px;
+    overflow: scroll;
+    text-align: justify;
+}
+
+/* prevents the bottom of the article getting cut */
+.article-wrapper > div {
+    margin-bottom: 70px;
+}
+
+.article-share-btn {
+    position: fixed;
+    height: 300px;
+    width: 70px;
+    margin-left: -90px;
+    background-color: silver;
+}
+
+.article-list-wrapper {
+    display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .article-list-wrapper {
+        display: block;
+        height: 100%;
+        width: 400px;
+        overflow: scroll;
+    }
+
+    .article-wrapper {
+        height: 100%;
+        width: calc(100% - 400px);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 50px 200px;
+        z-index: 999;
+    }
+
+    .article-feed {
+        height: 90px;
+        width: 100%;
+        border-bottom: 1px solid #8e8e8e;
+        border-right: 1px solid #8e8e8e; 
+        cursor: pointer;
+    }
+
+    .article-feed:hover {
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        background-color: #8e8e8e24;
+    }
+
+    .feed_text-wrapper {
+        padding: 12px 22px;
+    }
+
+    .feed_title {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16px;
+        margin-bottom: 4px;
+        word-spacing: 0;
+    }
+
+    .feed_info {
+        display: flex;
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 0px;
+    }
+
+    .feed_link {
+        color: #6c6d6f;
+        font-size: 10px;
+        letter-spacing: .5px;
+        margin-right: 4px;
+    }
+
+    .feed-timestamp {
+        color: #a5a6a7;
+        white-space: nowrap;
+    }
+
+    .article_title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+
+}
+
+
+
+
 
 /* .navTabs {
     display: flex;
