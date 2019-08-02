@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Router } from "@reach/router";
 import { Provider as ReduxProvider } from "react-redux";
-import store from "../../store";
 
 import Header from "../Header";
 import Main from "../Main";
 import Contact from "../Contact";
 import Programming from "../Programming";
+import Workout from "../Workout";
+import store from "../../store";
+
 
 class App extends React.Component {
   render() {
-    const links = ["Projects", "Programming", "Basketball", "Contact"];
+    const links = ["Projects", "Programming", "Workout", "Contact"];
     return (
       <div className="app">
         <header>
@@ -21,22 +23,10 @@ class App extends React.Component {
           <Router>
             <Main path="/" links={links} />
             <Programming path="/projects" />
+            <Workout path="/workout" />
             <Contact path="/contact" />
           </Router>
         </ReduxProvider>
-
-        {/* <div className="wrapper">
-                    <footer>
-                        <ul className="footer-links-main">
-                            {links.map(link => {
-                            return <Footer key={link} link={link} /> 
-                            })}
-                        </ul>
-                        <div className="footer-sm">
-                            <Social />
-                        </div>
-                    </footer>
-                </div> */}
       </div>
     );
   }

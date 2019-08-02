@@ -1,4 +1,12 @@
+// contact me
 export const TYPE_SENDER_NAME = "TYPE_SENDER_NAME";
 export const TYPE_SENDER_EMAIL = "TYPE_SENDER_EMAIL";
-
 export const SEND_EMAIL = "SEND_EMAIL";
+
+// api request
+export const REQUEST_POSTS = "REQUEST_POSTS";
+export const RECEIVE_POSTS = "RECEIVE_POSTS";
+export const POST_FAILURE = "POST_FAILURE";
+
+export const SELECT_SUBREDDIT = "SELECT_SUBREDDIT";
+export const INVALIDATE_SUBREDDIT = "INVALIDATE_SUBREDDIT";

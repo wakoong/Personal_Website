@@ -10,7 +10,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const navTabs = ["About", "Projects", "Basketball", "Contact"];
+    const navTabs = ["About", "Projects", "Workout", "Contact"];
     return (
       <React.Fragment>
         {/* <div className="social">
