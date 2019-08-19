@@ -10,7 +10,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const navTabs = ["About", "Projects", "Workout", "Contact"];
+    const navTabs: string[] = ["About", "Projects", "Workout", "Contact"];
     return (
       <React.Fragment>
         {/* <div className="social">
@@ -19,7 +19,7 @@ class Header extends React.Component {
         <nav>
           <ul>
             <Nav nav="" tab="WK" />
-            {navTabs.map(nav => {
+            {navTabs.map((nav) => {
               return <Nav key={nav} nav={nav} tab={nav} />;
             })}
           </ul>
