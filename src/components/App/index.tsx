@@ -3,17 +3,15 @@ import ReactDOM from "react-dom";
 import { Router } from "@reach/router";
 import { Provider as ReduxProvider } from "react-redux";
 
-import Header from "../Header";
-import Main from "../Main";
-import Contact from "../Contact";
-import Programming from "../Programming";
-import Workout from "../Workout";
+import Header from "../Header/header.tsx";
+import Main from "../Main/main.tsx";
+import Playground from "../Playground/playground.tsx";
+import About from "../About/about.tsx";
 import store from "../../store";
 
 
 class App extends React.Component {
   render() {
-    const links = ["Projects", "Programming", "Workout", "Contact"];
     return (
       <div className="app">
         <header>
@@ -21,10 +19,9 @@ class App extends React.Component {
         </header>
         <ReduxProvider store={store}>
           <Router>
-            <Main path="/" links={links} />
-            <Programming path="/projects" />
-            <Workout path="/workout" />
-            <Contact path="/contact" />
+            <Main path="/" />
+            <About path="/about" />
+            <Playground path="/playground" />
           </Router>
         </ReduxProvider>
       </div>

@@ -1,21 +1,22 @@
 import React from "react";
-// import { Link } from "@reach/router";
 
-import Nav from "../Nav";
-// import Social from "./Social";
+import Nav from "../Nav/nav.tsx";
 
-class Header extends React.Component {
+export interface HeaderProps {
+  nav: string;
+  tab: string;
+  key: string;
+}
+
+class Header extends React.Component<HeaderProps> {
   state = {
     nav: ""
   };
 
   render() {
-    const navTabs: string[] = ["About", "Projects", "Workout", "Contact"];
+    const navTabs: string[] = ["About", "Playground"];
     return (
       <React.Fragment>
-        {/* <div className="social">
-                    <Social />
-                </div>  */}
         <nav>
           <ul>
             <Nav nav="" tab="WK" />

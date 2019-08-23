@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "@reach/router";
 
 interface NavBarProps {
-  nav: String,
-  tab: String
+  nav: string,
+  tab: string 
 }
 
 class Nav extends React.Component<NavBarProps> {

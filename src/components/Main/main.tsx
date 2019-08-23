@@ -1,10 +1,9 @@
 import React from "react";
 
-import Social from "../Social";
+import Social from "../Social/social.tsx";
 
 class Main extends React.Component {
   render() {
-
     return (
       <main>
         <section className="index-banner">
