@@ -1,20 +1,13 @@
 import React from 'react';
 
-import Button from '@material-ui/core/Button';
+import VerticalPanel from '../Common/verticalPanel.tsx';
 
-export interface PlaygroundProps {
-  ticker: string;
-  price: number;
-}
-
-class Playground extends React.Component<PlaygroundProps> {
+class Playground extends React.Component {
   render() {
     return (
       <div className="main-background">
         <div className="main-block">
-          <Button variant="contained" color="primary">
-            playground
-          </Button>
+          <VerticalPanel />
         </div>
       </div>
     );
