@@ -1,1 +1,5 @@
-import robin_stocks
+import robin_stocks as r
+
+
+
+
