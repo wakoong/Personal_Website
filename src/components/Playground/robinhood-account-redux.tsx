@@ -18,15 +18,18 @@ export const getAccountInfo = token => ({
 });
 
 const initialState = {
-  // result: {},
+  cash: 0,
+  updated_at: '',
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // case ACCOUNT_INFO_SUCCESS:
-    //   return {
-    //     result: action.payload.results,
-    //   };
+    case ACCOUNT_INFO_SUCCESS:
+      const result = action.payload.results.results[0];
+      return {
+        cash: result.cash,
+        updated_at: result.updated_at,
+      };
     default:
       return state;
   }
