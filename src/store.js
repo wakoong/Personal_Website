@@ -1,17 +1,18 @@
-import { createStore, compose, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { apiMiddleware } from 'redux-api-middleware';
 // import logger from "redux-logger";
-import reducer from "./reducers";
+import reducer from './redux';
 
 // const loggerMiddleware = logger()
 
 const store = createStore(
   reducer,
   compose(
-    applyMiddleware(thunk),
-    typeof window === "object" &&
+    applyMiddleware(thunk, apiMiddleware),
+    typeof window === 'object' &&
       typeof window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__() !== "undefined"
+      window.__REDUX_DEVTOOLS_EXTENSION__() !== 'undefined'
       ? window.devToolsExtension()
       : f => f
   )
