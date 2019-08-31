@@ -5,15 +5,12 @@ import RAccount from './robinhood-account.tsx';
 
 class Playground extends React.Component {
   render() {
-    const tabs: string[] = [
-      'Account Information',
-      'Index Funds',
-      'Regular Stocks',
-    ];
+    const tabs: string[] = ['Overview', 'ETFs', 'Regular Stocks'];
+    const components: React.Component[] = [<RAccount />, null, null];
     return (
       <div className="main-background">
         <div className="main-block">
-          <VerticalPanel tabs={tabs} account={<RAccount />} />
+          <VerticalPanel tabs={tabs} components={components} />
         </div>
       </div>
     );

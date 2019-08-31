@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getAccountInfo } from './robinhood-account-redux.tsx';
+import Button from '../Common/button.tsx';
+
 import './robinhood-account.css';
 
 class RobinhoodAccount extends React.Component {
@@ -30,6 +32,7 @@ class RobinhoodAccount extends React.Component {
           <div className="item-1" />
           <div className="item-2" />
         </div>
+        <Button buttonColor="primary" class_name="position" />
       </div>
     );
   }

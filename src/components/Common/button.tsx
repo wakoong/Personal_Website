@@ -1,5 +1,10 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  styled,
+} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,18 +18,23 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// apply custom css to button
+
 //Button Color - default, primary, secondary, disabled, link, upload, inherit
-export default function OutlinedButtons() {
+// Button_text = login
+export default function OutlinedButtons({
+  buttonColor = 'default',
+  class_name,
+}) {
   const classes = useStyles();
-  const {button-color} = this.props;
   return (
     <div>
       <Button
         variant="outlined"
-        color={button-color}
-        className={classes.button}
+        color={buttonColor}
+        className={`${classes.button} class_name`}
       >
-        {BUTTON_TEXT}
+        {'LOGIN OUT FROM YOUR ROBINHOOD ACCOUNT'}
       </Button>
     </div>
   );

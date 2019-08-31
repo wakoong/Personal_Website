@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function VerticalTabs({ tabs, account }) {
+export default function VerticalTabs({ tabs, components }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -68,18 +68,16 @@ export default function VerticalTabs({ tabs, account }) {
         className={classes.tabs}
       >
         {tabs.map((tab, index) => {
-          return <Tab label={tab} key={tab} {...a11yProps(index)} />
-        }}
+          return <Tab label={tab} key={tab} {...a11yProps(index)} />;
+        })}
       </Tabs>
-      <TabPanel value={value} index={0}>
-        {account} 
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+      {components.map((component, index) => {
+        return (
+          <TabPanel value={value} key={index} index={index}>
+            {component}
+          </TabPanel>
+        );
+      })}
     </div>
   );
 }
