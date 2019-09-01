@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function OutlinedButtons({
   buttonColor = 'default',
   class_name,
+  on_click,
+  text
 }) {
   const classes = useStyles();
   return (
@@ -33,8 +35,9 @@ export default function OutlinedButtons({
         variant="outlined"
         color={buttonColor}
         className={`${classes.button} class_name`}
+        onClick={on_click}
       >
-        {'LOGIN OUT FROM YOUR ROBINHOOD ACCOUNT'}
+        {text}
       </Button>
     </div>
   );
