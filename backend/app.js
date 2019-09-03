@@ -75,10 +75,16 @@ app.get('/orders', function(req, res) {
         console.error(err);
       } else {
         // console.log('orders');
-        console.log(body);
+        // console.log(body);
         res.send({ results: body });
       }
     });
+  });
+});
+
+app.post('/instrument', function(req, res) {
+  var instrument = request(req.body.url, function(error, response, body) {
+    res.send({ results: body });
   });
 });
 
