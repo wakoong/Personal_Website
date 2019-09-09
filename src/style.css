@@ -3,157 +3,236 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-    vertical-align: baseline;
-    font-family: 'Work Sans', sans-serif
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'Work Sans', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 html,
 body,
 #root,
 .app,
 .main-background {
-    background-color: white;
-    position: relative;
-    height: 100%;
-    margin: 0;
+  background-color: white;
+  position: relative;
+  height: 100%;
+  margin: 0;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* My code */
 * {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* React tabindex - don't know the appropriate workaround */
 .app > div {
-    height: calc(100vh - 100px);
+  height: calc(100vh - 100px);
 }
 
 /* Header */
 
 header,
 header > nav {
-    height: 100px;
-    width: 100%;
-    background-color: #fff;
-    position: sticky;
+  height: 100px;
+  width: 100%;
+  background-color: #fff;
+  position: sticky;
 }
 
 header > nav > ul > li:first-child {
-    width: 100%;
-    color: #111;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px 0;
-    text-transform: uppercase;
+  width: 100%;
+  color: #111;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 0;
+  text-transform: uppercase;
 }
 
 header > nav > ul > li:first-child > a {
-    font-weight: 900;
-    font-size: 24px;
+  font-weight: 900;
+  font-size: 24px;
 }
-    
+
 header > nav > ul {
-    /* If can't center things, try display: block */
-    display: block;
-    margin: 0 auto;
-    width: fit-content;
+  /* If can't center things, try display: block */
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
 }
 
 header > nav > ul > li {
-    display: inline-block;
-    list-style: none;
-    padding: 0 20px;
-} 
+  display: inline-block;
+  list-style: none;
+  padding: 0 20px;
+}
 
 header > nav > ul > li > a {
-    font-weight: 100;
-    font-size: 16px;
-    color: #111;
-} 
+  font-weight: 100;
+  font-size: 16px;
+  color: #111;
+}
 
 @media only screen and (min-width: 1000px) {
-    header > nav > ul {
-        width: 100%;
-        float: left;
-        margin: 0;
-    }
+  header > nav > ul {
+    width: 100%;
+    float: left;
+    margin: 0;
+  }
 
-    header > nav > ul > li:first-child > a {
-        margin: 10px 0;
-        text-align: left;
-        padding: 0px 20px 0px 40px;
-        border-right: 3px solid #111;
-        line-height: 38px;
-        float: left;
-    }
+  header > nav > ul > li:first-child > a {
+    margin: 10px 0;
+    text-align: left;
+    padding: 0px 20px 0px 40px;
+    border-right: 3px solid #111;
+    line-height: 38px;
+    float: left;
+  }
 
-    header > nav > ul > li:not(:first-child) {
-        float: left;
-        line-height: 20px;
-    }
+  header > nav > ul > li:not(:first-child) {
+    float: left;
+    line-height: 20px;
+  }
 }
 
 /* Index */
 
 .index-banner {
-    width: 100%;
-    height: calc(100vh - 100px);
-    background-image: url('./assets/images/main.jpeg');
-    background-repeat: no-repeat;
-    background-position: 0 -10%;
-    background-size: cover;
-    /* centering the text */
-    display: table;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-image: url('./assets/images/main.jpeg');
+  background-repeat: no-repeat;
+  background-position: 0 -10%;
+  background-size: cover;
+  /* centering the text */
+  display: table;
 }
-
 
 /* .vertical-center {
     display: table-cell;
@@ -161,386 +240,382 @@ header > nav > ul > li > a {
 } */
 
 .index-banner h2 {
-    font-size: 60px;
-    color: #fff;
-    text-align: center;
-    font-weight: 900;
-    text-shadow: 2px 2px 8px #111;
-    line-height: 70px;
+  font-size: 60px;
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: 2px 2px 8px #111;
+  line-height: 70px;
 }
 
 .index-banner h1 {
-    font-size: 28px;
-    color: #fff;
-    text-align: center;
-    font-weight: 100;
-    text-shadow: 2px 2px 8px #111;
-    line-height: 40px;
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  font-weight: 100;
+  text-shadow: 2px 2px 8px #111;
+  line-height: 40px;
 }
 
 .index-boxlink {
-    margin: 16px 16px 0;
-    width: calc(100% - 32px);
-    height: 100px;
-    line-height: 100px;
-    background-color: #f2f2f2;
-    font-weight: 600;
-    font-size: 28px;
-    color: #111;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
+  margin: 16px 16px 0;
+  width: calc(100% - 32px);
+  height: 100px;
+  line-height: 100px;
+  background-color: #f2f2f2;
+  font-weight: 600;
+  font-size: 28px;
+  color: #111;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .main-description {
-    position: relative;
-    height: calc(100vh - 700px);
-    background-color: #80808042;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 20px;
+  position: relative;
+  height: calc(100vh - 700px);
+  background-color: #80808042;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
 }
 
 .main-description > .quote {
-    font-style: italic;
-    font-weight: bold;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .main-description > .quote-1 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .main-description > p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-
-
 @media only screen and (min-width: 1000px) {
-    .wrapper  {
-        width: 1000px;
-        margin: 0 auto;
-    }
+  .wrapper {
+    width: 1000px;
+    margin: 0 auto;
+  }
 
-    .wrapper > .index-banner {
-        position: absolute;
-        width: 100%;
-    }
+  .wrapper > .index-banner {
+    position: absolute;
+    width: 100%;
+  }
 
-    .index-banner {
-        width: 100%;
-        height: 500px;
-        background-image: url('./assets/images/main.jpeg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        /* centering the text */
-        display: table;
-        position: relative;
-    }
+  .index-banner {
+    width: 100%;
+    height: 500px;
+    background-image: url('./assets/images/main.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* centering the text */
+    display: table;
+    position: relative;
+  }
 
-    .main-description {
-        height: calc(100vh - 600px);
-        background-color: #80808042;
-        text-align: center;
-        padding: 0px;
-        font-size: 20px;
-    }
+  .main-description {
+    height: calc(100vh - 600px);
+    background-color: #80808042;
+    text-align: center;
+    padding: 0px;
+    font-size: 20px;
+  }
 
-    .main-description > .quote {
-        line-height: 80px;
-    }
+  .main-description > .quote {
+    line-height: 80px;
+  }
 
-    .index-banner h2 {
-        position: absolute;
-        display: block;
-        bottom: 70px;
-        width: 100%;
-        text-align: center;
-    }
+  .index-banner h2 {
+    position: absolute;
+    display: block;
+    bottom: 70px;
+    width: 100%;
+    text-align: center;
+  }
 
-    .index-banner h1 {
-        position: absolute;
-        bottom: 25px;
-        width: 100%;
-        text-align: center;
-    }
+  .index-banner h1 {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+  }
 
-    .index-boxlink {
-        margin: 10px 10px 0;
-        height: 230px;
-        background-color: #f2f2f2;
-        float: left;
-        line-height: 230px;
-    }
+  .index-boxlink {
+    margin: 10px 10px 0;
+    height: 230px;
+    background-color: #f2f2f2;
+    float: left;
+    line-height: 230px;
+  }
 
-    .index-boxlink:first-child,
-    .index-boxlink:nth-child(4) {
-        width: calc(35% - 20px) !important;
-    }
+  .index-boxlink:first-child,
+  .index-boxlink:nth-child(4) {
+    width: calc(35% - 20px) !important;
+  }
 
-    .index-boxlink:nth-child(2),
-    .index-boxlink:nth-child(3) {
-        width: calc(65% - 20px) !important;
-    }
+  .index-boxlink:nth-child(2),
+  .index-boxlink:nth-child(3) {
+    width: calc(65% - 20px) !important;
+  }
 
-    /* Not sure how this works */
-    .index-links {
-        overflow: hidden;
-    }
+  /* Not sure how this works */
+  .index-links {
+    overflow: hidden;
+  }
 }
 
 @media only screen and (max-width: 750px) {
-    .index-banner {
-        background-position: 75%;
-    }
+  .index-banner {
+    background-position: 75%;
+  }
 }
 
 /* footer */
 footer {
-    width: calc(100% - 80px);
-    padding: 40px 40px;
-    margin-top: 20px;
-    background-color: #111;
-    overflow: hidden;
+  width: calc(100% - 80px);
+  padding: 40px 40px;
+  margin-top: 20px;
+  background-color: #111;
+  overflow: hidden;
 }
 
 footer ul {
-    width: fit-content;
-    float: left;
-    padding-left: 20px;
+  width: fit-content;
+  float: left;
+  padding-left: 20px;
 }
 
 footer ul li {
-    display: block;
-    list-style: none;
+  display: block;
+  list-style: none;
 }
 
 footer ul li a {
-    font-size: 20px;
-    color: white;
-    line-height: 30px;
+  font-size: 20px;
+  color: white;
+  line-height: 30px;
 }
 
 .footer-sm {
-    width: 30px;
-    float: right;
-    
+  width: 30px;
+  float: right;
 }
 
 .footer-sm img {
-    width: 100%;
-    margin-bottom: 5px;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
-
 @media only screen and (min-width: 1000px) {
-    footer ul {
-        width: fit-content;
-        float: left;
-        padding-left: 20px;
-    }
-    
-    footer ul li {
-        display: block;
-        list-style: none;
-    }
-    
-    footer ul li a {
-        font-size: 25px;
-        color: white;
-        line-height: 35px;
-    }
+  footer ul {
+    width: fit-content;
+    float: left;
+    padding-left: 20px;
+  }
+
+  footer ul li {
+    display: block;
+    list-style: none;
+  }
+
+  footer ul li a {
+    font-size: 25px;
+    color: white;
+    line-height: 35px;
+  }
 }
 
 .body-wrapper {
-    height: calc(100vh - 100px);
-    position: relative;
+  height: calc(100vh - 100px);
+  position: relative;
 }
 
 /* Center both vertically and horizontally */
 .contact-form-wrapper {
-    width: 50%;
-    height: 80%;
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+  width: 50%;
+  height: 80%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 @media only screen and (min-width: 1000px) {
-    .contact-form-wrapper {
-        width: 500px;
-    }
+  .contact-form-wrapper {
+    width: 500px;
+  }
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-form > h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .standard-input {
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
 }
 
 .standard-textarea {
-    width: 100%;
-    height: 250px;
-    margin-bottom: 20px;
+  width: 100%;
+  height: 250px;
+  margin-bottom: 20px;
 }
 
-input[type=submit] {
-    width: 100%;
-    height: 50px;
-    background-color: #8e8e8e;
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
+input[type='submit'] {
+  width: 100%;
+  height: 50px;
+  background-color: #8e8e8e;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
 }
 
 /* social media icons */
 .social-wrapper {
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    width: 500px;
-    margin-left: -250px;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
 }
 
 .social-btn {
-    margin-right: 20px;
-    height: 50px;
-    width: 50px;
+  margin-right: 20px;
+  height: 50px;
+  width: 50px;
 }
 
 /* main layout for articles */
 .main-background {
-    position: relative;
-    height: 100%;
-    background-color: #f2f2f2;
+  position: relative;
+  height: 100%;
+  background-color: #f2f2f2;
 }
 
 .main-block {
-    position: absolute;
-    height: 97.5%;
-    width: 95%;
-    top: 0; bottom: 0; right: 0; left: 0;
-    margin: auto;
-    overflow: hidden;
-    background-color: white;
+  position: absolute;
+  height: 97.5%;
+  width: 95%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  overflow: hidden;
+  background-color: white;
 }
 
 .main-block_programming {
-    display: flex;
+  display: flex;
 }
 
 .article-wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 30px 200px;
-    overflow: scroll;
-    text-align: justify;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 30px 200px;
+  overflow: scroll;
+  text-align: justify;
 }
 
 /* prevents the bottom of the article getting cut */
 .article-wrapper > div {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 .article-share-btn {
-    position: fixed;
-    height: 300px;
-    width: 70px;
-    margin-left: -90px;
-    background-color: silver;
+  position: fixed;
+  height: 300px;
+  width: 70px;
+  margin-left: -90px;
+  background-color: silver;
 }
 
 .article-list-wrapper {
-    display: none;
+  display: none;
 }
 
 @media only screen and (min-width: 1000px) {
-    .article-list-wrapper {
-        display: block;
-        height: 100%;
-        width: 400px;
-        overflow: scroll;
-    }
+  .article-list-wrapper {
+    display: block;
+    height: 100%;
+    width: 400px;
+    overflow: scroll;
+  }
 
-    .article-wrapper {
-        height: 100%;
-        width: calc(100% - 400px);
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding: 50px 200px;
-        z-index: 999;
-    }
+  .article-wrapper {
+    height: 100%;
+    width: calc(100% - 400px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 50px 200px;
+    z-index: 999;
+  }
 
-    .article-feed {
-        height: 90px;
-        width: 100%;
-        border-bottom: 1px solid #8e8e8e;
-        border-right: 1px solid #8e8e8e; 
-        cursor: pointer;
-    }
+  .article-feed {
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid #8e8e8e;
+    border-right: 1px solid #8e8e8e;
+    cursor: pointer;
+  }
 
-    .article-feed:hover {
-        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-        background-color: #8e8e8e24;
-    }
+  .article-feed:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    background-color: #8e8e8e24;
+  }
 
-    .feed_text-wrapper {
-        padding: 12px 22px;
-    }
+  .feed_text-wrapper {
+    padding: 12px 22px;
+  }
 
-    .feed_title {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 16px;
-        margin-bottom: 4px;
-        word-spacing: 0;
-    }
+  .feed_title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 4px;
+    word-spacing: 0;
+  }
 
-    .feed_info {
-        display: flex;
-        font-size: 10px;
-        line-height: 14px;
-        margin-bottom: 0px;
-    }
+  .feed_info {
+    display: flex;
+    font-size: 10px;
+    line-height: 14px;
+    margin-bottom: 0px;
+  }
 
-    .feed_link {
-        color: #6c6d6f;
-        font-size: 10px;
-        letter-spacing: .5px;
-        margin-right: 4px;
-    }
+  .feed_link {
+    color: #6c6d6f;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+  }
 
-    .feed-timestamp {
-        color: #a5a6a7;
-        white-space: nowrap;
-    }
+  .feed-timestamp {
+    color: #a5a6a7;
+    white-space: nowrap;
+  }
 
-    .article_title {
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 1.4;
-        text-align: left;
-        margin-bottom: 20px;
-    }
-
-
+  .article_title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: left;
+    margin-bottom: 20px;
+  }
 }
-
-
-
-
 
 /* .navTabs {
     display: flex;
@@ -629,6 +704,3 @@ input[type=submit] {
     width: 50%;
     margin-left: 20px;
 } */
-
-
-

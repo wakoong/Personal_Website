@@ -1,32 +1,103 @@
-const mongoose = require('mongoose');
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const { urlencoded, json } = require('body-parser');
+require('dotenv').config();
+var express = require('express');
+var app = express();
+var cors = require('cors');
+var request = require('request');
+var bodyParser = require('body-parser');
 
-const BodyType = require('./db/models/workout/bodyType');
-const WorkoutType = require('./db/models/workout/workoutType'); 
+var allowedOrigins = ['http://localhost:1234', 'http://localhost:3001'];
+app.use(
+  cors({
+    origin: function(origin, callback) {
+      if (!origin) return callback(null, true);
 
-app.use(morgan('dev'))
-app.use(urlencoded({ extended: true }))
-app.use(json())
+      if (allowedOrigins.indexOf(origin) === -1) {
+        var message =
+          'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(message), false);
+      }
 
-const connect = () => {
-  return mongoose.connect('mongodb://localhost:27017/whatever')
-}
-
-connect() 
-  .then(async connection => {
-    console.log("app running on port:5000")
-    const workoutType = await WorkoutType.create({workoutType: 'Bench Press', sets: 3, reps: 10})
-    const bodyType = await BodyType.create({bodyType: 'Chest', workoutType: [workoutType._id]})
-
-    const match = await BodyType.findById(workoutType._id)
-      .populate('workoutType')
-      .exec()
-    console.log("match: ", match, workoutType, bodyType)
-    app.listen(5000)
+      return callback(null, true);
+    },
   })
-  .catch(e => console.error(e))
+);
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 
+var apiUrl = 'https://api.robinhood.com/';
+
+var credentials = {
+  token: process.env.ROBINHOOD_TOKEN,
+};
+
+app.get('/login', function(req, res) {
+  var Robinhood = require('robinhood')(credentials, function() {
+    Robinhood.accounts(function(err, response, body) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('accounts');
+        console.log(body.results);
+        res.send({ results: body });
+      }
+    });
+  });
+});
+
+app.get('/logout', function(req, res) {
+  var Robinhood = require('robinhood')(credentials, function() {
+    Robinhood.expire_token(function(err, response, body) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('Successfully logged out of Robinhood and expired token.');
+        res.send({ status: 'logged out' });
+        // NOTE: body is undefined on the callback
+      }
+    });
+  });
+});
+
+let options = {
+  updated_at: '2019-08-25',
+};
+
+app.get('/orders', function(req, res) {
+  // var results = request.get('https://api.robinhood.com/orders');
+
+  // res.send({ orders: results });
+  var Robinhood = require('robinhood')(credentials, function() {
+    Robinhood.orders(function(err, response, body) {
+      if (err) {
+        console.error(err);
+      } else {
+        // console.log('orders');
+        // console.log(body);
+        res.send({ results: body });
+      }
+    });
+  });
+});
+
+app.get('/positions', function(req, res) {
+  var Robinhood = require('robinhood')(credentials, function() {
+    Robinhood.positions(function(err, response, body) {
+      if (err) {
+        console.error(err);
+      } else {
+        res.send({ results: body });
+      }
+    });
+  });
+});
+
+app.post('/instrument', function(req, res) {
+  var instrument = request(req.body.url, function(error, response, body) {
+    res.send({ results: body });
+  });
+});
+
+app.listen(3001, function() {
+  console.log('server running at port 3001');
+});
