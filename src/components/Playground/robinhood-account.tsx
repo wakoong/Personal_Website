@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { login, logout } from './robinhood-account-redux.tsx';
+import { loginTest, logout } from './robinhood-account-redux.tsx';
 import Button from '../Common/button.tsx';
 import { SimplePieChart } from '../D3/PieChart';
 
@@ -19,7 +19,10 @@ class RobinhoodAccount extends React.Component {
 
   render() {
     const cash = Math.round(this.props.account.cash).toLocaleString();
-    // const stock = Math.round(this.props.account.stock).toLocaleString();
+    const stock = Math.round(
+      this.props.portfolio.market_value
+    ).toLocaleString();
+    const data = [this.props.account.cash, this.props.portfolio.market_value];
     const updated_at = new Date(this.props.account.updated_at).toLocaleString(
       'en-US',
       {
@@ -35,9 +38,9 @@ class RobinhoodAccount extends React.Component {
           <React.Fragment>
             <h1 className="tab-body-title">Total Portfolio Value</h1>
             <h2>{`Cash: $ ${cash} `}</h2>
+            <h2>{`Stock: $ ${stock} `}</h2>
             <h2>{`Updated at: ${updated_at} `}</h2>
-            {/* <h2>{`Stock: ${stock}`}</h2> */}
-            <SimplePieChart />
+            <SimplePieChart data={data} />
             <Button
               buttonColor="primary"
               class_name="position"
@@ -60,11 +63,12 @@ class RobinhoodAccount extends React.Component {
 
 const mapStateToProps = state => ({
   account: state.robinhoodAccount.account,
+  portfolio: state.robinhoodAccount.portfolio,
   authenticated: state.robinhoodAccount.logged_in,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: token => dispatch(login(token)),
+  onLogin: token => dispatch(loginTest(token)),
   onLogout: () => dispatch(logout()),
 });
 

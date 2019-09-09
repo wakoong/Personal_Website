@@ -13,9 +13,7 @@ class ETFs extends React.Component {
             <h1 className="tab-body-title">ETFs Overview</h1>
           </React.Fragment>
         ) : (
-          <div>
-            <SimplePieChart />
-          </div>
+          <div>{/* <SimplePieChart /> */}</div>
         )}
       </div>
     );

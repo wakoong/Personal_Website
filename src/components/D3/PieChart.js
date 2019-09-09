@@ -3,11 +3,12 @@ import * as d3 from 'd3';
 
 const data = [17000, 24000];
 
-export const SimplePieChart = () => {
+export const SimplePieChart = props => {
   const height = 300;
   const width = 300;
 
-  let pie = d3.pie()(data);
+  let pie = d3.pie()(props.data);
+  console.log('props: ', props.data);
 
   return (
     <svg height={height} width={width}>
@@ -19,6 +20,7 @@ export const SimplePieChart = () => {
 };
 
 const Slice = props => {
+  console.log('slice');
   let { pie } = props;
 
   let arc = d3

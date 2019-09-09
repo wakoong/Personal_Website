@@ -38,11 +38,31 @@ app.get('/login', function(req, res) {
         console.error(err);
       } else {
         console.log('accounts');
-        console.log(body.results);
+
         res.send({ results: body });
       }
     });
   });
+});
+
+app.get('/portfolio', function(req, res) {
+  var portfolio = request(
+    {
+      method: 'GET',
+      uri: 'https://api.robinhood.com/portfolios/',
+      headers: {
+        Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+      },
+    },
+    function(err, response, body) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('port');
+        res.send({ results: body });
+      }
+    }
+  );
 });
 
 app.get('/logout', function(req, res) {

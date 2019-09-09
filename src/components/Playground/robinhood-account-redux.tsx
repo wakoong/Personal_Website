@@ -8,6 +8,10 @@ export const LOGOUT_REQUEST = '@@robinhood-account/LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = '@@robinhood-account/LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = '@@robinhood-account/LOGOUT_FAILURE';
 
+export const PORTFOLIO_REQUEST = '@@robinhood-account/PORTFOLIO_REQUEST';
+export const PORTFOLIO_SUCCESS = '@@robinhood-account/PORTFOLIO_SUCCESS';
+export const PORTFOLIO_FAILURE = '@@robinhood-account/PORTFOLIO_FAILURE';
+
 export const ORDERS_REQUEST = '@@robinhood-account/ORDERS_REQUEST';
 export const ORDERS_SUCCESS = '@@robinhood-account/ORDERS_SUCCESS';
 export const ORDERS_FAILURE = '@@robinhood-account/ORDERS_FAILURE';
@@ -19,6 +23,13 @@ export const INSTRUMENT_FAILURE = '@@robinhood-account/INSTRUMENT_FAILURE';
 export const POSITIONS_REQUEST = '@@robinhood-account/POSITIONS_REQUEST';
 export const POSITIONS_SUCCESS = '@@robinhood-account/POSITIONS_SUCCESS';
 export const POSITIONS_FAILURE = '@@robinhood-account/POSITIONS_FAILURE';
+
+export const loginTest = token => dispatch => {
+  return dispatch(login(token)).then(() => {
+    dispatch(getPortfolio());
+    return;
+  });
+};
 
 export const login = token => ({
   [RSAA]: {
@@ -43,6 +54,18 @@ export const logout = () => ({
       // 'Access-Control-Allow-Origin': 'http://localhost:3001/',
     },
     types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE],
+  },
+});
+
+export const getPortfolio = () => ({
+  [RSAA]: {
+    endpoint: 'http://localhost:3001/portfolio',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+    },
+    types: [PORTFOLIO_REQUEST, PORTFOLIO_SUCCESS, PORTFOLIO_FAILURE],
   },
 });
 
@@ -88,6 +111,7 @@ const initialState = {
   // stock: 0,
   // updated_at: '',
   account: [],
+  portfolio: [],
   logged_in: false,
   logged_out: true,
   orders: '',
@@ -112,6 +136,11 @@ export default (state = initialState, action) => {
         logged_in: false,
         logged_out: true,
         account: [],
+      };
+    case PORTFOLIO_SUCCESS:
+      return {
+        ...state,
+        portfolio: JSON.parse(action.payload.results).results[0],
       };
     case ORDERS_SUCCESS:
       return {
