@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { loginTest, logout } from './robinhood-account-redux.tsx';
-import Button from '../Common/button.tsx';
+import Button from '../Common/Material-UI/button.tsx';
+import SimpleCard from '../Common/Material-UI/simpleCard.tsx';
+import SimpleTable from '../Common/Material-UI/simpleTable.tsx';
 import { SimplePieChart } from '../D3/PieChart';
 
 import './robinhood-account.css';
@@ -10,18 +10,13 @@ import './robinhood-account.css';
 class RobinhoodAccount extends React.Component {
   // DRY: extract account.payload.results.results[0] into a variable
   // Handling states using this.setStates vs. using redux
-  componentDidMount() {
-    // this.props
-    //   .getAccount(process.env.ROBINHOOD_TOKEN)
-    //   .then(() => console.log('Account retrieved'))
-    //   .catch(e => console.error(e));
-  }
 
   render() {
     const cash = Math.round(this.props.account.cash).toLocaleString();
     const stock = Math.round(
       this.props.portfolio.market_value
     ).toLocaleString();
+
     const data = [this.props.account.cash, this.props.portfolio.market_value];
     const updated_at = new Date(this.props.account.updated_at).toLocaleString(
       'en-US',
@@ -30,7 +25,13 @@ class RobinhoodAccount extends React.Component {
       }
     );
 
-    const { onLogin, onLogout, authenticated } = this.props;
+    const {
+      onLogin,
+      onLogout,
+      authenticated,
+      instruments,
+      positions,
+    } = this.props;
 
     return (
       <div className="tab-body">
@@ -40,7 +41,10 @@ class RobinhoodAccount extends React.Component {
             <h2>{`Cash: $ ${cash} `}</h2>
             <h2>{`Stock: $ ${stock} `}</h2>
             <h2>{`Updated at: ${updated_at} `}</h2>
-            <SimplePieChart data={data} />
+            <div>
+              <SimpleCard piechart={<SimplePieChart data={data} />} />
+              <SimpleTable instruments={instruments} positions={positions} />
+            </div>
             <Button
               buttonColor="primary"
               class_name="position"
@@ -61,18 +65,4 @@ class RobinhoodAccount extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  account: state.robinhoodAccount.account,
-  portfolio: state.robinhoodAccount.portfolio,
-  authenticated: state.robinhoodAccount.logged_in,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onLogin: token => dispatch(loginTest(token)),
-  onLogout: () => dispatch(logout()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RobinhoodAccount);
+export default RobinhoodAccount;

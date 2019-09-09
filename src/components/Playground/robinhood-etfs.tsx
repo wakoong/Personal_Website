@@ -20,11 +20,4 @@ class ETFs extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  authenticated: state.robinhoodAccount.logged_in,
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(ETFs);
+export default ETFs;
