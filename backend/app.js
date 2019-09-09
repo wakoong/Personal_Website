@@ -31,8 +31,6 @@ var credentials = {
   token: process.env.ROBINHOOD_TOKEN,
 };
 
-console.log(credentials);
-
 app.get('/login', function(req, res) {
   var Robinhood = require('robinhood')(credentials, function() {
     Robinhood.accounts(function(err, response, body) {
@@ -40,7 +38,7 @@ app.get('/login', function(req, res) {
         console.error(err);
       } else {
         console.log('accounts');
-        console.log(body);
+        console.log(body.results);
         res.send({ results: body });
       }
     });
@@ -76,6 +74,18 @@ app.get('/orders', function(req, res) {
       } else {
         // console.log('orders');
         // console.log(body);
+        res.send({ results: body });
+      }
+    });
+  });
+});
+
+app.get('/positions', function(req, res) {
+  var Robinhood = require('robinhood')(credentials, function() {
+    Robinhood.positions(function(err, response, body) {
+      if (err) {
+        console.error(err);
+      } else {
         res.send({ results: body });
       }
     });
