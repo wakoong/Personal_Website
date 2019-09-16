@@ -24,14 +24,19 @@ export const POSITIONS_REQUEST = '@@robinhood-account/POSITIONS_REQUEST';
 export const POSITIONS_SUCCESS = '@@robinhood-account/POSITIONS_SUCCESS';
 export const POSITIONS_FAILURE = '@@robinhood-account/POSITIONS_FAILURE';
 
-export const loginTest = token => dispatch => {
+export const QUOTES_REQUEST = '@@robinhood-account/QUOTES_REQUEST';
+export const QUOTES_SUCCESS = '@@robinhood-account/QUOTES_SUCCESS';
+export const QUOTES_FAILURE = '@@robinhood-account/QUOTES_FAILURE';
+
+export const loginTest = (token) => (dispatch) => {
   return dispatch(login(token)).then(() => {
     dispatch(getPortfolio());
+    dispatch(getOrders());
     return;
   });
 };
 
-export const login = token => ({
+export const login = (token) => ({
   [RSAA]: {
     endpoint: 'http://localhost:3001/login',
     method: 'GET',
@@ -81,7 +86,7 @@ export const getOrders = () => ({
   },
 });
 
-export const getInstrument = url => ({
+export const getInstrument = (url) => ({
   [RSAA]: {
     endpoint: 'http://localhost:3001/instrument',
     method: 'POST',
@@ -91,6 +96,19 @@ export const getInstrument = url => ({
       // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
     types: [INSTRUMENT_REQUEST, INSTRUMENT_SUCCESS, INSTRUMENT_FAILURE],
+  },
+});
+
+export const getQuotes = (symbol) => ({
+  [RSAA]: {
+    endpoint: 'http://localhost:3001/quotes',
+    method: 'POST',
+    body: JSON.stringify({ symbol }),
+    headers: {
+      'Content-Type': 'application/json',
+      // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+    },
+    types: [QUOTES_REQUEST, QUOTES_SUCCESS, QUOTES_FAILURE],
   },
 });
 
@@ -117,18 +135,17 @@ const initialState = {
   orders: '',
   instruments: [],
   positions: '',
+  quotes: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      const result = action.payload.results.results;
       return {
         ...state,
         logged_in: true,
         logged_out: false,
-        account: result[0],
-        // updated_at: result[0].updated_at,
+        account: action.payload.results,
       };
     case LOGOUT_SUCCESS:
       return {
@@ -140,31 +157,39 @@ export default (state = initialState, action) => {
     case PORTFOLIO_SUCCESS:
       return {
         ...state,
-        portfolio: JSON.parse(action.payload.results).results[0],
+        portfolio: action.payload.results,
       };
     case ORDERS_SUCCESS:
       return {
         ...state,
-        orders: action.payload.results.results.filter(order => {
-          return order.state === 'filled';
-        }),
+        orders: action.payload.results,
       };
     case INSTRUMENT_SUCCESS:
-      const parsed = JSON.parse(action.payload.results);
+      const i_parsed = action.payload.results;
       return {
         ...state,
         instruments: state.instruments.concat({
-          symbol: parsed.symbol,
-          name: parsed.name,
-          simple_name: parsed.simple_name,
-          fundamentals: parsed.fundamentals,
+          symbol: i_parsed.symbol,
+          name: i_parsed.name,
+          simple_name: i_parsed.simple_name,
+          fundamentals: i_parsed.fundamentals,
+          id: i_parsed.id,
         }),
       };
     case POSITIONS_SUCCESS:
       return {
         ...state,
-        positions: action.payload.results.results.filter(position => {
-          return parseInt(position.quantity) > 0;
+        positions: action.payload.results,
+      };
+    case QUOTES_SUCCESS:
+      const q_parsed = action.payload.results;
+      return {
+        ...state,
+        quotes: state.quotes.concat({
+          last_trade_price: q_parsed.last_trade_price,
+          previous_close: q_parsed.previous_close,
+          symbol: q_parsed.symbol,
+          instrument: q_parsed.instrument,
         }),
       };
     default:
