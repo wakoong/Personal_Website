@@ -24,7 +24,7 @@ class Robinhood extends React.Component {
     console.log('willMount');
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     // if (
     //   prevProps.authenticated &&
     //   prevProps.portfolio.length === 0 &&
@@ -35,37 +35,34 @@ class Robinhood extends React.Component {
     //     .then(() => console.log('Orders retrieved'))
     //     .catch((e) => console.error(e));
     // }
-
     if (
       prevProps.authenticated &&
       prevProps.portfolio.length === 0 &&
       prevProps.positions === ''
     ) {
-      this.props
-        .onPositions()
-        .then((positions) => positions.payload.results)
-        .then((positions) =>
-          positions.map((p) =>
-            this.props
-              .onInstrument(p.instrument)
-              .then((i) => this.props.onQuotes(i.payload.results.symbol))
-          )
-        )
-        .catch((e) => console.error(e));
+      try {
+        const positions = await this.props.onPositions();
+
+        let instruments = [];
+        for (let i = 0; i < positions.payload.results.length; i++) {
+          const response = await this.props.onInstrument(
+            positions.payload.results[i].instrument
+          );
+          instruments.push(response);
+        }
+
+        let quotes = [];
+        for (let i = 0; i < instruments.length; i++) {
+          const response = await this.props.onQuotes(
+            instruments[i].payload.results.symbol
+          );
+          quotes.push(response);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
-
-  // async function getInfo() {
-  //   try {
-  //     const p_all = await this.props.onPositions()
-  //     console.log(p_all)
-  //     const p_filled = p_all.filter(res => res.payload.results.results.filter(r => parseInt(r.quantity) > 0))
-  //     // const i_each =
-  //     // const q_all =
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // }
 
   render() {
     const tabs: string[] = ['Overview', 'ETFs', 'Regular Stocks'];
