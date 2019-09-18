@@ -90,7 +90,6 @@ app.get('/orders', function(req, res) {
       if (err) {
         console.error(err);
       } else {
-        
         var results = body.results.filter((order) => order.state === 'filled');
         res.send({ results: results });
       }

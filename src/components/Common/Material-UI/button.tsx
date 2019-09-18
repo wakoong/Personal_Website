@@ -26,7 +26,7 @@ export default function OutlinedButtons({
   buttonColor = 'default',
   class_name,
   on_click,
-  text
+  text,
 }) {
   const classes = useStyles();
   return (
@@ -34,9 +34,8 @@ export default function OutlinedButtons({
       <Button
         variant="outlined"
         color={buttonColor}
-        className={`${classes.button} class_name`}
-        onClick={on_click}
-      >
+        className={`${classes.button} ${class_name}`}
+        onClick={on_click}>
         {text}
       </Button>
     </div>

@@ -9,8 +9,52 @@
   color: #083831;
 }
 
+.MuiTypography-root {
+  overflow: auto;
+}
+
 .box-container {
   height: 200px;
   width: 100%;
   background-color: yellow;
+}
+
+.flex-box {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.flex-box-vertical {
+  flex-direction: column;
+}
+
+.half-height-box {
+  height: 0%;
+}
+
+.half-width-box {
+  width: 50%;
+}
+
+.position-logout {
+  position: absolute !important;
+  right: 15px;
+  top: 10px;
+}
+
+.pie-chart {
+  height: 100%;
+  width: 100%;
+}
+
+.pie-chart > svg {
+  display: block;
+  margin: auto;
+  /* svg doesn't fit in a div... */
+  overflow: visible;
+}
+
+.pie-chart > svg > g {
+  margin-bottom: 10em;
 }
