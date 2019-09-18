@@ -12,17 +12,13 @@ class RobinhoodAccount extends React.Component {
   // Handling states using this.setStates vs. using redux
 
   render() {
-    const cash = Math.round(this.props.account.cash).toLocaleString();
-    const stock = Math.round(
-      this.props.portfolio.market_value
-    ).toLocaleString();
+    const cash = Math.round(this.props.account.cash);
+    const stock = Math.round(this.props.portfolio.market_value);
 
     const data = [this.props.account.cash, this.props.portfolio.market_value];
     const updated_at = new Date(this.props.account.updated_at).toLocaleString(
       'en-US',
-      {
-        timeZone: 'America/Los_Angeles',
-      }
+      { timeZone: 'America/Los_Angeles' }
     );
 
     const {
@@ -31,6 +27,8 @@ class RobinhoodAccount extends React.Component {
       authenticated,
       instruments,
       positions,
+      stockInfo,
+      quotes,
     } = this.props;
 
     return (
@@ -38,19 +36,31 @@ class RobinhoodAccount extends React.Component {
         {authenticated ? (
           <React.Fragment>
             <h1 className="tab-body-title">Total Portfolio Value</h1>
-            <h2>{`Cash: $ ${cash} `}</h2>
-            <h2>{`Stock: $ ${stock} `}</h2>
+            <h2>{`Cash: $ ${cash.toLocaleString()} `}</h2>
+            <h2>{`Stock: $ ${stock.toLocaleString()} `}</h2>
             <h2>{`Updated at: ${updated_at} `}</h2>
-            <div>
-              <SimpleCard piechart={<SimplePieChart data={data} />} />
-              <SimpleTable instruments={instruments} positions={positions} />
+            <div className="flex-box">
+              <div className="half-width-box">
+                <div className="pie-chart">
+                  <SimplePieChart data={data} />
+                </div>
+              </div>
+              <div>
+                <SimpleTable
+                  instruments={instruments}
+                  positions={positions}
+                  quotes={quotes}
+                  stockInfo={stockInfo}
+                  totalStock={stock}
+                />
+                <Button
+                  buttonColor="primary"
+                  class_name="position position-logout"
+                  on_click={onLogout}
+                  text="LOGOUT FROM YOUR ROBINHOOD ACCOUNT"
+                />
+              </div>
             </div>
-            <Button
-              buttonColor="primary"
-              class_name="position"
-              on_click={onLogout}
-              text="LOGOUT FROM YOUR ROBINHOOD ACCOUNT"
-            />
           </React.Fragment>
         ) : (
           <Button

@@ -28,6 +28,7 @@ export default function SimpleTable({
   instruments,
   positions,
   quotes,
+  stockInfo,
   totalStock,
 }) {
   const classes = useStyles();
@@ -44,19 +45,26 @@ export default function SimpleTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {quotes.map((q, index) => (
+          {stockInfo.map((i, index) => (
             <TableRow key={index}>
               <TableCell component="th" scope="row">
-                {q.symbol}
+                {i.symbol}
               </TableCell>
               <React.Fragment>
+                <TableCell align="center">{Math.floor(i.quantity)}</TableCell>
                 <TableCell align="center">
-                  {Math.floor(positions[index].quantity)}
+                  ${' '}
+                  {(
+                    Math.abs(i.quantity * i.last_trade_price * 100) / 100
+                  ).toFixed(2)}
                 </TableCell>
-                <TableCell align="center">
-                  {positions[index].quantity * q.last_trade_price}
+                <TableCell align="right">
+                  {Math.abs(
+                    (((i.quantity * i.last_trade_price) / totalStock) * 10000) /
+                      100
+                  ).toFixed(2)}{' '}
+                  %
                 </TableCell>
-                <TableCell align="right">%</TableCell>
               </React.Fragment>
             </TableRow>
           ))}
