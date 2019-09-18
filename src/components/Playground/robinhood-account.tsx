@@ -21,47 +21,37 @@ class RobinhoodAccount extends React.Component {
       { timeZone: 'America/Los_Angeles' }
     );
 
-    const {
-      onLogin,
-      onLogout,
-      authenticated,
-      instruments,
-      positions,
-      stockInfo,
-      quotes,
-    } = this.props;
-
+    const { onLogin, onLogout, authenticated, stockInfo, loading } = this.props;
+    console.log(loading);
     return (
       <div className="tab-body">
         {authenticated ? (
-          <React.Fragment>
-            <h1 className="tab-body-title">Total Portfolio Value</h1>
-            <h2>{`Cash: $ ${cash.toLocaleString()} `}</h2>
-            <h2>{`Stock: $ ${stock.toLocaleString()} `}</h2>
-            <h2>{`Updated at: ${updated_at} `}</h2>
-            <div className="flex-box">
-              <div className="half-width-box">
-                <div className="pie-chart">
-                  <SimplePieChart data={data} />
+          loading ? (
+            <div>loading ...</div>
+          ) : (
+            <React.Fragment>
+              <h1 className="tab-body-title">Total Portfolio Value</h1>
+              <h2>{`Cash: $ ${cash.toLocaleString()} `}</h2>
+              <h2>{`Stock: $ ${stock.toLocaleString()} `}</h2>
+              <h2>{`Updated at: ${updated_at} `}</h2>
+              <div className="flex-box">
+                <div className="half-width-box">
+                  <div className="pie-chart">
+                    <SimplePieChart data={data} />
+                  </div>
+                </div>
+                <div>
+                  <SimpleTable stockInfo={stockInfo} totalStock={stock} />
+                  <Button
+                    buttonColor="primary"
+                    class_name="position position-logout"
+                    on_click={onLogout}
+                    text="LOGOUT FROM YOUR ROBINHOOD ACCOUNT"
+                  />
                 </div>
               </div>
-              <div>
-                <SimpleTable
-                  instruments={instruments}
-                  positions={positions}
-                  quotes={quotes}
-                  stockInfo={stockInfo}
-                  totalStock={stock}
-                />
-                <Button
-                  buttonColor="primary"
-                  class_name="position position-logout"
-                  on_click={onLogout}
-                  text="LOGOUT FROM YOUR ROBINHOOD ACCOUNT"
-                />
-              </div>
-            </div>
-          </React.Fragment>
+            </React.Fragment>
+          )
         ) : (
           <Button
             buttonColor="default"

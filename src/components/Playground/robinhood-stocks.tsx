@@ -1,34 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {
-  getOrders,
-  getInstrument,
-  getPositions,
-} from './robinhood-account-redux.tsx';
-import SortingTable from '../Common/Material-UI/sortingTable.tsx';
+import SimpleTable from '../Common/Material-UI/simpleTable.tsx';
 import { SimplePieChart } from '../D3/PieChart';
 
 class Stocks extends React.Component {
   render() {
     const { authenticated, orders, instruments, positions } = this.props;
-    // console.log(instruments);
-    const data = [];
+    // console.log(instruments, positions, orders);
+    const data = [1, 2, 3];
     return (
       <div>
-        {authenticated && orders ? (
-          <React.Fragment>
+        {authenticated ? (
+          <div className="tab-body">
             <h1 className="tab-body-title">Stocks Overview</h1>
-            {instruments.map((inst, index) => {
-              return <div key={index}>{inst.simple_name}</div>;
-            })}
-            {positions.map((p, index) => {
-              data.push(p.average_buy_price * p.quantity);
-              return <div key={index}>{p.average_buy_price}</div>;
-            })}
-            <SimplePieChart data={data} />
-            {/* <SortingTable /> */}
-          </React.Fragment>
+            {/* <div className="flex-box">
+              <div className="pie-chart"> */}
+            {/* <SimplePieChart data={data} /> */}
+            {/* </div>
+            </div> */}
+            <div />
+          </div>
         ) : (
           <div>no</div>
         )}

@@ -13,6 +13,7 @@ import {
   getInstrument,
   getPositions,
   getQuotes,
+  loadingData,
 } from './robinhood-account-redux.tsx';
 
 class Robinhood extends React.Component {
@@ -25,16 +26,6 @@ class Robinhood extends React.Component {
   }
 
   async componentDidUpdate(prevProps) {
-    // if (
-    //   prevProps.authenticated &&
-    //   prevProps.portfolio.length === 0 &&
-    //   prevProps.orders === ''
-    // ) {
-    //   this.props
-    //     .onOrders()
-    //     .then(() => console.log('Orders retrieved'))
-    //     .catch((e) => console.error(e));
-    // }
     if (
       prevProps.authenticated &&
       prevProps.portfolio.length === 0 &&
@@ -58,6 +49,8 @@ class Robinhood extends React.Component {
           );
           quotes.push(response);
         }
+      
+      const loading = await this.props.onLoading();
       } catch (error) {
         console.log(error);
       }
@@ -66,6 +59,7 @@ class Robinhood extends React.Component {
 
   render() {
     const tabs: string[] = ['Overview', 'ETFs', 'Regular Stocks'];
+    const accountInfo = [];
     const {
       account,
       portfolio,
@@ -79,24 +73,30 @@ class Robinhood extends React.Component {
       onOrders,
       onInstrument,
       onPositions,
+      loading,
     } = this.props;
+
+    const combine = instruments.map((i) =>
+      Object.assign(i, quotes.find((q) => q.symbol == i.symbol))
+    );
+    const stockInfo = combine.map((c, index) =>
+      Object.assign(c, positions.find((p) => p.instrument == c.instrument)
+    );
+
     const components: React.Component[] = [
       <RAccount
         authenticated={authenticated}
         account={account}
         portfolio={portfolio}
-        positions={positions}
-        instruments={instruments}
-        quotes={quotes}
+        stockInfo={stockInfo}
         onLogin={login}
         onLogout={logout}
+        loading={loading}
       />,
       <ETFs />,
       <Stocks
         authenticated={authenticated}
         portfolio={portfolio}
-        positions={positions}
-        instruments={instruments}
         orders={orders}
       />,
     ];
@@ -119,6 +119,7 @@ const mapStateToProps = (state) => ({
   orders: state.robinhoodAccount.orders,
   positions: state.robinhoodAccount.positions,
   quotes: state.robinhoodAccount.quotes,
+  loading: state.robinhoodAccount.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -128,6 +129,7 @@ const mapDispatchToProps = (dispatch) => ({
   onInstrument: (url) => dispatch(getInstrument(url)),
   onPositions: () => dispatch(getPositions()),
   onQuotes: (symbol) => dispatch(getQuotes(symbol)),
+  onLoading: () => dispatch(loadingData())
 });
 
 export default connect(
