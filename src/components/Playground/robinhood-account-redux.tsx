@@ -28,6 +28,8 @@ export const QUOTES_REQUEST = '@@robinhood-account/QUOTES_REQUEST';
 export const QUOTES_SUCCESS = '@@robinhood-account/QUOTES_SUCCESS';
 export const QUOTES_FAILURE = '@@robinhood-account/QUOTES_FAILURE';
 
+export const LOADING_SUCCESS = '@@robinhood-account/LOADING_SUCCESS';
+
 export const loginTest = (token) => (dispatch) => {
   return dispatch(login(token)).then(() => {
     dispatch(getPortfolio());
@@ -124,10 +126,12 @@ export const getPositions = () => ({
   },
 });
 
+export const loadingData = () => ({
+  type: LOADING_SUCCESS,
+});
+
 const initialState = {
-  // cash: 0,
-  // stock: 0,
-  // updated_at: '',
+  loading: true,
   account: [],
   portfolio: [],
   logged_in: false,
@@ -149,10 +153,7 @@ export default (state = initialState, action) => {
       };
     case LOGOUT_SUCCESS:
       return {
-        ...state,
-        logged_in: false,
-        logged_out: true,
-        account: [],
+        ...initialState,
       };
     case PORTFOLIO_SUCCESS:
       return {
@@ -191,6 +192,11 @@ export default (state = initialState, action) => {
           symbol: q_parsed.symbol,
           instrument: q_parsed.instrument,
         }),
+      };
+    case LOADING_SUCCESS:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
