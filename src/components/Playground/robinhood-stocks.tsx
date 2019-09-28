@@ -6,8 +6,8 @@ import { SimplePieChart } from '../D3/PieChart';
 
 class Stocks extends React.Component {
   render() {
-    const { authenticated, orders, instruments, positions } = this.props;
-    // console.log(instruments, positions, orders);
+    const { authenticated, orders, stockInfo } = this.props;
+    console.log(stockInfo);
     const data = [1, 2, 3];
     return (
       <div>

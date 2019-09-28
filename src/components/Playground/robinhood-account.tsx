@@ -22,7 +22,7 @@ class RobinhoodAccount extends React.Component {
     );
 
     const { onLogin, onLogout, authenticated, stockInfo, loading } = this.props;
-    console.log(loading);
+    // console.log(loading);
     return (
       <div className="tab-body">
         {authenticated ? (

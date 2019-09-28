@@ -97,6 +97,7 @@ class Robinhood extends React.Component {
       <Stocks
         authenticated={authenticated}
         portfolio={portfolio}
+        stockInfo={stockInfo}
         orders={orders}
       />,
     ];
