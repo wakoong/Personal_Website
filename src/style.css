@@ -140,361 +140,129 @@ body,
   margin: 0;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* My code */
+/************************************** My codes ***********************************/
 * {
-  text-decoration: none;
+  text-decoration: none !important;
+  list-style: none;
 }
 
-/* React tabindex - don't know the appropriate workaround */
-.app > div {
-  height: calc(100vh - 100px);
+/* App */
+/* Mobile */
+.app {
+  display: grid;
+  grid-template-rows: 50px minmax(0, 1fr);
+}
+
+/* IPad */
+@media only screen and (min-width: 480px) {
+  .app {
+    grid-template-rows: 70px minmax(0, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .app {
+    grid-template-rows: 100px minmax(0, 1fr);
+  }
 }
 
 /* Header */
-
+/* Mobile */
 header,
-header > nav {
-  height: 100px;
+header > nav,
+header > nav > ul {
+  height: 100%;
   width: 100%;
   background-color: #fff;
   position: sticky;
 }
 
-header > nav > ul > li:first-child {
-  width: 100%;
-  color: #111;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px 0;
-  text-transform: uppercase;
-}
-
-header > nav > ul > li:first-child > a {
-  font-weight: 900;
-  font-size: 24px;
-}
-
+/* Nav Contents */
+/* Mobile */
 header > nav > ul {
-  /* If can't center things, try display: block */
-  display: block;
-  margin: 0 auto;
-  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+header > nav > ul > li:first-child {
+  flex: 0 1 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
 }
 
 header > nav > ul > li {
-  display: inline-block;
-  list-style: none;
-  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-header > nav > ul > li > a {
-  font-weight: 100;
-  font-size: 16px;
-  color: #111;
-}
-
-@media only screen and (min-width: 1000px) {
+/* IPad & Desktop */
+@media only screen and (min-width: 480px) {
   header > nav > ul {
-    width: 100%;
-    float: left;
-    margin: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
   }
 
-  header > nav > ul > li:first-child > a {
-    margin: 10px 0;
-    text-align: left;
-    padding: 0px 20px 0px 40px;
+  header > nav > ul > li:first-child {
+    flex: none;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: start;
+    margin-right: 1em;
+    padding: 0 1em 0 1em;
     border-right: 3px solid #111;
-    line-height: 38px;
-    float: left;
   }
 
-  header > nav > ul > li:not(:first-child) {
-    float: left;
-    line-height: 20px;
+  header > nav > ul > li {
+    margin-right: 1em;
+    font-size: 14px;
+    font-weight: 300;
   }
 }
 
-/* Index */
+/* Desktop */
+@media only screen and (min-width: 768px) {
+  header > nav > ul > li:first-child {
+    font-size: 28px;
+  }
 
-.index-banner {
+  header > nav > ul > li {
+    font-size: 16px;
+  }
+}
+
+/* Main Image */
+/* Mobile */
+main {
+  min-height: 100%;
+  min-width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+}
+
+main > .main-image {
   width: 100%;
-  height: calc(100vh - 100px);
+  height: 100%;
   background-image: url('./assets/images/main.jpeg');
   background-repeat: no-repeat;
-  background-position: 0 -10%;
   background-size: cover;
-  /* centering the text */
-  display: table;
+  background-position: right;
 }
 
-/* .vertical-center {
-    display: table-cell;
-    vertical-align: middle;
-} */
-
-.index-banner h2 {
-  font-size: 60px;
-  color: #fff;
-  text-align: center;
-  font-weight: 900;
-  text-shadow: 2px 2px 8px #111;
-  line-height: 70px;
-}
-
-.index-banner h1 {
-  font-size: 28px;
-  color: #fff;
-  text-align: center;
-  font-weight: 100;
-  text-shadow: 2px 2px 8px #111;
-  line-height: 40px;
-}
-
-.index-boxlink {
-  margin: 16px 16px 0;
-  width: calc(100% - 32px);
-  height: 100px;
-  line-height: 100px;
-  background-color: #f2f2f2;
-  font-weight: 600;
-  font-size: 28px;
-  color: #111;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.main-description {
-  position: relative;
-  height: calc(100vh - 700px);
-  background-color: #80808042;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 20px;
-}
-
-.main-description > .quote {
-  font-style: italic;
-  font-weight: bold;
-}
-
-.main-description > .quote-1 {
-  font-size: 18px;
-}
-
-.main-description > p {
-  margin-bottom: 10px;
-}
-
-@media only screen and (min-width: 1000px) {
-  .wrapper {
-    width: 1000px;
-    margin: 0 auto;
-  }
-
-  .wrapper > .index-banner {
-    position: absolute;
-    width: 100%;
-  }
-
-  .index-banner {
-    width: 100%;
-    height: 500px;
-    background-image: url('./assets/images/main.jpeg');
-    background-repeat: no-repeat;
+/* IPad & Desktop */
+@media only screen and (min-width: 768px) {
+  main > .main-image {
     background-position: center;
-    background-size: cover;
-    /* centering the text */
-    display: table;
-    position: relative;
-  }
-
-  .main-description {
-    height: calc(100vh - 600px);
-    background-color: #80808042;
-    text-align: center;
-    padding: 0px;
-    font-size: 20px;
-  }
-
-  .main-description > .quote {
-    line-height: 80px;
-  }
-
-  .index-banner h2 {
-    position: absolute;
-    display: block;
-    bottom: 70px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .index-banner h1 {
-    position: absolute;
-    bottom: 25px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .index-boxlink {
-    margin: 10px 10px 0;
-    height: 230px;
-    background-color: #f2f2f2;
-    float: left;
-    line-height: 230px;
-  }
-
-  .index-boxlink:first-child,
-  .index-boxlink:nth-child(4) {
-    width: calc(35% - 20px) !important;
-  }
-
-  .index-boxlink:nth-child(2),
-  .index-boxlink:nth-child(3) {
-    width: calc(65% - 20px) !important;
-  }
-
-  /* Not sure how this works */
-  .index-links {
-    overflow: hidden;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .index-banner {
-    background-position: 75%;
   }
 }
 
 /* footer */
 footer {
-  width: calc(100% - 80px);
-  padding: 40px 40px;
-  margin-top: 20px;
-  background-color: #111;
-  overflow: hidden;
-}
-
-footer ul {
-  width: fit-content;
-  float: left;
-  padding-left: 20px;
-}
-
-footer ul li {
-  display: block;
-  list-style: none;
-}
-
-footer ul li a {
-  font-size: 20px;
-  color: white;
-  line-height: 30px;
-}
-
-.footer-sm {
-  width: 30px;
-  float: right;
-}
-
-.footer-sm img {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-@media only screen and (min-width: 1000px) {
-  footer ul {
-    width: fit-content;
-    float: left;
-    padding-left: 20px;
-  }
-
-  footer ul li {
-    display: block;
-    list-style: none;
-  }
-
-  footer ul li a {
-    font-size: 25px;
-    color: white;
-    line-height: 35px;
-  }
-}
-
-.body-wrapper {
-  height: calc(100vh - 100px);
-  position: relative;
-}
-
-/* Center both vertically and horizontally */
-.contact-form-wrapper {
-  width: 50%;
-  height: 80%;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-@media only screen and (min-width: 1000px) {
-  .contact-form-wrapper {
-    width: 500px;
-  }
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-form > h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.standard-input {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-}
-
-.standard-textarea {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 20px;
-}
-
-input[type='submit'] {
-  width: 100%;
-  height: 50px;
-  background-color: #8e8e8e;
-  cursor: pointer;
-  color: #fff;
-  font-size: 20px;
-}
-
-/* social media icons */
-.social-wrapper {
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  width: 500px;
-  margin-left: -250px;
-}
-
-.social-btn {
-  margin-right: 20px;
-  height: 50px;
-  width: 50px;
+  background-color: #f3f3f3;
 }
 
 /* main layout for articles */
@@ -546,161 +314,3 @@ input[type='submit'] {
 .article-list-wrapper {
   display: none;
 }
-
-@media only screen and (min-width: 1000px) {
-  .article-list-wrapper {
-    display: block;
-    height: 100%;
-    width: 400px;
-    overflow: scroll;
-  }
-
-  .article-wrapper {
-    height: 100%;
-    width: calc(100% - 400px);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 50px 200px;
-    z-index: 999;
-  }
-
-  .article-feed {
-    height: 90px;
-    width: 100%;
-    border-bottom: 1px solid #8e8e8e;
-    border-right: 1px solid #8e8e8e;
-    cursor: pointer;
-  }
-
-  .article-feed:hover {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    background-color: #8e8e8e24;
-  }
-
-  .feed_text-wrapper {
-    padding: 12px 22px;
-  }
-
-  .feed_title {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 16px;
-    margin-bottom: 4px;
-    word-spacing: 0;
-  }
-
-  .feed_info {
-    display: flex;
-    font-size: 10px;
-    line-height: 14px;
-    margin-bottom: 0px;
-  }
-
-  .feed_link {
-    color: #6c6d6f;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    margin-right: 4px;
-  }
-
-  .feed-timestamp {
-    color: #a5a6a7;
-    white-space: nowrap;
-  }
-
-  .article_title {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.4;
-    text-align: left;
-    margin-bottom: 20px;
-  }
-}
-
-/* .navTabs {
-    display: flex;
-} */
-
-/* .tab-wrapper {
-    height: 50px;
-} */
-
-/* .tab {
-    margin: 0 25px;
-    font-size: 25px;
-    color: #111;
-    cursor: pointer;
-} */
-
-/* .tab-wrapper > span:first-of-child {
-    margin-left: 35px;
-}  */
-
-/* .navTabs > a:first-of-type > span:first-of-type {
-    font-size: 35px;
-}
-
-.tab:hover {
-    border-bottom: 2px solid white;
-} */
-
-/* .social {
-    height: 50px;
-}
-
-.social-btn-wrapper {
-    float: right;
-}
-
-.social-btn {
-    margin-top: 12.5px;
-    margin-right: 10px;
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-} */
-
-/* Main Layout */
-
-/* .main-background {
-    display: flex;
-    background-color: #edeef0;
-}
-
-.main-block {
-    display: flex;
-    background-color: white;
-    width: 100%;
-    margin: 50px 250px;
-}
-
-#article-list {
-    width: 300px;
-    background-color: white;
-    overflow-y: scroll;
-}
-
-#article {
-    width: 100%;
-    background-color: purple;
-}
-
-.article-btn {
-    display: block;
-    height: 100px;
-    font-size: 20px;
-    color: grey;
-    cursor: pointer;
-    text-align: center;
-    line-height: 5;
-    border-bottom: grey 1px solid;
-} */
-
-/* About page */
-/* .profile-image,
-.description {
-    margin: auto;
-    height: 80%;
-    width: 50%;
-    margin-left: 20px;
-} */

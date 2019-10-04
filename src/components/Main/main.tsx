@@ -1,19 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import Social from "../Social/social.tsx";
+import mainImg from '../../assets/images/main.jpeg';
+import Footer from '../Common/Atoms/footer.tsx';
 
-class Main extends React.Component {
-  render() {
-    return (
-      <main>
-        <section className="index-banner">
-        </section>
-        <div className="main-description">
-          <Social />
-        </div>
-      </main>
-    );
-  }
-}
+const Main = () => {
+  return (
+    <main>
+      <div className="main-image" />
+      <Footer />
+    </main>
+  );
+};
 
 export default Main;

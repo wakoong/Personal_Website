@@ -16,7 +16,7 @@ class Header extends React.Component<HeaderProps> {
   render() {
     const navTabs: string[] = ["About", "Playground"];
     return (
-      <React.Fragment>
+      <header>
         <nav>
           <ul>
             <Nav nav="" tab="WK" />
@@ -25,7 +25,7 @@ class Header extends React.Component<HeaderProps> {
             })}
           </ul>
         </nav>
-      </React.Fragment>
+      </header>
     );
   }
 }
