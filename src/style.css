@@ -265,6 +265,85 @@ footer {
   background-color: #f3f3f3;
 }
 
+/************************************** About ***********************************/
+/* Mobile */
+.about {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+}
+
+/* IPad & Desktop */
+@media only screen and (min-width: 480px) {
+  .about {
+    grid-template-rows: 180px 1fr;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .about {
+    grid-template-rows: 250px 1fr;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .about {
+    grid-template-rows: 300px 1fr;
+  }
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/images/optimism.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.about > section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .about > section {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.about > section > p {
+  margin-bottom: 24px;
+  text-align: justify;
+  word-break: break-all;
+  line-height: 24px;
+}
+
+.about > section > p:first-child {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+@media only screen and (min-width: 768px) {
+  .about > section > p:first-child {
+    font-size: 2.5em;
+    font-weight: 900;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .about > section > p {
+    margin-bottom: 1em;
+    line-height: 24px;
+    font-size: 1em;
+    font-weight: 400;
+  }
+
+  .about > section > p:first-child {
+    margin-top: 1em;
+  }
+}
+
 /* main layout for articles */
 .main-background {
   position: relative;
@@ -287,30 +366,4 @@ footer {
 
 .main-block_programming {
   display: flex;
-}
-
-.article-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  padding: 30px 200px;
-  overflow: scroll;
-  text-align: justify;
-}
-
-/* prevents the bottom of the article getting cut */
-.article-wrapper > div {
-  margin-bottom: 70px;
-}
-
-.article-share-btn {
-  position: fixed;
-  height: 300px;
-  width: 70px;
-  margin-left: -90px;
-  background-color: silver;
-}
-
-.article-list-wrapper {
-  display: none;
 }
