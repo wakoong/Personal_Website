@@ -7,6 +7,7 @@ import Header from '../Header/header.tsx';
 import Main from '../Main/main.tsx';
 import Laboratory from '../Laboratory/laboratory.tsx';
 import About from '../About/about.tsx';
+import Robinhood from '../Laboratory/robinhood.tsx';
 import store from '../../store';
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
             <Main path="/" />
             <About path="/about" />
             <Laboratory path="/laboratory" />
+            <Robinhood path="/robinhood" />
           </Router>
         </ReduxProvider>
       </div>

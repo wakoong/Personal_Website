@@ -370,21 +370,23 @@ footer {
 
 /************************************** Lab ***********************************/
 .lab {
-  height: 100%;
+  height: calc(100% - 100px);
   padding: 10px 15px;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
 }
 
-.project-card {
+.lab-card {
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
   border: 1px solid grey;
 }
 
-.project-card > img {
+.lab-card > .lab-img {
   object-fit: contain;
   width: 100%;
   height: 100%;

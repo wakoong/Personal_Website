@@ -1,4 +1,5 @@
 import React from 'react';
+import { Router, Link } from '@reach/router';
 
 import Robinhood from './robinhood';
 
@@ -9,16 +10,24 @@ class Laboratory extends React.Component {
   render() {
     return (
       <div className="lab">
-        <div className="project-card">
-          <img src={robinhood} alt="Stock Management App" />
-        </div>
-        <div className="project-card">
+        <Link to="/robinhood">
+          <div className="lab-card">
+            <img
+              className="lab-img"
+              src={robinhood}
+              alt="Stock Management App"
+            />
+          </div>
+        </Link>
+        <Link to="/coach-and-player">
+          <div className="lab-card">
+            {' '}
+            <img className="lab-img" src={CP} alt="Coach-and-Player" />
+          </div>
+        </Link>
+        <div className="lab-card">
           {' '}
-          <img src={CP} alt="Coach-and-Player" />
-        </div>
-        <div className="project-card">
-          {' '}
-          <img src={CP} alt="Coach-and-Player" />
+          <img className="lab-img" src={CP} alt="Coach-and-Player" />
         </div>
       </div>
     );
