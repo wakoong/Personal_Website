@@ -60,6 +60,7 @@
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^16.4.2",
     "react-google-login": "^5.0.4",
+    "react-is": "^16.10.2",
     "react-markdown": "^4.1.0",
     "react-redux": "^6.0.1",
     "reducers": "^3.0.0-alpha",

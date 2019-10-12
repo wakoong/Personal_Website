@@ -5,7 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import Header from '../Header/header.tsx';
 import Main from '../Main/main.tsx';
-import Playground from '../Playground/playground.tsx';
+import Laboratory from '../Laboratory/laboratory.tsx';
 import About from '../About/about.tsx';
 import store from '../../store';
 
@@ -18,7 +18,7 @@ class App extends React.Component {
           <Router>
             <Main path="/" />
             <About path="/about" />
-            <Playground path="/playground" />
+            <Laboratory path="/laboratory" />
           </Router>
         </ReduxProvider>
       </div>

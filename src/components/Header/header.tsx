@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Nav from "../Nav/nav.tsx";
+import Nav from '../Nav/nav.tsx';
 
 export interface HeaderProps {
   nav: string;
@@ -10,11 +10,11 @@ export interface HeaderProps {
 
 class Header extends React.Component<HeaderProps> {
   state = {
-    nav: ""
+    nav: '',
   };
 
   render() {
-    const navTabs: string[] = ["About", "Playground"];
+    const navTabs: string[] = ['About', 'Laboratory'];
     return (
       <header>
         <nav>
