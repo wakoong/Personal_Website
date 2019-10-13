@@ -5,7 +5,7 @@ import SimpleCard from '../Common/Material-UI/simpleCard.tsx';
 import SimpleTable from '../Common/Material-UI/simpleTable.tsx';
 import { SimplePieChart } from '../D3/PieChart';
 
-import './robinhood-account.css';
+import './robinhood.css';
 
 class RobinhoodAccount extends React.Component {
   // DRY: extract account.payload.results.results[0] into a variable

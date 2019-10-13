@@ -13,14 +13,14 @@ import store from '../../store';
 class App extends React.Component {
   render() {
     return (
-      <div className="app">
+      <div className='app'>
         <Header />
         <ReduxProvider store={store}>
           <Router>
-            <Main path="/" />
-            <About path="/about" />
-            <Laboratory path="/laboratory" />
-            <Robinhood path="/robinhood" />
+            <Main path='/' />
+            <About path='/about' />
+            <Laboratory path='/laboratory' />
+            <Robinhood path='/robinhood' />
           </Router>
         </ReduxProvider>
       </div>

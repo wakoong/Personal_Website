@@ -1,0 +1,120 @@
+/************************************** Overview ***********************************/
+.rb-main {
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  height: 100%;
+  width: 100%;
+  background: white;
+  padding: 0 5px;
+}
+
+.rb-header {
+  order: 3;
+}
+
+.rb-header > .header-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.rb-header > .header-tabs > a > .header-tab {
+  font-weight: 300;
+  margin-right: 1em;
+  cursor: pointer;
+  padding: 5px 0;
+  border-bottom: 2px solid transparent;
+  text-decoration: none !important;
+  color: black;
+}
+
+.rb-header > .header-tabs > a > .header-tab:hover {
+  border-color: #21ce99;
+}
+
+.rb-overview {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.rb-overview-table > .row {
+  font-weight: 500;
+}
+
+.rb-overview-table > .row-1 {
+  height: 30%;
+}
+
+.rb-overview-table > .row-2 {
+  height: 70%;
+}
+
+.rb-overview-table > .row > .row-title {
+  background-color: #f5f5f5;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 10px;
+}
+
+.rb-overview-table > .row > .row-body {
+  height: calc(100% - 35px);
+  display: grid;
+}
+
+.rb-overview-table > .row > .row-body > .item {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.rb-overview-table > .row > .row-body > .item > .item-name,
+.rb-overview-table > .row > .row-body > .item > .item-val {
+  font-weight: 100;
+  font-size: 0.8em;
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+  .rb-main {
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 1fr;
+    padding: 0 100px;
+  }
+
+  .rb-header {
+    order: -1;
+    grid-area: 1 / 1 / span 1 / span 2;
+  }
+
+  .rb-header > .header-tabs {
+    justify-content: left;
+  }
+
+  .rb-header > .header-tabs > a > .header-tab {
+    font-weight: 500;
+    margin-right: 3em;
+  }
+
+  .rb-overview {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .rb-overview-graph {
+    grid-area: 1 / 1 / span 1 / span 2;
+  }
+
+  .rb-overview-table {
+    padding: 0 10px 15px 10px;
+    grid-area: 1 / 2 / span 1 / span 1;
+  }
+
+  .rb-overview-table > .row {
+    border: 1px solid grey;
+    margin-bottom: 1px;
+  }
+}

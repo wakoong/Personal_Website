@@ -2224,6 +2224,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.5:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -6250,6 +6254,12 @@ react-redux@^6.0.1:
     loose-envify "^1.4.0"
     prop-types "^15.7.2"
     react-is "^16.8.2"
+
+react-table@^6.10.3:
+  version "6.10.3"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.10.3.tgz#d085487a5a1b18b76486b71cf1d388d87c8c7362"
+  dependencies:
+    classnames "^2.2.5"
 
 react-transition-group@^4.0.0:
   version "4.2.2"

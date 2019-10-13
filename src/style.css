@@ -141,7 +141,9 @@ body,
 }
 
 /************************************** My codes ***********************************/
-* {
+*,
+a:link,
+a:visited {
   text-decoration: none !important;
   list-style: none;
 }
@@ -197,6 +199,10 @@ header > nav > ul > li:first-child {
 header > nav > ul > li {
   font-size: 14px;
   font-weight: 400;
+}
+
+header > nav > ul > li > a {
+  color: black;
 }
 
 /* IPad & Desktop */
@@ -407,5 +413,39 @@ footer {
   }
 }
 
-@media only screen and (min-width: 1000px) {
+/************************************** Projects ***********************************/
+.project-background,
+.robinhood {
+  height: 100%;
+  width: 100%;
+}
+
+.robinhood {
+  background-color: #21ce99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.robinhood-login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.robinhood-login-wrapper > img {
+  height: 100px;
+  width: 100px;
+}
+
+.robinhood-login-wrapper > div {
+  width: 100px;
+  margin-top: 15px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
 }

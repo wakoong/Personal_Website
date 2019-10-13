@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RAccount from './robinhood-account.tsx';
+import RobinhoodMain from './robinhood-main';
 import ETFs from './robinhood-etfs.tsx';
 import Stocks from './robinhood-stocks.tsx';
-import VerticalPanel from '../Common/Material-UI/verticalPanel.tsx';
+import Button from '../Common/Material-UI/button.tsx';
+import twitter from '../../assets/images/twitter.png';
 
 import {
   loginTest,
@@ -49,8 +51,8 @@ class Robinhood extends React.Component {
           );
           quotes.push(response);
         }
-      
-      const loading = await this.props.onLoading();
+
+        const loading = await this.props.onLoading();
       } catch (error) {
         console.log(error);
       }
@@ -80,7 +82,7 @@ class Robinhood extends React.Component {
       Object.assign(i, quotes.find((q) => q.symbol == i.symbol))
     );
     const stockInfo = combine.map((c, index) =>
-      Object.assign(c, positions.find((p) => p.instrument == c.instrument)
+      Object.assign(c, positions.find((p) => p.instrument == c.instrument))
     );
 
     const components: React.Component[] = [
@@ -103,10 +105,15 @@ class Robinhood extends React.Component {
     ];
 
     return (
-      <div className="main-background">
-        <div className="main-block">
-          <VerticalPanel tabs={tabs} components={components} />
-        </div>
+      <div className='project-background robinhood'>
+        {authenticated ? (
+          <RobinhoodMain />
+        ) : (
+          <div className='robinhood-login-wrapper' onClick={login}>
+            <img src={twitter} alt='twitter bird' />
+            <div>Login</div>
+          </div>
+        )}
       </div>
     );
   }
@@ -120,7 +127,7 @@ const mapStateToProps = (state) => ({
   orders: state.robinhoodAccount.orders,
   positions: state.robinhoodAccount.positions,
   quotes: state.robinhoodAccount.quotes,
-  loading: state.robinhoodAccount.loading
+  loading: state.robinhoodAccount.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -130,7 +137,7 @@ const mapDispatchToProps = (dispatch) => ({
   onInstrument: (url) => dispatch(getInstrument(url)),
   onPositions: () => dispatch(getPositions()),
   onQuotes: (symbol) => dispatch(getQuotes(symbol)),
-  onLoading: () => dispatch(loadingData())
+  onLoading: () => dispatch(loadingData()),
 });
 
 export default connect(
