@@ -60,22 +60,29 @@ class Robinhood extends React.Component {
       loading,
     } = this.props;
 
-    return (
-      <div className='project-background robinhood'>
-        {authenticated ? (
-          <RobinhoodMain
-            account={account}
-            portfolio={portfolio}
-            overview={overview}
-          />
-        ) : (
+    let main;
+
+    if (authenticated && overview.length !== 0) {
+      main = (
+        <RobinhoodMain
+          account={account}
+          portfolio={portfolio}
+          overview={overview}
+        />
+      );
+    } else {
+      main = (
+        <React.Fragment>
           <div className='robinhood-login-wrapper' onClick={login}>
             <img src={twitter} alt='twitter bird' />
-            <div>Login</div>
+            <div>{loading ? 'Loading...' : 'Login'}</div>
           </div>
-        )}
-      </div>
-    );
+          {/* <div>How to login</div> */}
+        </React.Fragment>
+      );
+    }
+
+    return <div className='project-background robinhood'>{main}</div>;
   }
 }
 

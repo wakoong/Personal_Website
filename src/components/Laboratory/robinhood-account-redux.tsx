@@ -28,6 +28,7 @@ export const QUOTES_REQUEST = '@@robinhood-account/QUOTES_REQUEST';
 export const QUOTES_SUCCESS = '@@robinhood-account/QUOTES_SUCCESS';
 export const QUOTES_FAILURE = '@@robinhood-account/QUOTES_FAILURE';
 
+export const LOADING_REQUEST = '@@robinhood-account/LOADING_REQUEST';
 export const LOADING_SUCCESS = '@@robinhood-account/LOADING_SUCCESS';
 
 export const loginTest = (token) => (dispatch) => {
@@ -135,6 +136,8 @@ export const getPositions = () => ({
 });
 
 export const getOverviewData = () => async (dispatch) => {
+  await dispatch(loadingData());
+  
   const positions = await dispatch(getPositions()); // 10 positions
   const getInstrumentFetches = [];
   for (let i = 0; i < positions.payload.results.length; i++) {
@@ -154,15 +157,19 @@ export const getOverviewData = () => async (dispatch) => {
 
   const quotes = await Promise.all(getQuotesFetches);
 
-  const loading = await dispatch(loadingData());
+  await dispatch(loadingSuccess());
 };
 
 export const loadingData = () => ({
+  type: LOADING_REQUEST,
+});
+
+export const loadingSuccess = () => ({
   type: LOADING_SUCCESS,
 });
 
 const initialState = {
-  loading: true,
+  loading: false,
   account: [],
   portfolio: [],
   logged_in: false,
@@ -242,6 +249,11 @@ export default (state = initialState, action) => {
             order: action.meta.order,
           },
         ],
+      };
+    case LOADING_REQUEST:
+      return {
+        ...state,
+        loading: true,
       };
     case LOADING_SUCCESS:
       const reordered_inst = state.instruments.sort((a, b) =>
