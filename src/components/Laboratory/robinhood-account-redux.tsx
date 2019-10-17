@@ -88,20 +88,24 @@ export const getOrders = () => ({
   },
 });
 
-export const getInstrument = (url) => ({
+export const getInstrument = (url, index) => ({
   [RSAA]: {
     endpoint: 'http://localhost:3001/instrument',
     method: 'POST',
-    body: JSON.stringify({ url }),
+    body: JSON.stringify({ url, index }),
     headers: {
       'Content-Type': 'application/json',
       // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
-    types: [INSTRUMENT_REQUEST, INSTRUMENT_SUCCESS, INSTRUMENT_FAILURE],
+    types: [
+      INSTRUMENT_REQUEST,
+      { type: INSTRUMENT_SUCCESS, meta: { order: index } },
+      INSTRUMENT_FAILURE,
+    ],
   },
 });
 
-export const getQuotes = (symbol) => ({
+export const getQuotes = (symbol, index) => ({
   [RSAA]: {
     endpoint: 'http://localhost:3001/quotes',
     method: 'POST',
@@ -110,7 +114,11 @@ export const getQuotes = (symbol) => ({
       'Content-Type': 'application/json',
       // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
-    types: [QUOTES_REQUEST, QUOTES_SUCCESS, QUOTES_FAILURE],
+    types: [
+      QUOTES_REQUEST,
+      { type: QUOTES_SUCCESS, meta: { order: index } },
+      QUOTES_FAILURE,
+    ],
   },
 });
 
@@ -126,6 +134,29 @@ export const getPositions = () => ({
   },
 });
 
+export const getOverviewData = () => async (dispatch) => {
+  const positions = await dispatch(getPositions()); // 10 positions
+  const getInstrumentFetches = [];
+  for (let i = 0; i < positions.payload.results.length; i++) {
+    getInstrumentFetches.push(
+      dispatch(getInstrument(positions.payload.results[i].instrument, i))
+    );
+  }
+
+  const instruments = await Promise.all(getInstrumentFetches);
+
+  const getQuotesFetches = [];
+  for (let i = 0; i < instruments.length; i++) {
+    getQuotesFetches.push(
+      dispatch(getQuotes(instruments[i].payload.results.symbol, i))
+    );
+  }
+
+  const quotes = await Promise.all(getQuotesFetches);
+
+  const loading = await dispatch(loadingData());
+};
+
 export const loadingData = () => ({
   type: LOADING_SUCCESS,
 });
@@ -140,6 +171,7 @@ const initialState = {
   instruments: [],
   positions: '',
   quotes: [],
+  overview: [],
 };
 
 export default (state = initialState, action) => {
@@ -166,37 +198,66 @@ export default (state = initialState, action) => {
         orders: action.payload.results,
       };
     case INSTRUMENT_SUCCESS:
-      const i_parsed = action.payload.results;
+      const {
+        name,
+        symbol,
+        simple_name,
+        fundamentals,
+        id,
+      } = action.payload.results;
       return {
         ...state,
-        instruments: state.instruments.concat({
-          symbol: i_parsed.symbol,
-          name: i_parsed.name,
-          simple_name: i_parsed.simple_name,
-          fundamentals: i_parsed.fundamentals,
-          id: i_parsed.id,
-        }),
+        instruments: [
+          ...state.instruments,
+          {
+            name,
+            symbol,
+            simple_name,
+            fundamentals,
+            id,
+            order: action.meta.order,
+          },
+        ],
       };
     case POSITIONS_SUCCESS:
       return {
         ...state,
-        positions: action.payload.results,
+        positions: action.payload.results.map((r) => ({
+          created_at: r.created_at,
+          updated_at: r.updated_at,
+          average_buy_price: r.average_buy_price,
+          instrument: r.instrument,
+          quantity: r.quantity,
+        })),
       };
     case QUOTES_SUCCESS:
-      const q_parsed = action.payload.results;
+      const { last_trade_price, previous_close } = action.payload.results;
       return {
         ...state,
-        quotes: state.quotes.concat({
-          last_trade_price: q_parsed.last_trade_price,
-          previous_close: q_parsed.previous_close,
-          symbol: q_parsed.symbol,
-          instrument: q_parsed.instrument,
-        }),
+        quotes: [
+          ...state.quotes,
+          {
+            last_trade_price,
+            previous_close,
+            order: action.meta.order,
+          },
+        ],
       };
     case LOADING_SUCCESS:
+      const reordered_inst = state.instruments.sort((a, b) =>
+        a.order > b.order ? 1 : -1
+      );
+      const reordered_quote = state.quotes.sort((a, b) =>
+        a.order > b.order ? 1 : -1
+      );
       return {
         ...state,
         loading: false,
+        overview: state.positions.map((p, i) => ({
+          ...p,
+          ...reordered_inst[i],
+          ...reordered_quote[i],
+        })),
       };
     default:
       return state;
