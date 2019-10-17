@@ -6,11 +6,18 @@ import './robinhood.css';
 
 class RobinhoodMain extends React.Component {
   render() {
+    const { account, portfolio, overview } = this.props;
+
     return (
       <div className='rb-main'>
         <RobinhoodHeader />
         <Router>
-          <RobinhoodOverview path='/' />
+          <RobinhoodOverview
+            account={account}
+            overview={overview}
+            portfolio={portfolio}
+            path='/'
+          />
         </Router>
       </div>
     );

@@ -39,7 +39,6 @@ app.get('/login', function(req, res) {
       } else {
         console.log('Successfully logged in.');
         var results = body.results[0];
-        console.log(results);
         res.send({ results: results });
       }
     });

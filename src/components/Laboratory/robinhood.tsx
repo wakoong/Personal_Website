@@ -15,6 +15,7 @@ import {
   getInstrument,
   getPositions,
   getQuotes,
+  getOverviewData,
   loadingData,
 } from './robinhood-account-redux.tsx';
 
@@ -34,25 +35,7 @@ class Robinhood extends React.Component {
       prevProps.positions === ''
     ) {
       try {
-        const positions = await this.props.onPositions();
-
-        let instruments = [];
-        for (let i = 0; i < positions.payload.results.length; i++) {
-          const response = await this.props.onInstrument(
-            positions.payload.results[i].instrument
-          );
-          instruments.push(response);
-        }
-
-        let quotes = [];
-        for (let i = 0; i < instruments.length; i++) {
-          const response = await this.props.onQuotes(
-            instruments[i].payload.results.symbol
-          );
-          quotes.push(response);
-        }
-
-        const loading = await this.props.onLoading();
+        this.props.onOverviewData();
       } catch (error) {
         console.log(error);
       }
@@ -60,10 +43,9 @@ class Robinhood extends React.Component {
   }
 
   render() {
-    const tabs: string[] = ['Overview', 'ETFs', 'Regular Stocks'];
-    const accountInfo = [];
     const {
       account,
+      overview,
       portfolio,
       positions,
       authenticated,
@@ -78,36 +60,14 @@ class Robinhood extends React.Component {
       loading,
     } = this.props;
 
-    const combine = instruments.map((i) =>
-      Object.assign(i, quotes.find((q) => q.symbol == i.symbol))
-    );
-    const stockInfo = combine.map((c, index) =>
-      Object.assign(c, positions.find((p) => p.instrument == c.instrument))
-    );
-
-    const components: React.Component[] = [
-      <RAccount
-        authenticated={authenticated}
-        account={account}
-        portfolio={portfolio}
-        stockInfo={stockInfo}
-        onLogin={login}
-        onLogout={logout}
-        loading={loading}
-      />,
-      <ETFs />,
-      <Stocks
-        authenticated={authenticated}
-        portfolio={portfolio}
-        stockInfo={stockInfo}
-        orders={orders}
-      />,
-    ];
-
     return (
       <div className='project-background robinhood'>
         {authenticated ? (
-          <RobinhoodMain />
+          <RobinhoodMain
+            account={account}
+            portfolio={portfolio}
+            overview={overview}
+          />
         ) : (
           <div className='robinhood-login-wrapper' onClick={login}>
             <img src={twitter} alt='twitter bird' />
@@ -127,6 +87,7 @@ const mapStateToProps = (state) => ({
   orders: state.robinhoodAccount.orders,
   positions: state.robinhoodAccount.positions,
   quotes: state.robinhoodAccount.quotes,
+  overview: state.robinhoodAccount.overview,
   loading: state.robinhoodAccount.loading,
 });
 
@@ -134,10 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
   login: (token) => dispatch(loginTest(token)),
   logout: () => dispatch(logout()),
   onOrders: () => dispatch(getOrders()),
-  onInstrument: (url) => dispatch(getInstrument(url)),
-  onPositions: () => dispatch(getPositions()),
-  onQuotes: (symbol) => dispatch(getQuotes(symbol)),
-  onLoading: () => dispatch(loadingData()),
+  onOverviewData: () => dispatch(getOverviewData()),
 });
 
 export default connect(
