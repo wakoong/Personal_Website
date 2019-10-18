@@ -2,6 +2,8 @@ import React from 'react';
 import { Router, Link } from '@reach/router';
 
 import RobinhoodOverview from './robinhood-overview';
+import RobinhoodETFs from './robinhood-etfs';
+import RobinhoodStock from './robinhood-stocks';
 import './robinhood.css';
 
 class RobinhoodMain extends React.Component {
@@ -18,6 +20,8 @@ class RobinhoodMain extends React.Component {
             portfolio={portfolio}
             path='/'
           />
+          <RobinhoodETFs path='etfs' />
+          <RobinhoodStock path='stocks' />
         </Router>
       </div>
     );

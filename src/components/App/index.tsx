@@ -20,7 +20,7 @@ class App extends React.Component {
             <Main path='/' />
             <About path='/about' />
             <Laboratory path='/laboratory' />
-            <Robinhood path='/robinhood' />
+            <Robinhood path='/robinhood/*' />
           </Router>
         </ReduxProvider>
       </div>
