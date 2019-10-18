@@ -89,7 +89,15 @@ app.get('/orders', function(req, res) {
       if (err) {
         console.error(err);
       } else {
-        var results = body.results.filter((order) => order.state === 'filled');
+        var data = body.results.filter((order) => order.state === 'filled');
+        var results = {};
+        var unique = [...new Set(data.map((item) => item.instrument))];
+        for (var i = 0; i < unique.length; i++) {
+          results[unique[i]] = data.filter(
+            (item) => item.instrument === unique[i]
+          );
+        }
+
         res.send({ results: results });
       }
     });
