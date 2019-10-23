@@ -111,7 +111,29 @@ class RobinhoodHistory extends React.Component {
 
   render() {
     const { orders } = this.props;
-    return <div className='rb-history'>{this.renderTableData()}</div>;
+    return (
+      <div className='rb-history'>
+        <div className='disclaimer'>
+          <h1>Disclaimer</h1>
+          <p>
+            There is currently an issue with the orders api and it can only
+            retrieve tranasctions made after around August 4, 2019. I reported
+            an{' '}
+            <a
+              href='https://github.com/aurbano/robinhood-node/issues/103'
+              target='_blank'>
+              issue
+            </a>{' '}
+            on Github and will continue looking into solving the problem. In the
+            meantime, you can compare the transaction history from your
+            robinhood account with the data on this page. Please disregard the
+            results on a stock that has transaction records before
+            August 4, 2019. Thank you for your patience.
+          </p>
+        </div>
+        <div className='table-wrapper'>{this.renderTableData()}</div>
+      </div>
+    );
   }
 }
 

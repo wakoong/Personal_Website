@@ -120,32 +120,52 @@
 }
 
 /************************************** History ***********************************/
-.rb-history {
+.rb-history > .table-wrapper {
   padding: 2em 0;
 }
 
-.rb-history > .table {
+.rb-history > .disclaimer {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+.rb-history > .disclaimer > h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 2em;
+  color: rgb(244, 85, 49);
+}
+
+.rb-history > .disclaimer > p {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+
+.rb-history > .table-wrapper > .table {
   margin-top: 2em;
   font-size: 13px;
 }
 
-.rb-history > .table > .header,
-.rb-history > .table > .row {
+.rb-history > .table-wrapper > .table > .header,
+.rb-history > .table-wrapper > .table > .row {
   display: grid;
   grid-template-columns: 1fr 0.7fr 0.7fr 0.7fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr 1.2fr;
 }
 
-.rb-history > .table > .row:nth-child(odd) {
+.rb-history > .table-wrapper > .table > .row:nth-child(odd) {
   background: #f5f5f5;
 }
 
-.rb-history > .table > .header {
+.rb-history > .table-wrapper > .table > .header {
   background: #f6f8fa;
   border-bottom: 1px solid black;
 }
 
-.rb-history > .table > .header > .col,
-.rb-history > .table > .row > .col {
+.rb-history > .table-wrapper > .table > .header > .col,
+.rb-history > .table-wrapper > .table > .row > .col {
   min-width: 100px;
   padding: 10px 0;
   text-align: center;
