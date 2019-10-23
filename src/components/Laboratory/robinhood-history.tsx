@@ -1,51 +1,9 @@
 import React from 'react';
 
+import * as helper from '../Common/helper';
 import './robinhood.css';
 
 class RobinhoodHistory extends React.Component {
-  // create a global helper method
-  // toFixed returns a string instead of an integer
-  roundToTenth = (num) => {
-    return Number.parseFloat(num).toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  };
-
-  displayCurrency = (num, currency = '$') => {
-    if (num >= 0) {
-      return `${currency}${this.roundToTenth(num)}`;
-    } else {
-      return `-${currency}${this.roundToTenth(Math.abs(num))}`;
-    }
-  };
-
-  getMonth = (utc) => {
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    return months[new Date(utc).getMonth()];
-  };
-
-  getDate = (utc) => {
-    return new Date(utc).getDate();
-  };
-
-  getYear = (utc) => {
-    return new Date(utc).getFullYear();
-  };
-
   renderTableData = () => {
     const { orders } = this.props;
     const headers = [
@@ -68,6 +26,8 @@ class RobinhoodHistory extends React.Component {
       let totalCashVal = 0;
       let netOutcome = 0;
       let totalNetOutcome = 0;
+
+      const { getMonth, getDate, getYear, displayCurrency } = helper;
 
       return (
         <div className='table' key={key}>
@@ -96,9 +56,9 @@ class RobinhoodHistory extends React.Component {
             return (
               <div className='row' key={o.updated_at}>
                 <div className='col col-date'>
-                  {`${this.getMonth(o.updated_at)} ${this.getDate(
+                  {`${getMonth(o.updated_at)} ${getDate(
                     o.updated_at
-                  )}, ${this.getYear(o.updated_at)}`}
+                  )}, ${getYear(o.updated_at)}`}
                 </div>
                 <div className='col col-buys'>
                   {o.side === 'buy' ? Math.round(o.quantity) : 0}
@@ -109,26 +69,22 @@ class RobinhoodHistory extends React.Component {
                 <div className='col col-tsh'>{totalShare}</div>
                 <div className='col col-bp'>
                   {o.side === 'buy'
-                    ? `${this.displayCurrency(o.average_price)}`
+                    ? `${displayCurrency(o.average_price)}`
                     : '-'}
                 </div>
-                <div className='col col-avgbp'>{`${this.displayCurrency(
+                <div className='col col-avgbp'>{`${displayCurrency(
                   avgBuyPrice
                 )}`}</div>
                 <div className='col col-sp'>
                   {o.side === 'sell'
-                    ? `${this.displayCurrency(o.average_price)}`
+                    ? `${displayCurrency(o.average_price)}`
                     : '-'}
                 </div>
                 <div className='col col-co'>
-                  {o.side === 'sell'
-                    ? `${this.displayCurrency(totalCashVal)}`
-                    : '-'}
+                  {o.side === 'sell' ? `${displayCurrency(totalCashVal)}` : '-'}
                 </div>
                 <div className='col col-oc'>
-                  {o.side === 'sell'
-                    ? `${this.displayCurrency(netOutcome)}`
-                    : '-'}
+                  {o.side === 'sell' ? `${displayCurrency(netOutcome)}` : '-'}
                 </div>
                 <div
                   className='col col-toc'
@@ -142,7 +98,7 @@ class RobinhoodHistory extends React.Component {
                     fontWeight: 'bold',
                   }}>
                   {o.side === 'sell'
-                    ? `${this.displayCurrency(totalNetOutcome)}`
+                    ? `${displayCurrency(totalNetOutcome)}`
                     : '-'}
                 </div>
               </div>
