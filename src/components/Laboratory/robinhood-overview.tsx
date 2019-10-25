@@ -1,29 +1,32 @@
 import React from 'react';
 
+import { SimplePieChart } from '../D3/PieChart.js';
 import './robinhood.css';
 
 class RobinhoodOverview extends React.Component {
   render() {
-    const { account, portfolio, overview } = this.props;
+    const { portfolio, etfs, stocks, cash, getTotal, table } = this.props;
+
+    const total = [getTotal(etfs), getTotal(stocks), cash];
+
     return (
       <div className='rb-overview'>
-        <div className='rb-overview-graph'>graph</div>
+        <div className='rb-overview-graph'>
+          <SimplePieChart data={total} />
+          <div>{cash / portfolio.last_core_portfolio_equity}</div>
+        </div>
         <RobinhoodOverviewTable
+          table={table}
           portfolio={portfolio}
-          overview={overview}
+          etfs={etfs}
+          stocks={stocks}
         />
       </div>
     );
   }
 }
 
-const RobinhoodOverviewTable = ({ portfolio, overview }) => {
-  const [etfs, stocks] = overview.reduce(
-    ([e, s], inst) =>
-      inst.simple_name.includes('ETF') ? [[...e, inst], s] : [e, [...s, inst]],
-    [[], []]
-  );
-
+const RobinhoodOverviewTable = ({ portfolio, etfs, stocks }) => {
   return (
     <div className='rb-overview-table'>
       <div className='row row-1'>
@@ -44,7 +47,7 @@ const RobinhoodOverviewTable = ({ portfolio, overview }) => {
         </div>
       </div>
       <div className='row row-2'>
-        <div className='row-title'>ETFs</div>
+        <div className='row-title'>Stocks</div>
         <div className='row-body'>
           {stocks.map((s) => (
             <div className='item' key={s.symbol}>

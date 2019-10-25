@@ -6,27 +6,36 @@ import { SimplePieChart } from '../D3/PieChart';
 
 class Stocks extends React.Component {
   render() {
-    const { authenticated, orders, stockInfo } = this.props;
-    console.log(stockInfo);
-    const data = [1, 2, 3];
+    const { stocks, getTotal } = this.props;
+    const stocksTotal = getTotal(stocks);
     return (
-      <div>
-        {authenticated ? (
-          <div className="tab-body">
-            <h1 className="tab-body-title">Stocks Overview</h1>
-            {/* <div className="flex-box">
-              <div className="pie-chart"> */}
-            {/* <SimplePieChart data={data} /> */}
-            {/* </div>
-            </div> */}
-            <div />
-          </div>
-        ) : (
-          <div>no</div>
-        )}
+      <div className='rb-overview'>
+        <RobinhoodOverviewTable stocks={stocks} total={stocksTotal} />
       </div>
     );
   }
 }
+
+const RobinhoodOverviewTable = ({ stocks, total }) => {
+  return (
+    <div className='rb-overview-table'>
+      <div className='row row-2'>
+        <div className='row-title'>Stocks</div>
+        <div className='row-body'>
+          {stocks.map((s) => (
+            <div className='item' key={s.symbol}>
+              <div className='item-name'>{s.symbol}</div>
+              <div className='item-val'>
+                {(((s.last_trade_price * s.quantity) / total) * 100).toFixed(
+                  2
+                ) + '%'}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Stocks;

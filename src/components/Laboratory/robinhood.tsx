@@ -68,6 +68,7 @@ class Robinhood extends React.Component {
           account={account}
           portfolio={portfolio}
           overview={overview}
+          orders={orders}
         />
       );
     } else {
