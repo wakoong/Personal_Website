@@ -1,19 +1,42 @@
 import React from 'react';
+import windowSize from 'react-window-size';
 
-import { SimplePieChart } from '../D3/PieChart.js';
+import PieChart from '../D3/PieChart.js';
+import * as helper from '../Common/helper';
 import './robinhood.css';
 
 class RobinhoodOverview extends React.Component {
   render() {
-    const { portfolio, etfs, stocks, cash, getTotal, table } = this.props;
+    const {
+      portfolio,
+      etfs,
+      stocks,
+      cash,
+      getTotal,
+      table,
+      windowWidth,
+      windowHeight,
+    } = this.props;
 
-    const total = [getTotal(etfs), getTotal(stocks), cash];
+    const data = [
+      { value: getTotal(etfs), name: 'ETFs' },
+      { value: getTotal(stocks), name: 'Stocks' },
+      { value: Number(cash), name: 'Cash' },
+    ];
 
     return (
       <div className='rb-overview'>
         <div className='rb-overview-graph'>
-          <SimplePieChart data={total} />
-          <div>{cash / portfolio.last_core_portfolio_equity}</div>
+          <PieChart
+            data={data}
+            width={'100%'}
+            height={'100%'}
+            innerRadius={30}
+            outerRadius={helper.pieWidth(windowWidth, windowHeight)}
+            translateX={helper.translateX(windowWidth)}
+            translateY={helper.translateY(windowWidth, windowHeight)}
+          />
+          {/* <div>{cash / portfolio.last_core_portfolio_equity}</div> */}
         </div>
         <RobinhoodOverviewTable
           table={table}
@@ -67,4 +90,4 @@ const RobinhoodOverviewTable = ({ portfolio, etfs, stocks }) => {
   );
 };
 
-export default RobinhoodOverview;
+export default windowSize(RobinhoodOverview);

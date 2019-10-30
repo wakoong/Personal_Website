@@ -1,39 +1,51 @@
 import * as React from 'react';
 import * as d3 from 'd3';
 
-export const SimplePieChart = (props) => {
-  const height = 300;
-  const width = 300;
+const Arc = ({ data, index, createArc, colors, format }) => {
+  return (
+    <g key={index} className='arc'>
+      <path className='arc' d={createArc(data)} fill={colors(index)} />
+      <text
+        transform={`translate(${createArc.centroid(data)})`}
+        textAnchor='middle'
+        alignmentBaseline='middle'
+        fill='white'
+        fontSize='10'>
+        {data.data.name}
+      </text>
+    </g>
+  );
+};
 
-  d3.select('.piechart')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height);
-
-  let pie = d3.pie()(props.data);
+const Pie = (props) => {
+  const createPie = d3
+    .pie()
+    .value((d) => d.value)
+    .sort(null);
+  const createArc = d3
+    .arc()
+    .innerRadius(props.innerRadius)
+    .outerRadius(props.outerRadius);
+  const colors = d3.scaleOrdinal(d3.schemeCategory10);
+  const format = d3.format('.2f');
+  const data = createPie(props.data);
 
   return (
-    <svg>
-      <g transform={`translate(${width / 2},${height / 2})`}>
-        <Slice pie={pie} />
+    <svg width={props.width} height={props.height}>
+      <g transform={`translate(${props.translateX} ${props.translateY})`}>
+        {data.map((d, i) => (
+          <Arc
+            key={i}
+            data={d}
+            index={i}
+            createArc={createArc}
+            colors={colors}
+            format={format}
+          />
+        ))}
       </g>
     </svg>
   );
 };
 
-const Slice = (props) => {
-  let { pie } = props;
-
-  let arc = d3
-    .arc()
-    .innerRadius(0)
-    .outerRadius(120);
-
-  let interpolate = d3.interpolateRgb('#efb21f', '#083831', '#c7c7c7');
-
-  return pie.map((slice, index) => {
-    let sliceColor = interpolate(index / (pie.length - 1));
-
-    return <path key={index} d={arc(slice)} fill={sliceColor} />;
-  });
-};
+export default Pie;

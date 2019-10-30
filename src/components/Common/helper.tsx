@@ -40,3 +40,43 @@ export const getDate = (utc) => {
 export const getYear = (utc) => {
   return new Date(utc).getFullYear();
 };
+
+/**************************** D3 Translate for Robinhood *********************************/
+const smallRadius = 125;
+const mediumRadius = 150;
+const largeRadius = 230;
+
+const mobileGraphContainerHeight = 320;
+const desktopGraphContainerHeight = 600;
+
+export const pieWidth = (windowWidth, windowHeight) => {
+  let width;
+  if (windowWidth < 768) {
+    width = smallRadius;
+  } else if (windowWidth < 1024) {
+    width = mediumRadius;
+  } else {
+    width = largeRadius;
+  }
+  return width;
+};
+
+export const translateX = (windowWidth) => {
+  let x;
+  if (windowWidth < 768) {
+    x = windowWidth / 2;
+  } else {
+    x = (windowWidth - 200) / 3;
+  }
+  return x;
+};
+
+export const translateY = (windowWidth, windowHeight) => {
+  let y;
+  if (windowWidth < 768) {
+    y = mobileGraphContainerHeight / 2;
+  } else {
+    y = desktopGraphContainerHeight / 2;
+  }
+  return y;
+};
