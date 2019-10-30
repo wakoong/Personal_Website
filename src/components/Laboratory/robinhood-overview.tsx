@@ -13,7 +13,7 @@ class RobinhoodOverview extends React.Component {
       stocks,
       cash,
       getTotal,
-      table,
+      getTable,
       windowWidth,
       windowHeight,
     } = this.props;
@@ -25,8 +25,8 @@ class RobinhoodOverview extends React.Component {
     ];
 
     return (
-      <div className='rb-overview'>
-        <div className='rb-overview-graph'>
+      <div className='rb-page'>
+        <div className='rb-graph'>
           <PieChart
             data={data}
             width={'100%'}
@@ -36,58 +36,14 @@ class RobinhoodOverview extends React.Component {
             translateX={helper.translateX(windowWidth)}
             translateY={helper.translateY(windowWidth, windowHeight)}
           />
-          {/* <div>{cash / portfolio.last_core_portfolio_equity}</div> */}
         </div>
-        <RobinhoodOverviewTable
-          table={table}
-          portfolio={portfolio}
-          etfs={etfs}
-          stocks={stocks}
-        />
+        <div className='rb-table'>
+          {getTable('ETFs', etfs, portfolio.last_core_portfolio_equity)}
+          {getTable('Stocks', stocks, portfolio.last_core_portfolio_equity)}
+        </div>
       </div>
     );
   }
 }
-
-const RobinhoodOverviewTable = ({ portfolio, etfs, stocks }) => {
-  return (
-    <div className='rb-overview-table'>
-      <div className='row row-1'>
-        <div className='row-title'>ETFs</div>
-        <div className='row-body'>
-          {etfs.map((e) => (
-            <div className='item' key={e.symbol}>
-              <div className='item-name'>{e.symbol}</div>
-              <div className='item-val'>
-                {(
-                  ((e.last_trade_price * e.quantity) /
-                    portfolio.last_core_portfolio_equity) *
-                  100
-                ).toFixed(2) + '%'}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className='row row-2'>
-        <div className='row-title'>Stocks</div>
-        <div className='row-body'>
-          {stocks.map((s) => (
-            <div className='item' key={s.symbol}>
-              <div className='item-name'>{s.simple_name}</div>
-              <div className='item-val'>
-                {(
-                  ((s.last_trade_price * s.quantity) /
-                    portfolio.last_core_portfolio_equity) *
-                  100
-                ).toFixed(2) + '%'}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 export default windowSize(RobinhoodOverview);

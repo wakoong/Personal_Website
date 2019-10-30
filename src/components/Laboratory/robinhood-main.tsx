@@ -24,6 +24,35 @@ const RobinhoodHeader = () => {
 };
 
 class RobinhoodMain extends React.Component {
+  getTotal = (data) =>
+    data
+      .map((d) => d.last_trade_price * d.quantity)
+      .reduce((acc, curr) => {
+        return acc + curr;
+      }, 0);
+
+  getTable = (title, data, total) => {
+    return (
+      <div className='row'>
+        <div className='row-title'>{title}</div>
+        <div className='row-body'>
+          {data.map((d) => (
+            <div className='item' key={d.symbol}>
+              <div className='item-name'>
+                <div>{d.symbol}</div>
+                <div>{d.simple_name}</div>
+              </div>
+              <div className='item-val'>
+                {(((d.last_trade_price * d.quantity) / total) * 100).toFixed(
+                  2
+                ) + '%'}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
   render() {
     const { account, portfolio, overview, orders } = this.props;
     const [etfs, stocks] = overview.reduce(
@@ -34,13 +63,6 @@ class RobinhoodMain extends React.Component {
       [[], []]
     );
 
-    const getTotal = (data) =>
-      data
-        .map((d) => d.last_trade_price * d.quantity)
-        .reduce((acc, curr) => {
-          return acc + curr;
-        }, 0);
-
     return (
       <div className='rb-main'>
         <RobinhoodHeader />
@@ -50,11 +72,22 @@ class RobinhoodMain extends React.Component {
             etfs={etfs}
             stocks={stocks}
             cash={account.cash}
-            getTotal={getTotal}
+            getTotal={this.getTotal}
+            getTable={this.getTable}
             path='overview'
           />
-          <RobinhoodETFs etfs={etfs} getTotal={getTotal} path='etfs' />
-          <RobinhoodStock stocks={stocks} getTotal={getTotal} path='stocks' />
+          <RobinhoodETFs
+            etfs={etfs}
+            getTotal={this.getTotal}
+            getTable={this.getTable}
+            path='etfs'
+          />
+          <RobinhoodStock
+            stocks={stocks}
+            getTotal={this.getTotal}
+            getTable={this.getTable}
+            path='stocks'
+          />
           <RobinhoodHistory orders={orders} path='history' />
         </Router>
       </div>

@@ -33,21 +33,21 @@
   border-color: #21ce99;
 }
 
-.rb-overview {
+.rb-page {
   height: 100%;
   display: grid;
   grid-template-rows: minmax(320px, 1fr) 320px;
 }
 
-.rb-overview-table {
+.rb-table {
   overflow: scroll;
 }
 
-.rb-overview-table > .row {
+.rb-table > .row {
   font-weight: 500;
 }
 
-.rb-overview-table > .row > .row-title {
+.rb-table > .row > .row-title {
   background-color: #21ce99;
   height: 35px;
   line-height: 35px;
@@ -56,31 +56,35 @@
   font-weight: bold;
 }
 
-.rb-overview-table > .row > .row-body {
+.rb-table > .row > .row-body {
   height: calc(100% - 35px);
   display: grid;
 }
 
-.rb-overview-table > .row > .row-body > .item {
+.rb-table > .row > .row-body > .item {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   align-items: center;
   padding-left: 10px;
   height: 50px;
   font-size: 1.5em;
 }
 
-.rb-overview-table > .row > .row-body > .item:nth-child(odd) {
+.rb-table > .row > .row-body > .item:nth-child(odd) {
   background: #002bff0d;
 }
 
-.rb-overview-table > .row > .row-body > .item > .item-name,
-.rb-overview-table > .row > .row-body > .item > .item-val {
+.rb-table > .row > .row-body > .item > .item-name,
+.rb-table > .row > .row-body > .item > .item-val {
   font-weight: 100;
   font-size: 0.8em;
 }
 
-.rb-overview-table > .row > .row-body > .item > .item-val {
+.rb-table > .row > .row-body > .item > .item-name > div:nth-child(2) {
+  font-size: 0.5em;
+}
+
+.rb-table > .row > .row-body > .item > .item-val {
   text-align: center;
 }
 
@@ -106,23 +110,27 @@
     margin-right: 3em;
   }
 
-  .rb-overview {
+  .rb-page {
     height: calc(100px - 50px);
     display: grid;
     grid-template-rows: minmax(600px, 1fr);
     grid-template-columns: 2fr minmax(300px, 1fr);
   }
 
-  .rb-overview-graph {
+  .rb-graph {
     grid-area: 1 / 1 / span 1 / span 1;
   }
 
-  .rb-overview-table {
+  .rb-table {
     padding: 0 10px 0 10px;
     grid-area: 1 / 2 / span 1 / span 1;
   }
 
-  .rb-overview-table > .row {
+  .rb-table > .row > .row-body > .item {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .rb-table > .row {
     border: 1px solid grey;
     margin-bottom: 1px;
   }
