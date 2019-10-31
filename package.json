@@ -72,6 +72,7 @@
     "react-markdown": "^4.1.0",
     "react-redux": "^6.0.1",
     "react-window-size": "^1.2.2",
+    "recharts": "^1.8.5",
     "reducers": "^3.0.0-alpha",
     "redux": "^4.0.1",
     "redux-api-middleware": "^3.0.1",
