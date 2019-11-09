@@ -31,22 +31,20 @@ export const QUOTES_FAILURE = '@@robinhood-account/QUOTES_FAILURE';
 export const LOADING_REQUEST = '@@robinhood-account/LOADING_REQUEST';
 export const LOADING_SUCCESS = '@@robinhood-account/LOADING_SUCCESS';
 
-export const loginTest = (token) => (dispatch) => {
-  return dispatch(login(token)).then(() => {
+export const loginTest = () => (dispatch) => {
+  return dispatch(login()).then(() => {
     dispatch(getPortfolio());
     dispatch(getOrders());
     return;
   });
 };
 
-export const login = (token) => ({
+export const login = () => ({
   [RSAA]: {
     endpoint: 'http://localhost:3001/login',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-      // 'Access-Control-Allow-Origin': 'http://localhost:3001/',
     },
     types: [LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE],
   },
@@ -58,8 +56,6 @@ export const logout = () => ({
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${token}`,
-      // 'Access-Control-Allow-Origin': 'http://localhost:3001/',
     },
     types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE],
   },
@@ -71,7 +67,6 @@ export const getPortfolio = () => ({
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
     types: [PORTFOLIO_REQUEST, PORTFOLIO_SUCCESS, PORTFOLIO_FAILURE],
   },
@@ -96,7 +91,6 @@ export const getInstrument = (url, index) => ({
     body: JSON.stringify({ url, index }),
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
     types: [
       INSTRUMENT_REQUEST,
@@ -113,7 +107,6 @@ export const getQuotes = (symbol, index) => ({
     body: JSON.stringify({ symbol }),
     headers: {
       'Content-Type': 'application/json',
-      // Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
     },
     types: [
       QUOTES_REQUEST,
@@ -137,7 +130,7 @@ export const getPositions = () => ({
 
 export const getOverviewData = () => async (dispatch) => {
   await dispatch(loadingData());
-  
+
   const positions = await dispatch(getPositions()); // 10 positions
   const getInstrumentFetches = [];
   for (let i = 0; i < positions.payload.results.length; i++) {

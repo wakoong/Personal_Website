@@ -21,7 +21,7 @@ import {
 
 class Robinhood extends React.Component {
   componentDidMount() {
-    console.log('didMount');
+    this.props.login();
   }
 
   componentWillMount() {
@@ -74,7 +74,7 @@ class Robinhood extends React.Component {
     } else {
       main = (
         <React.Fragment>
-          <div className='robinhood-login-wrapper' onClick={login}>
+          <div className='robinhood-login-wrapper'>
             <img src={twitter} alt='twitter bird' />
             <div>{loading ? 'Loading...' : 'Login'}</div>
           </div>
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (token) => dispatch(loginTest(token)),
+  login: () => dispatch(loginTest()),
   logout: () => dispatch(logout()),
   onOrders: () => dispatch(getOrders()),
   onOverviewData: () => dispatch(getOverviewData()),
