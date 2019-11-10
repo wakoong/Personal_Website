@@ -6,7 +6,11 @@ var request = require('request');
 var rp = require('request-promise');
 var bodyParser = require('body-parser');
 
-var allowedOrigins = ['http://localhost:1234', 'http://localhost:3001'];
+var allowedOrigins = [
+  'http://localhost:1234',
+  'http://localhost:3001',
+  'https://lucid-sammet-7f2164.netlify.com/',
+];
 app.use(
   cors({
     origin: function(origin, callback) {
