@@ -19,10 +19,12 @@ class Header extends React.Component<HeaderProps> {
       <header>
         <nav>
           <ul>
-            <Nav nav="" tab="WK" />
-            {navTabs.map((nav) => {
-              return <Nav key={nav} nav={nav} tab={nav} />;
-            })}
+            <Nav nav='' tab='WOOSIK.K' />
+            <div className='menu'>
+              {navTabs.map((nav) => {
+                return <Nav key={nav} nav={nav} tab={nav} />;
+              })}
+            </div>
           </ul>
         </nav>
       </header>
