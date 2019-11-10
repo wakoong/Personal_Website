@@ -75,6 +75,7 @@ class RobinhoodMain extends React.Component {
             getTotal={this.getTotal}
             getTable={this.getTable}
             path='overview'
+            default
           />
           <RobinhoodETFs
             etfs={etfs}
