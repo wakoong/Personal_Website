@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 const Arc = ({ data, index, createArc, colors, format }) => {
   return (
     <g key={index} className='arc'>
-      <path className='arc' d={createArc(data)} fill={colors(index)} />
+      <path className='arc' d={createArc(data)} fill={colors[index]} />
       <text
         transform={`translate(${createArc.centroid(data)})`}
         textAnchor='middle'
@@ -26,7 +26,7 @@ const Pie = (props) => {
     .arc()
     .innerRadius(props.innerRadius)
     .outerRadius(props.outerRadius);
-  const colors = d3.scaleOrdinal(d3.schemeCategory10);
+  const colors = ['#84c5b2', '#41b6c4', '#2c7fb8', '#253494'];
   const format = d3.format('.2f');
   const data = createPie(props.data);
 

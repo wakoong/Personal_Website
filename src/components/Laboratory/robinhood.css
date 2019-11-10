@@ -48,7 +48,7 @@
 }
 
 .rb-table > .row > .row-title {
-  background-color: #21ce99;
+  background-color: #989898;
   height: 35px;
   line-height: 35px;
   padding-left: 10px;
@@ -78,6 +78,7 @@
 .rb-table > .row > .row-body > .item > .item-val {
   font-weight: 100;
   font-size: 0.8em;
+  font-family: 'Work Sans';
 }
 
 .rb-table > .row > .row-body > .item > .item-name > div:nth-child(2) {
