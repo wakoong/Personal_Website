@@ -7,10 +7,10 @@
     "test": "jest",
     "format": "prettier \"src/**/*.{js,jsx, tsx}\" --write",
     "lint": "tslint --project",
-    "dev": "parcel src/index.html",
-    "build": "parcel build --public-url ./dist/ src/index.html",
+    "dev": "parcel index.html",
+    "build": "parcel build --public-url ./dist/ index.html",
     "start": "npm run build && babel-node server.js",
-    "deploy": "yarn run build && aws s3 cp dist/ s3://woosik-koong.com --recursive"
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/wakoong/personal_website/issues"
   },
-  "homepage": "https://github.com/wakoong/personal_website#readme",
+  "homepage": "https://wakoong.github.io/playground/",
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
