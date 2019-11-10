@@ -8,9 +8,10 @@
     "format": "prettier \"src/**/*.{js,jsx, tsx}\" --write",
     "lint": "tslint --project",
     "dev": "parcel index.html",
-    "build": "parcel build --public-url ./dist/ index.html",
+    "build": "parcel build index.html",
     "start": "npm run build && babel-node server.js",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,7 @@
   "author": "Woosik Koong <woosik.koong@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wakoong/personal_website/issues"
+    "url": "https://lucid-sammet-7f2164.netlify.com/"
   },
   "homepage": "https://wakoong.github.io/playground/",
   "devDependencies": {
@@ -59,6 +60,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "file-loader": "^3.0.1",
+    "gh-pages": "^2.1.1",
     "jest": "^24.9.0",
     "marked": "^0.7.0",
     "mixin-deep": "^2.0.1",
