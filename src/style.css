@@ -148,6 +148,10 @@ a:visited {
   list-style: none;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /* App */
 /* Mobile */
 .app {
@@ -293,40 +297,33 @@ footer {
 /* Mobile */
 .about {
   height: 100%;
-  display: grid;
-  grid-template-rows: 100px 1fr;
-}
-
-/* IPad & Desktop */
-@media only screen and (min-width: 480px) {
-  .about {
-    grid-template-rows: 180px 1fr;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .about {
-    grid-template-rows: 250px 1fr;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .about {
-    grid-template-rows: 300px 1fr;
-  }
-}
-
-.about-image {
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets/images/optimism.png');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .about > section {
+  height: 100%;
   width: 90%;
   margin: 0 auto;
+  margin-top: 1em;
+}
+
+.about > section > .image {
+  width: 100%;
+  height: 50%;
+  background-image: url('./assets/images/about.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+
+.about > section > p {
+  margin-bottom: 24px;
+  text-align: justify;
+  line-height: 24px;
+}
+
+.about > section > .title {
+  font-size: 1.5em;
+  font-weight: 900;
 }
 
 @media only screen and (min-width: 768px) {
@@ -334,37 +331,16 @@ footer {
     width: 600px;
     margin: 0 auto;
   }
-}
 
-.about > section > p {
-  margin-bottom: 24px;
-  text-align: justify;
-  word-break: break-all;
-  line-height: 24px;
-}
+  .about > section > p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+  }
 
-.about > section > p:first-child {
-  font-size: 18px;
-  font-weight: 900;
-}
-
-@media only screen and (min-width: 768px) {
-  .about > section > p:first-child {
+  .about > section > .title {
     font-size: 2.5em;
     font-weight: 900;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .about > section > p {
-    margin-bottom: 1em;
-    line-height: 24px;
-    font-size: 1em;
-    font-weight: 400;
-  }
-
-  .about > section > p:first-child {
-    margin-top: 1em;
+    margin: 1em 0;
   }
 }
 
