@@ -20,12 +20,14 @@ import {
 } from './robinhood-account-redux.tsx';
 
 class Robinhood extends React.Component {
+  _isMounted = false;
   componentDidMount() {
+    this._isMounted = true;
     this.props.login();
   }
 
-  componentWillMount() {
-    console.log('willMount');
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   async componentDidUpdate(prevProps) {
