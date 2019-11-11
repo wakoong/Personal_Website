@@ -8,21 +8,17 @@ var bodyParser = require('body-parser');
 
 var allowedOrigins = [
   'http://localhost:1234',
-  'http://localhost:3001',
   'https://lucid-sammet-7f2164.netlify.com/',
 ];
+
 app.use(
   cors({
     origin: function(origin, callback) {
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.indexOf(origin) === -1) {
-        var message =
-          'The CORS policy for this site does not allow access from the specified Origin.';
-        return callback(new Error(message), false);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
       }
-
-      return callback(null, true);
     },
   })
 );
@@ -55,7 +51,7 @@ let tokenPromise = rp({
     token: credential.access_token,
   };
 
-  app.get('/login', function(req, res) {
+  app.get('/api/login', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.accounts(function(err, response, body) {
         if (err) {
@@ -69,7 +65,7 @@ let tokenPromise = rp({
     });
   });
 
-  app.get('/logout', function(req, res) {
+  app.get('/api/logout', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.expire_token(function(err, response, body) {
         if (err) {
@@ -85,7 +81,7 @@ let tokenPromise = rp({
     });
   });
 
-  app.get('/portfolio', function(req, res) {
+  app.get('/api/portfolio', function(req, res) {
     var portfolio = request(
       {
         method: 'GET',
@@ -109,7 +105,7 @@ let tokenPromise = rp({
     updated_at: '2019-08-25',
   };
 
-  app.get('/orders', function(req, res) {
+  app.get('/api/orders', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.orders(function(err, response, body) {
         if (err) {
@@ -130,7 +126,7 @@ let tokenPromise = rp({
     });
   });
 
-  app.get('/positions', function(req, res) {
+  app.get('/api/positions', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.positions(function(err, response, body) {
         if (err) {
@@ -143,7 +139,7 @@ let tokenPromise = rp({
     });
   });
 
-  app.post('/quotes', function(req, res) {
+  app.post('/api/quotes', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.quote_data(req.body.symbol, function(error, response, body) {
         if (error) {
@@ -157,7 +153,7 @@ let tokenPromise = rp({
   });
 })();
 
-app.post('/instrument', function(req, res) {
+app.post('/api/instrument', function(req, res) {
   var instrument = request(req.body.url, function(error, response, body) {
     var results = JSON.parse(body);
     res.send({ results: results });

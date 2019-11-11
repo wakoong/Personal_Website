@@ -41,7 +41,7 @@ export const loginTest = () => (dispatch) => {
 
 export const login = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/login',
+    endpoint: 'http://localhost:3001/api/login',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const login = () => ({
 
 export const logout = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/logout',
+    endpoint: 'http://localhost:3001/api/logout',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const logout = () => ({
 
 export const getPortfolio = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/portfolio',
+    endpoint: 'http://localhost:3001/api/portfolio',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const getPortfolio = () => ({
 
 export const getOrders = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/orders',
+    endpoint: 'http://localhost:3001/api/orders',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export const getOrders = () => ({
 
 export const getInstrument = (url, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/instrument',
+    endpoint: 'http://localhost:3001/api/instrument',
     method: 'POST',
     body: JSON.stringify({ url, index }),
     headers: {
@@ -102,7 +102,7 @@ export const getInstrument = (url, index) => ({
 
 export const getQuotes = (symbol, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/quotes',
+    endpoint: 'http://localhost:3001/api/quotes',
     method: 'POST',
     body: JSON.stringify({ symbol }),
     headers: {
@@ -118,7 +118,7 @@ export const getQuotes = (symbol, index) => ({
 
 export const getPositions = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/positions',
+    endpoint: 'http://localhost:3001/api/positions',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
