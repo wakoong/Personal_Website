@@ -11,20 +11,7 @@ var allowedOrigins = [
   'https://lucid-sammet-7f2164.netlify.com/',
 ];
 
-app.use(
-  // cors({
-  //   origin: function(origin, callback) {
-  //     if (allowedOrigins.indexOf(origin) !== -1) {
-  //       callback(null, true);
-  //     } else {
-  //       callback(new Error('Not allowed by CORS'));
-  //     }
-  //   },
-  //   credentials: true,
-  //   origin: true,
-  // })
-  cors({ origin: true })
-);
+app.use(cors({ origin: true }));
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
