@@ -6,7 +6,7 @@ import RobinhoodMain from './robinhood-main';
 import ETFs from './robinhood-etfs.tsx';
 import Stocks from './robinhood-stocks.tsx';
 import Button from '../Common/Material-UI/button.tsx';
-import twitter from '../../assets/images/twitter.png';
+import logo from '../../assets/images/rh-gorilla.png';
 
 import {
   loginTest,
@@ -77,10 +77,9 @@ class Robinhood extends React.Component {
       main = (
         <React.Fragment>
           <div className='robinhood-login-wrapper'>
-            <img src={twitter} alt='twitter bird' />
+            <img src={logo} alt='rh project logo' />
             <div>{loading ? 'Loading...' : 'Login'}</div>
           </div>
-          {/* <div>How to login</div> */}
         </React.Fragment>
       );
     }

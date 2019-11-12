@@ -370,14 +370,15 @@ footer {
 
 /************************************** Lab ***********************************/
 .lab {
-  height: calc(100% - 100px);
   padding: 10px 15px;
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: 200px;
   grid-gap: 10px;
 }
 
 .lab-card {
+  position: relative;
   max-width: 100%;
   max-height: 100%;
   width: 100%;
@@ -386,18 +387,56 @@ footer {
   border: 1px solid grey;
 }
 
+.lab-card:hover > .description {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  line-height: 1.5em;
+  z-index: 1;
+  color: black;
+}
+
+.lab-card:hover > .description::-webkit-scrollbar {
+  display: none;
+}
+
+.lab-card:hover > .description-green {
+  background-color: rgba(33, 206, 153, 0.5);
+}
+
+.lab-card:hover > .description-blue {
+  background-color: rgba(44, 125, 219, 0.5);
+}
+
+.lab-card:hover > .description-orange {
+  background-color: rgba(228, 113, 34, 0.5);
+}
+
+.lab-card:hover > .description > p {
+  padding: 5px 10px;
+  text-align: center;
+}
+
 .lab-card > .lab-img {
   object-fit: contain;
   width: 100%;
   height: 100%;
   max-height: 100%;
+  z-index: 2;
+}
+
+.lab-card > .description {
+  display: none;
 }
 
 /* IPad & Desktop */
 @media only screen and (min-width: 480px) {
   .lab {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
   }
 }
 
@@ -426,22 +465,56 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 200px;
   height: 200px;
   cursor: pointer;
 }
 
 .robinhood-login-wrapper > img {
-  height: 100px;
-  width: 100px;
+  height: 70%;
+  width: 60%;
+  position: fixed;
 }
 
 .robinhood-login-wrapper > div {
+  position: fixed;
   width: 100px;
-  margin-top: 15px;
   color: white;
   font-weight: 500;
   text-align: center;
+}
+
+.description-cp {
+  height: 100%;
+  width: 100%;
+}
+
+.description-cp > img {
+  height: 50%;
+  width: 100%;
+}
+
+.description-cp > p {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+@media only screen and (min-width: 768px) {
+  .description-cp > img {
+    display: block;
+    margin: 0 auto;
+    height: 500px;
+    width: 900px;
+  }
+
+  .description-cp > p {
+    width: 900px;
+    margin: 0 auto;
+    line-height: 2em;
+    text-align: justify;
+  }
 }
 
 /************************************** Footer ***********************************/

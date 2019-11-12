@@ -33,6 +33,10 @@
   border-color: #21ce99;
 }
 
+.rb-header > .socialBtn {
+  display: none;
+}
+
 .rb-page {
   height: 100%;
   display: grid;
@@ -78,7 +82,7 @@
 .rb-table > .row > .row-body > .item > .item-val {
   font-weight: 100;
   font-size: 0.8em;
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
 }
 
 .rb-table > .row > .row-body > .item > .item-name > div:nth-child(2) {
@@ -109,6 +113,13 @@
   .rb-header > .header-tabs > a > .header-tab {
     font-weight: 500;
     margin-right: 3em;
+  }
+
+  .rb-header > a > .socialBtn {
+    display: block;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
   }
 
   .rb-page {
