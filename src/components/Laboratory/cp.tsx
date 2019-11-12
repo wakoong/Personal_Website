@@ -41,6 +41,8 @@ class CP extends React.Component {
               website
             </a>. Stay tuned for updates!
           </p>
+          <br />
+          <br />
         </div>
       </div>
     )

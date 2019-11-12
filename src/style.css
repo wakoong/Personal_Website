@@ -317,7 +317,7 @@ footer {
 
 .about > section > p {
   margin-bottom: 24px;
-  text-align: justify;
+  text-align: center;
   line-height: 24px;
 }
 
@@ -333,6 +333,7 @@ footer {
   }
 
   .about > section > p {
+    text-align: justify;
     font-size: 1.1em;
     line-height: 1.6em;
   }

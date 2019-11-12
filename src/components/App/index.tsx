@@ -9,7 +9,7 @@ import Main from '../Main/main.tsx';
 import Laboratory from '../Laboratory/laboratory.tsx';
 import About from '../About/about.tsx';
 import Robinhood from '../Laboratory/robinhood.tsx';
-import CP from '../Laboratory/CP.tsx';
+import CP from '../Laboratory/cp.tsx';
 import store from '../../store';
 
 class App extends React.Component {

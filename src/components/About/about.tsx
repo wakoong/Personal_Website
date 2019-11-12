@@ -31,6 +31,8 @@ class About extends React.Component {
             "Optimisim is a moral choice. Cynicism is the last refuge for
             cowards" - Jim Yong Kim
           </p>
+          <br />
+          <br />
         </section>
       </div>
     );
