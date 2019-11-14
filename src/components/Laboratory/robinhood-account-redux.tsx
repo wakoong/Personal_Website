@@ -39,7 +39,7 @@ export const loginTest = () => (dispatch) => {
   });
 };
 
-const heroku = 'https://wk-playground.herokuapp.com/';
+const heroku = 'https://wk-playground.herokuapp.com';
 export const login = () => ({
   [RSAA]: {
     endpoint: `${heroku}/api/login`,
