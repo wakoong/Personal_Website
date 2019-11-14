@@ -1,4 +1,4 @@
-import { RSAA } from 'redux-api-middleware';
+import {RSAA} from 'redux-api-middleware';
 
 export const LOGIN_REQUEST = '@@robinhood-account/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = '@@robinhood-account/LOGIN_SUCCESS';
@@ -41,7 +41,7 @@ export const loginTest = () => (dispatch) => {
 
 export const login = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/login',
+    endpoint: 'http://localhost:5000/api/login',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const login = () => ({
 
 export const logout = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/logout',
+    endpoint: 'http://localhost:5000/api/logout',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const logout = () => ({
 
 export const getPortfolio = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/portfolio',
+    endpoint: 'http://localhost:5000/api/portfolio',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const getPortfolio = () => ({
 
 export const getOrders = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/orders',
+    endpoint: 'http://localhost:5000/api/orders',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -86,39 +86,31 @@ export const getOrders = () => ({
 
 export const getInstrument = (url, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/instrument',
+    endpoint: 'http://localhost:5000/api/instrument',
     method: 'POST',
-    body: JSON.stringify({ url, index }),
+    body: JSON.stringify({url, index}),
     headers: {
       'Content-Type': 'application/json',
     },
-    types: [
-      INSTRUMENT_REQUEST,
-      { type: INSTRUMENT_SUCCESS, meta: { order: index } },
-      INSTRUMENT_FAILURE,
-    ],
+    types: [INSTRUMENT_REQUEST, {type: INSTRUMENT_SUCCESS, meta: {order: index}}, INSTRUMENT_FAILURE],
   },
 });
 
 export const getQuotes = (symbol, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/quotes',
+    endpoint: 'http://localhost:5000/api/quotes',
     method: 'POST',
-    body: JSON.stringify({ symbol }),
+    body: JSON.stringify({symbol}),
     headers: {
       'Content-Type': 'application/json',
     },
-    types: [
-      QUOTES_REQUEST,
-      { type: QUOTES_SUCCESS, meta: { order: index } },
-      QUOTES_FAILURE,
-    ],
+    types: [QUOTES_REQUEST, {type: QUOTES_SUCCESS, meta: {order: index}}, QUOTES_FAILURE],
   },
 });
 
 export const getPositions = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:3001/api/positions',
+    endpoint: 'http://localhost:5000/api/positions',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -134,18 +126,14 @@ export const getOverviewData = () => async (dispatch) => {
   const positions = await dispatch(getPositions()); // 10 positions
   const getInstrumentFetches = [];
   for (let i = 0; i < positions.payload.results.length; i++) {
-    getInstrumentFetches.push(
-      dispatch(getInstrument(positions.payload.results[i].instrument, i))
-    );
+    getInstrumentFetches.push(dispatch(getInstrument(positions.payload.results[i].instrument, i)));
   }
 
   const instruments = await Promise.all(getInstrumentFetches);
 
   const getQuotesFetches = [];
   for (let i = 0; i < instruments.length; i++) {
-    getQuotesFetches.push(
-      dispatch(getQuotes(instruments[i].payload.results.symbol, i))
-    );
+    getQuotesFetches.push(dispatch(getQuotes(instruments[i].payload.results.symbol, i)));
   }
 
   const quotes = await Promise.all(getQuotesFetches);
@@ -198,13 +186,7 @@ export default (state = initialState, action) => {
         orders: action.payload.results,
       };
     case INSTRUMENT_SUCCESS:
-      const {
-        name,
-        symbol,
-        simple_name,
-        fundamentals,
-        id,
-      } = action.payload.results;
+      const {name, symbol, simple_name, fundamentals, id} = action.payload.results;
       return {
         ...state,
         instruments: [
@@ -231,7 +213,7 @@ export default (state = initialState, action) => {
         })),
       };
     case QUOTES_SUCCESS:
-      const { last_trade_price, previous_close } = action.payload.results;
+      const {last_trade_price, previous_close} = action.payload.results;
       return {
         ...state,
         quotes: [
@@ -249,12 +231,8 @@ export default (state = initialState, action) => {
         loading: true,
       };
     case LOADING_SUCCESS:
-      const reordered_inst = state.instruments.sort((a, b) =>
-        a.order > b.order ? 1 : -1
-      );
-      const reordered_quote = state.quotes.sort((a, b) =>
-        a.order > b.order ? 1 : -1
-      );
+      const reordered_inst = state.instruments.sort((a, b) => (a.order > b.order ? 1 : -1));
+      const reordered_quote = state.quotes.sort((a, b) => (a.order > b.order ? 1 : -1));
       return {
         ...state,
         loading: false,
