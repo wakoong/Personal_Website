@@ -9,7 +9,7 @@
     "lint": "tslint --project",
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "start": "node backend/app.js"
+    "start": "nodemon backend/app.js"
   },
   "repository": {
     "type": "git",
