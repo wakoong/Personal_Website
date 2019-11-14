@@ -9,9 +9,7 @@
     "lint": "tslint --project",
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "start": "npm run build && babel-node server.js",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -b master -d build"
+    "start": "node backend/app.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +18,9 @@
   "author": "Woosik Koong <woosik.koong@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://lucid-sammet-7f2164.netlify.com/"
+    "url": "https://woosika.com/"
   },
-  "homepage": "https://wakoong.github.io/playground/",
+  "homepage": "https://woosika.com/",
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
@@ -91,5 +89,8 @@
     "typescript": "^3.5.3",
     "url-loader": "^1.1.2",
     "warning": "^4.0.3"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }

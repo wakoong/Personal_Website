@@ -1,4 +1,5 @@
 require('dotenv').config();
+var promise = require('./config/credentials').tokenPromise;
 var express = require('express');
 var app = express();
 var cors = require('cors');
@@ -6,41 +7,9 @@ var request = require('request');
 var rp = require('request-promise');
 var bodyParser = require('body-parser');
 
-var allowedOrigins = [
-  'http://localhost:1234',
-  'https://lucid-sammet-7f2164.netlify.com/',
-];
-
-app.use(cors({ origin: true }));
-
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
-
-var apiUrl = 'https://api.robinhood.com/';
-
-let tokenPromise = rp({
-  method: 'POST',
-  uri: `https://api.robinhood.com/oauth2/token/?username=${
-    process.env.RH_USERNAME
-  }&password=${process.env.RH_PASSWORD}&grant_type=password&client_id=${
-    process.env.RH_CLIENT_ID
-  }`,
-  json: true,
-})
-  .then(function(response) {
-    return response;
-  })
-  .catch(function(err) {
-    return err;
-  });
-
-(async function() {
-  let credential = await Promise.resolve(tokenPromise);
-
-  let credentials = {
-    token: credential.access_token,
-  };
-
+var port = process.env.PORT || 5000;
+// console.log(process.env.RH_USERNAME, process.env.NODE_ENV);
+promise.then(function(credentials) {
   app.get('/api/login', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
       Robinhood.accounts(function(err, response, body) {
@@ -49,7 +18,7 @@ let tokenPromise = rp({
         } else {
           console.log('Successfully logged in.');
           var results = body.results[0];
-          res.send({ results: results });
+          res.send({results: results});
         }
       });
     });
@@ -61,10 +30,8 @@ let tokenPromise = rp({
         if (err) {
           console.error(err);
         } else {
-          console.log(
-            'Successfully logged out of Robinhood and expired token.'
-          );
-          res.send({ status: 'logged out' });
+          console.log('Successfully logged out of Robinhood and expired token.');
+          res.send({status: 'logged out'});
           // NOTE: body is undefined on the callback
         }
       });
@@ -85,7 +52,7 @@ let tokenPromise = rp({
           console.log(err);
         } else {
           var results = JSON.parse(body).results[0];
-          res.send({ results: results });
+          res.send({results: results});
         }
       }
     );
@@ -105,12 +72,10 @@ let tokenPromise = rp({
           var results = {};
           var unique = [...new Set(data.map((item) => item.instrument))];
           for (var i = 0; i < unique.length; i++) {
-            results[unique[i]] = data.filter(
-              (item) => item.instrument === unique[i]
-            );
+            results[unique[i]] = data.filter((item) => item.instrument === unique[i]);
           }
 
-          res.send({ results: results });
+          res.send({results: results});
         }
       });
     });
@@ -123,7 +88,7 @@ let tokenPromise = rp({
           console.error(err);
         } else {
           var results = body.results.filter((b) => parseInt(b.quantity) > 0);
-          res.send({ results: results });
+          res.send({results: results});
         }
       });
     });
@@ -137,19 +102,24 @@ let tokenPromise = rp({
           process.exit(1);
         }
         var results = body.results[0];
-        res.send({ results: results });
+        res.send({results: results});
       });
     });
   });
-})();
+});
+
+app.use(cors({origin: true}));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({extended: false})); // support encoded bodies
+var apiUrl = 'https://api.robinhood.com/';
 
 app.post('/api/instrument', function(req, res) {
   var instrument = request(req.body.url, function(error, response, body) {
     var results = JSON.parse(body);
-    res.send({ results: results });
+    res.send({results: results});
   });
 });
 
 app.listen(3001, function() {
-  console.log('server running at port 3001');
+  console.log(`server running at port ${port}`);
 });
