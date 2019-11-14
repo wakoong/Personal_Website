@@ -89,8 +89,5 @@
     "typescript": "^3.5.3",
     "url-loader": "^1.1.2",
     "warning": "^4.0.3"
-  },
-  "engines": {
-    "node": "11.x"
   }
 }
