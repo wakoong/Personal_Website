@@ -39,9 +39,10 @@ export const loginTest = () => (dispatch) => {
   });
 };
 
+const heroku = 'https://wk-playground.herokuapp.com/';
 export const login = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/login',
+    endpoint: `${heroku}/api/login`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ export const login = () => ({
 
 export const logout = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/logout',
+    endpoint: `${heroku}/api/logout`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ export const logout = () => ({
 
 export const getPortfolio = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/portfolio',
+    endpoint: `${heroku}/api/portfolio`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ export const getPortfolio = () => ({
 
 export const getOrders = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/orders',
+    endpoint: `${heroku}/api/orders`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ export const getOrders = () => ({
 
 export const getInstrument = (url, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/instrument',
+    endpoint: `${heroku}/api/instrument`,
     method: 'POST',
     body: JSON.stringify({url, index}),
     headers: {
@@ -98,7 +99,7 @@ export const getInstrument = (url, index) => ({
 
 export const getQuotes = (symbol, index) => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/quotes',
+    endpoint: `${heroku}/api/quotes`,
     method: 'POST',
     body: JSON.stringify({symbol}),
     headers: {
@@ -110,7 +111,7 @@ export const getQuotes = (symbol, index) => ({
 
 export const getPositions = () => ({
   [RSAA]: {
-    endpoint: 'http://localhost:5000/api/positions',
+    endpoint: `${heroku}/api/positions`,
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
