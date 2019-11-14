@@ -1,6 +1,6 @@
 # WK_LAB
 
-Welcome! This website is built with React+Redux for the frontend and Express.js on the backend. The frontend code is deployed on [Netlify(https://www.netlify.com/) and the backend code is deployed on [Heroku](https://heroku.com).
+Welcome! This website is built with React+Redux for the frontend and Express.js on the backend. The frontend code is deployed on [Netlify](https://www.netlify.com/) and the backend code is deployed on [Heroku](https://heroku.com).
 
 # Project 1 - Get capital gains/losses using Robinhood API
 
