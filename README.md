@@ -23,7 +23,7 @@ Robinhood is a financial investment app that allows individuals to invest in pub
 
 ### How to use it
 
-The demo for this project is on my (website)[https://woosika.com/robinhood]. If you want to check it out with your Robinhood account, please refer to the following steps.
+The demo for this project is on my (website)[https://woosika.com/robinhood]. If you want to check it out with your Robinhood account, please refer to the following steps. The heroku server is put on sleep to save server resources while the app is not being used. Therfore, it might take a little bit longer to login the first time you visit the site because of the time it takes for the server to run again.
 
 1. Clone the project
 
