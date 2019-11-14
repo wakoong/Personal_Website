@@ -14,7 +14,7 @@ const Footer = () => {
       img: linkedin,
       link: 'https://www.linkedin.com/in/woosik90/',
     },
-    { img: github, link: 'https://github.com/wakoong' },
+    {img: github, link: 'https://github.com/wakoong/playground'},
   ];
   return (
     <footer>
@@ -23,11 +23,7 @@ const Footer = () => {
       <div className='socialBtnWrapper'>
         {links.map((res) => (
           <a href={res.link} key={res.link} target='_blank'>
-            <img
-              className='socialBtn'
-              src={res.img}
-              alt={JSON.stringify(res.img)}
-            />
+            <img className='socialBtn' src={res.img} alt={JSON.stringify(res.img)} />
           </a>
         ))}
       </div>
