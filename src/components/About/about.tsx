@@ -10,27 +10,16 @@ class About extends React.Component {
           <div className='image' />
           <p className='title'>👋 Welcome!</p>
           <p>
-            👨🏻‍🔬 This is my "lab" where I get to experiment various things and
-            showcase my mini projects. Things can go pretty crazy at times but I
-            manage to eventually fix them.
+            👨🏻‍🔬 This is my "lab" where I get to experiment various things and showcase my mini projects. Things can go
+            pretty crazy at times but I manage to eventually fix them.
           </p>
           <p>
-            👨🏻‍💻 I am an enthusiatic learner who likes documenting progress. Here
-            is the link to my official blog website{' '}
-            <a href='https://www.donkeykoong.com' target='_blank'>
-              www.donkeykoong.com
-            </a>
-            . It's currently under a construction but you are welcome to take a
-            glimpse of it. My main programming language is JavaScript and I
-            specialize in ReactJS for a frontend framework. I also have some
-            experience with Python and Django. I am recently interested in
-            learning more about Node.js, MongoDB, GraphQL, and algorithms.
+            👨🏻‍💻 I am an enthusiatic learner who likes documenting progress. My main programming language is JavaScript
+            and I specialize in ReactJS for a frontend framework. I also have some experience with Python and Django. I
+            am recently interested in learning more about Node.js, MongoDB, GraphQL, and algorithms.
           </p>
           <p>🏀 Also, I love basketball and learning new human languages.</p>
-          <p className='bold'>
-            "Optimisim is a moral choice. Cynicism is the last refuge for
-            cowards" - Jim Yong Kim
-          </p>
+          <p className='bold'>"Optimisim is a moral choice. Cynicism is the last refuge for cowards" - Jim Yong Kim</p>
           <br />
           <br />
         </section>
