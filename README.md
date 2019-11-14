@@ -4,16 +4,22 @@ Welcome! This website is built with React+Redux for the frontend and Express.js 
 
 # Project 1 - Get capital gains/losses using Robinhood API
 
-======
-
-### Overview
+### Description
 
 Robinhood is a financial investment app that allows individuals to invest in public companies. The app is especially great for beginner investors because of its user-friendly UI/UX. However, the app does not seem to provide capital gains or losses on stocks that you own (or owned). Therefore, I used [aurbano/robinhood-node](https://github.com/aurbano/robinhood-node) to keep track of my stocks' capital gains/losses. The project also provides data visualizations of your overview portfolio categorized by ETFs, Non-ETFs, and Cash.
 
+### Features
+
+- Overview of your portfolio
+- Overview of your ETF Stocks
+- Overview of your non-ETF Stocks
+- History of your capital gains/losses on all stocks
+
 ### Tech Spec
 
-Frontend - React + Redux
-Backend - Express.js
+**Frontend** - React, Redux, D3
+
+**Backend** - Express.js
 
 ### How to use it
 
@@ -45,4 +51,4 @@ RH_CLIENT_ID=Your client id
 
 5. That's it for the setup. Run both 'yarn dev' for frontend and 'yarn start' for backend and you are good to go!
 
-Please let me know if you have any questions/feedback related to the project. You are welcome to email me at woosik.koong@gmail.com.
+Please let me know if you have any question/feedback related to the project. You are welcome to email me at woosik.koong@gmail.com.
