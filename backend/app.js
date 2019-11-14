@@ -120,6 +120,6 @@ app.post('/api/instrument', function(req, res) {
   });
 });
 
-app.listen(3001, function() {
+app.listen(port, function() {
   console.log(`server running at port ${port}`);
 });
