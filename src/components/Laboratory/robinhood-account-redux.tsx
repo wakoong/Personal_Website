@@ -31,7 +31,7 @@ export const QUOTES_FAILURE = '@@robinhood-account/QUOTES_FAILURE';
 export const LOADING_REQUEST = '@@robinhood-account/LOADING_REQUEST';
 export const LOADING_SUCCESS = '@@robinhood-account/LOADING_SUCCESS';
 
-export const loginTest = () => (dispatch) => {
+export const loginWithData = () => (dispatch) => {
   return dispatch(login()).then(() => {
     dispatch(getPortfolio());
     dispatch(getOrders());

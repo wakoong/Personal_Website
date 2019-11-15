@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import RAccount from './robinhood-account.tsx';
 import RobinhoodMain from './robinhood-main';
@@ -8,16 +8,7 @@ import Stocks from './robinhood-stocks.tsx';
 import Button from '../Common/Material-UI/button.tsx';
 import logo from '../../assets/images/rh-gorilla.png';
 
-import {
-  loginTest,
-  logout,
-  getOrders,
-  getInstrument,
-  getPositions,
-  getQuotes,
-  getOverviewData,
-  loadingData,
-} from './robinhood-account-redux.tsx';
+import {loginWithData, logout, getOverviewData} from './robinhood-account-redux.tsx';
 
 class Robinhood extends React.Component {
   _isMounted = false;
@@ -31,11 +22,7 @@ class Robinhood extends React.Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if (
-      prevProps.authenticated &&
-      prevProps.portfolio.length === 0 &&
-      prevProps.positions === ''
-    ) {
+    if (prevProps.authenticated && prevProps.portfolio.length === 0 && prevProps.positions === '') {
       try {
         this.props.onOverviewData();
       } catch (error) {
@@ -45,40 +32,18 @@ class Robinhood extends React.Component {
   }
 
   render() {
-    const {
-      account,
-      overview,
-      portfolio,
-      positions,
-      authenticated,
-      instruments,
-      orders,
-      quotes,
-      login,
-      logout,
-      onOrders,
-      onInstrument,
-      onPositions,
-      loading,
-    } = this.props;
+    const {account, overview, portfolio, authenticated, orders, loading} = this.props;
 
     let main;
 
     if (authenticated && overview.length !== 0) {
-      main = (
-        <RobinhoodMain
-          account={account}
-          portfolio={portfolio}
-          overview={overview}
-          orders={orders}
-        />
-      );
+      main = <RobinhoodMain account={account} portfolio={portfolio} overview={overview} orders={orders} />;
     } else {
       main = (
         <React.Fragment>
           <div className='robinhood-login-wrapper'>
             <img src={logo} alt='rh project logo' />
-            <div>{loading ? 'Loading...' : 'Login'}</div>
+            <div>'Loading...'</div>
           </div>
         </React.Fragment>
       );
@@ -92,18 +57,12 @@ const mapStateToProps = (state) => ({
   account: state.robinhoodAccount.account,
   portfolio: state.robinhoodAccount.portfolio,
   authenticated: state.robinhoodAccount.logged_in,
-  instruments: state.robinhoodAccount.instruments,
   orders: state.robinhoodAccount.orders,
-  positions: state.robinhoodAccount.positions,
-  quotes: state.robinhoodAccount.quotes,
   overview: state.robinhoodAccount.overview,
-  loading: state.robinhoodAccount.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login: () => dispatch(loginTest()),
-  logout: () => dispatch(logout()),
-  onOrders: () => dispatch(getOrders()),
+  login: () => dispatch(loginWithData()),
   onOverviewData: () => dispatch(getOverviewData()),
 });
 
