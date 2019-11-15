@@ -43,7 +43,7 @@ class Robinhood extends React.Component {
         <React.Fragment>
           <div className='robinhood-login-wrapper'>
             <img src={logo} alt='rh project logo' />
-            <div>'Loading...'</div>
+            <div>Loading...</div>
           </div>
         </React.Fragment>
       );
