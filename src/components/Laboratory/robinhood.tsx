@@ -8,13 +8,14 @@ import Stocks from './robinhood-stocks.tsx';
 import Button from '../Common/Material-UI/button.tsx';
 import logo from '../../assets/images/rh-gorilla.png';
 
-import {loginWithData, logout, getOverviewData} from './robinhood-account-redux.tsx';
+import {loginWithData, getOverviewData} from './robinhood-account-redux.tsx';
 
 class Robinhood extends React.Component {
   _isMounted = false;
   componentDidMount() {
+    const {login} = this.props;
     this._isMounted = true;
-    this.props.login();
+    login();
   }
 
   componentWillUnmount() {
@@ -24,7 +25,8 @@ class Robinhood extends React.Component {
   async componentDidUpdate(prevProps) {
     if (prevProps.authenticated && prevProps.portfolio.length === 0 && prevProps.positions === '') {
       try {
-        this.props.onOverviewData();
+        const {onOverviewData} = this.props;
+        onOverviewData();
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +34,7 @@ class Robinhood extends React.Component {
   }
 
   render() {
-    const {account, overview, portfolio, authenticated, orders, loading} = this.props;
+    const {account, overview, portfolio, authenticated, orders} = this.props;
 
     let main;
 
@@ -58,6 +60,7 @@ const mapStateToProps = (state) => ({
   portfolio: state.robinhoodAccount.portfolio,
   authenticated: state.robinhoodAccount.logged_in,
   orders: state.robinhoodAccount.orders,
+  positions: state.robinhoodAccount.positions,
   overview: state.robinhoodAccount.overview,
 });
 
