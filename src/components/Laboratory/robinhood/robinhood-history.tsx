@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as helper from '../Common/helper';
+import * as helper from '../../Common/helper';
 import './robinhood.css';
 
 class RobinhoodHistory extends React.Component {
