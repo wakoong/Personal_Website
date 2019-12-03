@@ -10,6 +10,7 @@ import Laboratory from '../Laboratory/laboratory.tsx'
 import About from '../About'
 import Robinhood from '../Laboratory/robinhood/'
 import CP from '../Laboratory/cp/'
+import NBA from '../Laboratory/nba'
 import store from '../../store'
 
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
 						<Laboratory path="/laboratory" />
 						<Robinhood path="/robinhood/*" />
 						<CP path="/coach-and-player" />
+						<NBA path="/nba" />
 					</Router>
 				</ReduxProvider>
 			</div>
