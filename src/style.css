@@ -84,13 +84,13 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Montserrat', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -104,29 +104,29 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 body {
-  line-height: 1;
+	line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
-  content: none;
+	content: '';
+	content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 html,
@@ -134,42 +134,42 @@ body,
 #root,
 .app,
 .main-background {
-  background-color: white;
-  position: relative;
-  height: 100%;
-  margin: 0;
+	background-color: white;
+	position: relative;
+	height: 100%;
+	margin: 0;
 }
 
 /************************************** My codes ***********************************/
 *,
 a:link,
 a:visited {
-  text-decoration: none !important;
-  list-style: none;
+	text-decoration: none !important;
+	list-style: none;
 }
 
 .bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 /* App */
 /* Mobile */
 .app {
-  display: grid;
-  grid-template-rows: 50px minmax(0, 1fr);
+	display: grid;
+	grid-template-rows: 50px minmax(0, 1fr);
 }
 
 /* IPad */
 @media only screen and (min-width: 480px) {
-  .app {
-    grid-template-rows: 70px minmax(0, 1fr);
-  }
+	.app {
+		grid-template-rows: 70px minmax(0, 1fr);
+	}
 }
 
 @media only screen and (min-width: 768px) {
-  .app {
-    grid-template-rows: 100px minmax(0, 1fr);
-  }
+	.app {
+		grid-template-rows: 100px minmax(0, 1fr);
+	}
 }
 
 /* Header */
@@ -177,399 +177,412 @@ a:visited {
 header,
 header > nav,
 header > nav > ul {
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  position: sticky;
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+	position: sticky;
 }
 
 /* Nav Contents */
 /* Mobile */
 header > nav > ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	height: 100%;
 }
 
 header > nav > ul > li:first-child {
-  flex: 0 1 100%;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 900;
-  padding-top: 5px;
+	flex: 0 1 100%;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 900;
+	padding-top: 5px;
 }
 
 header > nav > ul > li {
-  font-size: 14px;
-  font-weight: 400;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 header > nav > ul > .menu {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
 }
 
 header > nav > ul > li > a,
 header > nav > ul > .menu > li > a {
-  color: black;
+	color: black;
 }
 
 /* IPad */
 @media only screen and (min-width: 768px) {
-  header > nav > ul {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: center;
-  }
+	header > nav > ul {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		align-items: center;
+	}
 
-  header > nav > ul > .menu {
-    width: 100%;
-    justify-content: flex-end;
-    font-weight: 500;
-  }
+	header > nav > ul > .menu {
+		width: 100%;
+		justify-content: flex-end;
+		font-weight: 500;
+	}
 
-  header > nav > ul > .menu > li {
-    padding-right: 2em;
-  }
+	header > nav > ul > .menu > li {
+		padding-right: 2em;
+	}
 
-  header > nav > ul > li:first-child {
-    flex: none;
-    font-size: 24px;
-    font-weight: 900;
-    text-align: start;
-    margin-right: 1em;
-    padding: 0 1em 0 1em;
-    letter-spacing: 2px;
-  }
+	header > nav > ul > li:first-child {
+		flex: none;
+		font-size: 24px;
+		font-weight: 900;
+		text-align: start;
+		margin-right: 1em;
+		padding: 0 1em 0 1em;
+		letter-spacing: 2px;
+	}
 
-  header > nav > ul > li {
-    margin-right: 1em;
-    font-size: 14px;
-    font-weight: 300;
-  }
+	header > nav > ul > li {
+		margin-right: 1em;
+		font-size: 14px;
+		font-weight: 300;
+	}
 }
 
 /* Desktop */
 @media only screen and (min-width: 768px) {
-  header > nav > ul > li:first-child {
-    font-size: 28px;
-  }
+	header > nav > ul > li:first-child {
+		font-size: 28px;
+	}
 
-  header > nav > ul > li {
-    font-size: 16px;
-  }
+	header > nav > ul > li {
+		font-size: 16px;
+	}
 }
 
 /* Main Image */
 /* Mobile */
 main {
-  min-height: 100%;
-  min-width: 100%;
-  display: grid;
-  grid-template-rows: 1fr 50px;
+	min-height: 100%;
+	min-width: 100%;
+	display: grid;
+	grid-template-rows: 1fr 50px;
 }
 
 main > .main-image {
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets/images/main.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right;
+	width: 100%;
+	height: 100%;
+	background-image: url('./assets/images/main.jpeg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right;
 }
 
 /* IPad & Desktop */
 @media only screen and (min-width: 768px) {
-  main > .main-image {
-    background-position: center;
-  }
+	main > .main-image {
+		background-position: center;
+	}
 }
 
 /* footer */
 footer {
-  background-color: #f3f3f3;
+	background-color: #f3f3f3;
 }
 
 /************************************** About ***********************************/
 /* Mobile */
 .about {
-  height: 100%;
+	height: 100%;
 }
 
 .about > section {
-  height: 100%;
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 1em;
+	height: 100%;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 1em;
 }
 
 .about > section > .image {
-  width: 100%;
-  height: 50%;
-  background-image: url('./assets/images/about.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right;
+	width: 100%;
+	height: 50%;
+	background-image: url('./assets/images/about.jpg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: right;
 }
 
 .about > section > p {
-  margin-bottom: 24px;
-  text-align: center;
-  line-height: 24px;
+	margin-bottom: 24px;
+	text-align: center;
+	line-height: 24px;
 }
 
 .about > section > .title {
-  font-size: 1.5em;
-  font-weight: 900;
+	font-size: 1.5em;
+	font-weight: 900;
 }
 
 @media only screen and (min-width: 768px) {
-  .about > section {
-    width: 600px;
-    margin: 0 auto;
-  }
+	.about > section {
+		width: 600px;
+		margin: 0 auto;
+	}
 
-  .about > section > p {
-    text-align: justify;
-    font-size: 1.1em;
-    line-height: 1.6em;
-  }
+	.about > section > p {
+		text-align: justify;
+		font-size: 1.1em;
+		line-height: 1.6em;
+	}
 
-  .about > section > .title {
-    font-size: 2.5em;
-    font-weight: 900;
-    margin: 1em 0;
-  }
+	.about > section > .title {
+		font-size: 2.5em;
+		font-weight: 900;
+		margin: 1em 0;
+	}
 }
 
 /* main layout for articles */
 .main-background {
-  position: relative;
-  height: 100%;
-  background-color: #f2f2f2;
+	position: relative;
+	height: 100%;
+	background-color: #f2f2f2;
 }
 
 .main-block {
-  position: absolute;
-  height: 97.5%;
-  width: 95%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  overflow: hidden;
-  background-color: white;
+	position: absolute;
+	height: 97.5%;
+	width: 95%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	overflow: hidden;
+	background-color: white;
 }
 
 .main-block_programming {
-  display: flex;
+	display: flex;
 }
 
 /************************************** Lab ***********************************/
 .lab {
-  padding: 10px 15px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: 200px;
-  grid-gap: 10px;
+	padding: 10px 15px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 200px;
+	grid-gap: 10px;
 }
 
 .lab-card {
-  position: relative;
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  border: 1px solid grey;
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border: 1px solid grey;
 }
 
 .lab-card:hover > .description {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  line-height: 1.5em;
-  z-index: 1;
-  color: black;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	line-height: 1.5em;
+	z-index: 1;
+	color: black;
 }
 
 .lab-card:hover > .description::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .lab-card:hover > .description-green {
-  background-color: rgba(33, 206, 153, 0.5);
+	background-color: rgba(33, 206, 153, 0.5);
 }
 
 .lab-card:hover > .description-blue {
-  background-color: rgba(44, 125, 219, 0.5);
+	background-color: rgba(44, 125, 219, 0.5);
 }
 
 .lab-card:hover > .description-orange {
-  background-color: rgba(228, 113, 34, 0.5);
+	background-color: rgba(228, 113, 34, 0.5);
 }
 
 .lab-card:hover > .description > p {
-  padding: 5px 10px;
-  text-align: center;
+	padding: 5px 10px;
+	text-align: center;
 }
 
 .lab-card > .lab-img {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  z-index: 2;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	z-index: 2;
 }
 
 .lab-card > .description {
-  display: none;
+	display: none;
 }
 
 /* IPad & Desktop */
 @media only screen and (min-width: 480px) {
-  .lab {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-  }
+	.lab {
+		grid-template-columns: repeat(2, 1fr);
+		grid-auto-rows: 1fr;
+	}
 }
 
 @media only screen and (min-width: 768px) {
-  .lab {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.lab {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 /************************************** Projects ***********************************/
 .project-background,
 .robinhood {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 .robinhood {
-  background-color: #21ce99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	background-color: #21ce99;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.robinhood > .disclaimer {
+	position: absolute;
+	font-size: 0.9em;
+	width: 300px;
+	color: white;
+	margin-bottom: 2em;
+	bottom: 0;
 }
 
 .robinhood-login-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	cursor: pointer;
 }
 
 .robinhood-login-wrapper > img {
-  height: 70%;
-  width: 60%;
-  position: fixed;
+	height: 70%;
+	width: 60%;
+	position: fixed;
 }
 
 .robinhood-login-wrapper > div {
-  position: fixed;
-  width: 100px;
-  color: white;
-  font-weight: 500;
-  text-align: center;
+	position: fixed;
+	width: 100px;
+	color: white;
+	font-weight: 500;
+	text-align: center;
 }
 
 .description-cp {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 .description-cp > img {
-  height: 50%;
-  width: 100%;
+	height: 50%;
+	width: 100%;
 }
 
 .description-cp > p {
-  width: 80%;
-  margin: 0 auto;
-  line-height: 1.5em;
-  text-align: justify;
+	width: 80%;
+	margin: 0 auto;
+	line-height: 1.5em;
+	text-align: justify;
 }
 
 @media only screen and (min-width: 768px) {
-  .description-cp > img {
-    display: block;
-    margin: 0 auto;
-    height: 500px;
-    width: 900px;
+	.robinhood > .disclaimer {
+		width: 500px;
   }
+  
+	.description-cp > img {
+		display: block;
+		margin: 0 auto;
+		height: 500px;
+		width: 900px;
+	}
 
-  .description-cp > p {
-    width: 900px;
-    margin: 0 auto;
-    line-height: 2em;
-    text-align: justify;
-  }
+	.description-cp > p {
+		width: 900px;
+		margin: 0 auto;
+		line-height: 2em;
+		text-align: justify;
+	}
 }
 
 /************************************** Footer ***********************************/
 footer {
-  display: flex;
-  font-size: 0.7em;
-  align-items: center;
-  text-align: start;
+	display: flex;
+	font-size: 0.7em;
+	align-items: center;
+	text-align: start;
 }
 
 footer > .copyRight {
-  width: 70%;
-  padding-left: 1.5em;
+	width: 70%;
+	padding-left: 1.5em;
 }
 
 footer > .socialBtnWrapper {
-  width: 30%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+	width: 30%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 footer > .socialBtnWrapper > a {
-  width: 20px;
-  height: 20px;
-  padding-right: 1em;
-  cursor: pointer;
+	width: 20px;
+	height: 20px;
+	padding-right: 1em;
+	cursor: pointer;
 }
 
 footer > .socialBtnWrapper > a > .socialBtn {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 @media only screen and (min-width: 768px) {
-  footer {
-    font-size: 0.9em;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
-  }
+	footer {
+		font-size: 0.9em;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		text-align: center;
+	}
 
-  footer > .copyRight {
-    width: 100%;
-  }
+	footer > .copyRight {
+		width: 100%;
+	}
 
-  footer > .socialBtnWrapper {
-    width: 100%;
-  }
+	footer > .socialBtnWrapper {
+		width: 100%;
+	}
 
-  footer > .socialBtnWrapper > a {
-    width: 25px;
-    height: 25px;
-    padding-right: 2em;
-  }
+	footer > .socialBtnWrapper > a {
+		width: 25px;
+		height: 25px;
+		padding-right: 2em;
+	}
 }

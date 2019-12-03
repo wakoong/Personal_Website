@@ -19,7 +19,7 @@ class About extends React.Component {
             am recently interested in learning more about Node.js, MongoDB, GraphQL, and algorithms.
           </p>
           <p>🏀 Also, I love basketball and learning new human languages.</p>
-          <p className='bold'>"Optimisim is a moral choice. Cynicism is the last refuge for cowards" - Jim Yong Kim</p>
+          <p className='bold'>"Optimism is a moral choice. Cynicism is the last refuge for cowards" - Jim Yong Kim</p>
           <br />
           <br />
         </section>

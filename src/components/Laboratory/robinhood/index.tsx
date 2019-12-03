@@ -47,6 +47,11 @@ class Robinhood extends React.Component {
 						<img src={logo} alt="rh project logo" />
 						<div>Loading...</div>
 					</div>
+					<div className="disclaimer">
+						A basic Heroku server stays inactive to save server resources when the application is unused.
+						Therefore, the application wil take longer time to load whenever the Heroku server needs to be
+						reactivated. Try refreshing the browser if you notice a delayed loading. Thank you.
+					</div>
 				</React.Fragment>
 			)
 		}
