@@ -52,7 +52,7 @@ class RobinhoodMain extends React.Component {
 	render() {
 		const { account, portfolio, overview, orders } = this.props
 		const [etfs, stocks] = overview.reduce(
-			([e, s], inst) => (inst.simple_name.includes('ETF') ? [[...e, inst], s] : [e, [...s, inst]]),
+			([e, s], inst) => (inst.name.includes('ETF') ? [[...e, inst], s] : [e, [...s, inst]]),
 			[[], []]
 		)
 
