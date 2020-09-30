@@ -13,7 +13,7 @@ import Landing from './pages/Landing';
 import NBA from './components/Laboratory/nba/index';
 import Robinhood from './components/Laboratory/robinhood/index';
 import store from './store';
-import { OaklandAsTheme } from './utils';
+import { DefaultTheme } from './utils';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -22,10 +22,23 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
   }
+  body {
+    font-size: 10px;
+
+    @media (min-width: 499px) {
+      font-size: 12px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+
 `;
 
 const App = () => {
-  const [theme, setTheme] = React.useState(OaklandAsTheme);
+  const [theme, setTheme] = React.useState(DefaultTheme);
 
   return (
     <ThemeProvider theme={theme}>

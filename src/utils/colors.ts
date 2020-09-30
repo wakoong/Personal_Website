@@ -4,7 +4,6 @@
  * colorO - Oakland
  * colorS - San Francisco Giants
  */
-
 export const base = {
   50: '#FEFEFE',
   100: '#FDFDFD',

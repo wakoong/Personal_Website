@@ -7,12 +7,17 @@ import { themes } from '../utils';
 const Section = styled.section`
   min-height: 80vh;
   width: 100%;
+  font-size: 1.2em;
+
+  @media (min-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
-const AboutSection = styled(Section)`
+const MainSection = styled(Section)`
   display: grid;
   grid-template-areas:
-    'profile'
+    'image'
     'about'
     'skills';
   background: ${(props) => props.theme.primaryColor};
@@ -20,29 +25,86 @@ const AboutSection = styled(Section)`
 
   @media (min-width: 768px) {
     grid-template-areas:
-      'about about profile'
-      'about about profile'
-      'skills skills skills';
+      'about about image'
+      'skills skills image';
   }
 `;
 
-const About = styled.aside`
-  grid-area: about;
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20vw 2em 20vw;
+  width: 100%;
+  line-height: 1.6;
+
+  h1 {
+    font-size: 2.5em;
+    font-weight: 900;
+    color: ${(props) => props.theme.emphasisColor};
+  }
+
+  @media (min-width: 499px) {
+    padding: 1em 1em 0 1em;
+    flex-direction: row;
+    line-height: 2;
+  }
+
+  @media (min-width: 768px) {
+    padding: 2em 2em 0 2em;
+  }
+
+  .content {
+    @media (min-width: 768px) {
+      width: 25em;
+    }
+
+    @media (min-width: 1200px) {
+      width: 40em;
+    }
+  }
 `;
 
-const Profile = styled.aside`
-  grid-area: profile;
+const About = styled(Article)`
+  grid-area: about;
+  margin-top: 10em;
+  margin-bottom: 2em;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
+  @media (min-width: 1200px) {
+    justify-content: flex-start;
+  }
+`;
+
+const Skills = styled(Article)`
+  grid-area: skills;
+  justify-content: center;
+
+  @media (min-width: 1200px) {
+    justify-content: flex-end;
+  }
+`;
+
+const Image = styled.aside`
+  grid-area: image;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    padding: 0 1em;
+  }
 
   .image-container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 30em;
-    width: 30em;
+    height: 25em;
+    width: auto;
 
     img {
       max-height: 100%;
@@ -52,16 +114,13 @@ const Profile = styled.aside`
   }
 `;
 
-const Skills = styled.aside`
-  grid-area: skills;
-`;
-
 const ThemeSelectContainer = styled.div`
   position: absolute;
   top: 28em;
-  width: 25em;
+  width: 80%;
 
   button {
+    cursor: pointer;
     background: ${(props) => props.theme.inputBackgroundColor};
     width: 100%;
     margin: 0 auto;
@@ -70,7 +129,7 @@ const ThemeSelectContainer = styled.div`
   }
   button:focus {
     outline: none !important;
-    border: 5px solid ${(props) => props.theme.textColor};
+    border: 5px solid ${(props) => props.theme.emphasisColor};
   }
 
   .suggestions {
@@ -83,7 +142,7 @@ const ThemeSelectContainer = styled.div`
     background: ${(props) => props.theme.selectColor};
     width: 100%;
     list-style: none;
-    border-bottom: 1px solid ${(props) => props.theme.textColor};
+    border-bottom: 1px solid ${(props) => props.theme.emphasisColor};
     padding: 1em;
     transition: background 0.2s;
     cursor: pointer;
@@ -104,11 +163,33 @@ const Landing = ({ setTheme }) => {
 
   return (
     <React.Fragment>
-      <AboutSection>
+      <MainSection>
         <About>
-          <div className='text-container' />
+          <div className='content'>
+            <h1>About</h1>
+            <p>
+              I'm probably not the typical designer positioned behind an
+              Illustrator artboard adjusting pixels, but I design. Immersed in
+              stylesheets tweaking font sizes and contemplating layouts is where
+              you'll find me (~_^). I'm committed to creating fluent user
+              experiences while staying fashionable.
+            </p>
+          </div>
+          <React.Fragment />
         </About>
-        <Profile>
+        <Skills>
+          <React.Fragment />
+          <div className='content'>
+            <h1>Skills</h1>
+            <p>
+              In building JavaScript applications, I'm equipped with just the
+              right tools, and can absolutely function independently of them to
+              deliver fast, resilient solutions optimized for scale —
+              performance and scalabilty are priorities on my radar.
+            </p>
+          </div>
+        </Skills>
+        <Image>
           <div className='image-container'>
             <img
               className='profile-image'
@@ -132,11 +213,8 @@ const Landing = ({ setTheme }) => {
               )}
             </ThemeSelectContainer>
           </div>
-        </Profile>
-        <Skills>
-          <div className='text-container' />
-        </Skills>
-      </AboutSection>
+        </Image>
+      </MainSection>
     </React.Fragment>
   );
 };

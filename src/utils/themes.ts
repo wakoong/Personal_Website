@@ -17,6 +17,7 @@ import {
 // }
 
 export const DefaultTheme = {
+  emphasisColor: base[900],
   hoverBackgroundColor: base[300],
   inputBackgroundColor: base[400],
   lightColor: base[400],
@@ -31,24 +32,27 @@ export const DefaultTheme = {
 };
 
 export const GoldenStateTheme = {
-  hoverBackgroundColor: yellowG[200],
+  emphasisColor: yellowG[500],
+  hoverBackgroundColor: yellowG[400],
   inputBackgroundColor: base[400],
   lightColor: blueG[300],
   primaryColor: blueG[500],
   selectColor: blueG[400],
-  textColor: yellowG[500],
+  textColor: yellowG[100],
 };
 
 export const OaklandAsTheme = {
+  emphasisColor: greenO[500],
   hoverBackgroundColor: greenO[200],
   inputBackgroundColor: base[400],
   lightColor: yellowO[300],
   primaryColor: yellowO[500],
   selectColor: yellowO[400],
-  textColor: greenO[500],
+  textColor: blackS[500],
 };
 
 export const SfGiantTheme = {
+  emphasisColor: whiteS[500],
   hoverBackgroundColor: orangeS[400],
   inputBackgroundColor: base[400],
   lightColor: orangeS[300],

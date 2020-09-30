@@ -22,7 +22,7 @@ const Logo = styled.h1`
   justify-content: center;
   font-size: 2em;
   font-weight: 900;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.emphasisColor};
   padding: 1em;
   cursor: pointer;
 
@@ -38,7 +38,7 @@ const Logo = styled.h1`
 
 const Nav = styled.nav`
   background: ${(props) => props.theme.primaryColor};
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.emphasisColor};
   font-weight: 300;
   margin: 0;
   width: 100%;
