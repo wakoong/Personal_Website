@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import ProfileImage from '../assets/images/steph.png';
+import { themes } from '../utils';
 
 const Section = styled.section`
   min-height: 80vh;
@@ -55,18 +56,19 @@ const Skills = styled.aside`
   grid-area: skills;
 `;
 
-const ThemeSearchForm = styled.form`
+const ThemeSelectContainer = styled.div`
   position: absolute;
   top: 28em;
   width: 25em;
 
-  input {
+  button {
+    background: ${(props) => props.theme.inputBackgroundColor};
     width: 100%;
     margin: 0 auto;
     padding: 1em;
     border: 2px solid ${(props) => props.theme.primaryColor};
   }
-  input:focus {
+  button:focus {
     outline: none !important;
     border: 5px solid ${(props) => props.theme.textColor};
   }
@@ -78,8 +80,8 @@ const ThemeSearchForm = styled.form`
   }
 
   .suggestions li {
+    background: ${(props) => props.theme.selectColor};
     width: 100%;
-    background: white;
     list-style: none;
     border-bottom: 1px solid ${(props) => props.theme.textColor};
     padding: 1em;
@@ -93,14 +95,7 @@ const ThemeSearchForm = styled.form`
   }
 `;
 
-const themes = [
-  'Default',
-  'Golden State Warriors',
-  'Oakland Athletics',
-  'San Francisco Giants',
-];
-
-const Landing = () => {
+const Landing = ({ setTheme }) => {
   const [clicked, setClick] = React.useState(false);
 
   const handleClick = () => {
@@ -120,16 +115,22 @@ const Landing = () => {
               src={ProfileImage}
               alt='profile image'
             />
-            <ThemeSearchForm>
-              <input type='text' className='search' onClick={handleClick} />
+            <ThemeSelectContainer>
+              <button className='search' onClick={handleClick}>
+                Select themes
+              </button>
               {clicked && (
                 <ul className='suggestions'>
                   {themes.map((theme) => (
-                    <li key={theme}>{theme}</li>
+                    <li
+                      key={theme.name}
+                      onClick={() => setTheme({ ...theme.theme })}>
+                      {theme.name}
+                    </li>
                   ))}
                 </ul>
               )}
-            </ThemeSearchForm>
+            </ThemeSelectContainer>
           </div>
         </Profile>
         <Skills>
