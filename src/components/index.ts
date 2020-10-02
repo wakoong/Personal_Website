@@ -1,4 +1,4 @@
-import Card from './Card';
 import Header from './Header';
+import ProjectCard from './ProjectCard';
 
-export { Card, Header };
+export { ProjectCard, Header };
