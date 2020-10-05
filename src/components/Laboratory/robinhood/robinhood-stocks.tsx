@@ -15,6 +15,7 @@ import {
 
 class Stocks extends React.Component {
   render() {
+    console.log(this.props);
     const { stocks, getTotal, getTable } = this.props;
     const stocksTotal = getTotal(stocks);
 
@@ -41,7 +42,7 @@ class Stocks extends React.Component {
               <YAxis dataKey='name' type='category' />
               <Tooltip />
               <Legend />
-              <Bar dataKey='percentage' fill='#4682b4' />
+              <Bar dataKey='percentage' fill='#A8A8A8' />
             </BarChart>
           </ResponsiveContainer>
         </div>

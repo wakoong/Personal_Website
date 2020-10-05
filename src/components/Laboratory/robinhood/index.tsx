@@ -45,6 +45,11 @@ const LandingStyles = styled.div`
   }
 `;
 
+const MainStyles = styled.div`
+  height: calc(100vh - 6.5em);
+  list-style: none;
+`;
+
 class Robinhood extends React.Component {
   _isMounted = false;
   componentDidMount() {
@@ -88,25 +93,23 @@ class Robinhood extends React.Component {
       );
     } else {
       main = (
-        <React.Fragment>
-          <LandingStyles>
-            <img src={logo} alt='rh project logo' />
-            <div className='disclaimer'>
-              <div className='loading'>Loading...</div>
-              <p>
-                A basic Heroku server stays inactive to save server resources
-                when the application is unused. Therefore, the application wil
-                take longer time to load whenever the Heroku server needs to be
-                reactivated. Try refreshing the browser if you notice a delayed
-                loading. Thank you.
-              </p>
-            </div>
-          </LandingStyles>
-        </React.Fragment>
+        <LandingStyles>
+          <img src={logo} alt='rh project logo' />
+          <div className='disclaimer'>
+            <div className='loading'>Loading...</div>
+            <p>
+              A basic Heroku server stays inactive to save server resources when
+              the application is unused. Therefore, the application wil take
+              longer time to load whenever the Heroku server needs to be
+              reactivated. Try refreshing the browser if you notice a delayed
+              loading. Thank you.
+            </p>
+          </div>
+        </LandingStyles>
       );
     }
 
-    return <div className='project-background robinhood'>{main}</div>;
+    return <MainStyles>{main}</MainStyles>;
   }
 }
 
