@@ -9,11 +9,13 @@ import About from './components/About/index';
 import CP from './components/Laboratory/cp/index';
 import { Header } from './components';
 import Laboratory from './components/Laboratory/laboratory';
-import Landing from './pages/Landing';
+import { Landing, Projects } from './pages';
 import NBA from './components/Laboratory/nba/index';
 import Robinhood from './components/Laboratory/robinhood/index';
 import store from './store';
 import { DefaultTheme } from './utils';
+import { ProjectDescription, ProjectSection } from './containers';
+import { useLocalStorageState } from './hooks';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -38,7 +40,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const [theme, setTheme] = React.useState(DefaultTheme);
+  const [theme, setTheme] = useLocalStorageState('theme', DefaultTheme);
+  console.log(theme);
+  // const [theme, setTheme] = React.useState(
+  //   () => JSON.parse(window.localStorage.getItem('test')) || DefaultTheme
+  // );
+
+  React.useEffect(() => {
+    window.localStorage.setItem('test', JSON.stringify(theme));
+  }, [theme]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,7 +63,9 @@ const App = () => {
             <RouterPage path='/about' pageComponent={<About />} />
             <RouterPage path='/laboratory' pageComponent={<Laboratory />} />
             <RouterPage path='/robinhood/*' pageComponent={<Robinhood />} />
-            <RouterPage path='/coach-and-player' pageComponent={<CP />} />
+            <Projects path='projects'>
+              <ProjectDescription path=':projectId' />
+            </Projects>
           </Router>
         </ReduxProvider>
       </div>
