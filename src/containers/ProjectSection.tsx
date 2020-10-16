@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from '@reach/router';
 import styled from 'styled-components';
 
 import { ProjectCard } from '../components';
@@ -52,18 +53,21 @@ const cards = [
     title: 'RH Gains',
     subtitle:
       'How to get values from mouse movement and plug them into an animation.',
+    path: 'rh',
   },
   {
     image: bmotivate,
     title: 'BMotivate',
     subtitle:
       "Your productivity doesn't define your worth. - A reminder to myself after a bout of depression",
+    path: 'bmotivate',
   },
   {
     image: robinhood,
     title: 'Bilo',
     subtitle:
       'Fighting perfectionism, and finally getting my own blog started.',
+    path: 'bilo',
   },
 ];
 
@@ -75,11 +79,13 @@ export default () => {
       </header>
       <ol className='projects'>
         {cards.map((c) => (
-          <li key={c.title}>
-            <ProjectCard title={c.title} subtitle={c.subtitle}>
-              <img src={c.image} alt='Stock Management App' />
-            </ProjectCard>
-          </li>
+          <Link to={`/projects/${c.path}`}>
+            <li key={c.title}>
+              <ProjectCard title={c.title} subtitle={c.subtitle}>
+                <img src={c.image} alt='Stock Management App' />
+              </ProjectCard>
+            </li>
+          </Link>
         ))}
       </ol>
       <button>More Projects . . .</button>

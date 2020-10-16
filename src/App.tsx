@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
-import { Router, RouteComponentProps } from '@reach/router';
+import { Redirect, Router, RouteComponentProps } from '@reach/router';
 import { Provider as ReduxProvider } from 'react-redux';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
@@ -34,6 +34,11 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: 768px) {
       font-size: 16px;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
   }
 `;
 
@@ -53,7 +58,7 @@ const App = () => {
             <RouterPage path='/about' pageComponent={<About />} />
             <RouterPage path='/laboratory' pageComponent={<Laboratory />} />
             <RouterPage path='/robinhood/*' pageComponent={<Robinhood />} />
-            <Projects path='projects'>
+            <Projects path='/projects'>
               <ProjectDescription path=':projectId' />
             </Projects>
           </Router>

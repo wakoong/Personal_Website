@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from '@reach/router';
 
 import styled from 'styled-components';
 
@@ -73,12 +74,16 @@ const Nav = styled.nav`
 const Header = () => {
   return (
     <StyledHeader>
-      <Logo>WOOSIK.K</Logo>
+      <Link to='/'>
+        <Logo>WOOSIK.K</Logo>
+      </Link>
       <Nav>
         <ul>
-          <li>Experience</li>
-          <li>Projects</li>
+          <Link to='/projects'>
+            <li>Projects</li>
+          </Link>
           <li>Writings</li>
+          <li>CV</li>
         </ul>
       </Nav>
     </StyledHeader>
