@@ -59,7 +59,7 @@ export const SfGiantTheme: IThemeProps = {
   textColor: whiteS[500],
 };
 
-interface IThemes {
+export interface IThemes {
   name:
     | 'Default'
     | 'Golden State Warriors'

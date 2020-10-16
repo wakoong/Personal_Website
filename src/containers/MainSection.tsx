@@ -2,7 +2,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import ProfileImage from '../assets/images/steph.png';
-import { Article, Section, themes } from '../utils';
+import { useLocalStorageState } from '../hooks';
+import { Article, IThemeProps, Section, themes } from '../utils';
 
 const MainSection = styled(Section)`
   display: grid;
@@ -109,10 +110,21 @@ const ThemeSelectContainer = styled.div`
   }
 `;
 
-export default ({ setTheme }) => {
+interface IMainSectionProps {
+  setTheme: (theme: IThemeProps) => IThemeProps;
+}
+
+export default ({ setTheme }: IMainSectionProps) => {
   const [clicked, setClick] = React.useState(false);
 
   const handleClick = () => {
+    setClick(!clicked);
+  };
+
+  const handleTheme = (e: any) => {
+    e.preventDefault();
+    const theme = themes.filter((t) => t.name === e.target.innerHTML);
+    setTheme({ ...theme[0].theme });
     setClick(!clicked);
   };
 
@@ -153,13 +165,9 @@ export default ({ setTheme }) => {
               Select themes
             </button>
             {clicked && (
-              <ul className='suggestions'>
+              <ul className='suggestions' onClick={handleTheme}>
                 {themes.map((theme) => (
-                  <li
-                    key={theme.name}
-                    onClick={() => setTheme({ ...theme.theme })}>
-                    {theme.name}
-                  </li>
+                  <li key={theme.name}>{theme.name}</li>
                 ))}
               </ul>
             )}

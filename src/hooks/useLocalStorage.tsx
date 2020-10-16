@@ -1,17 +1,8 @@
 import * as React from 'react';
 
-interface IPros {
-  key: string;
-  defaultValue: any;
-  options: {
-    serialize: () => void;
-    deserialize: () => void;
-  };
-}
-// ignore types
 export const useLocalStorageState = (
-  key,
-  defaultValue,
+  key: string,
+  defaultValue: any,
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
 ) => {
   const [state, setState] = React.useState(() => {
@@ -30,7 +21,6 @@ export const useLocalStorageState = (
 
   React.useEffect(() => {
     const prevKey = prevKeyRef.current;
-    console.log({ prevKey });
     if (prevKey !== key) {
       window.localStorage.removeItem(prevKey);
     }

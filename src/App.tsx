@@ -35,20 +35,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 16px;
     }
   }
-
-
 `;
 
 const App = () => {
   const [theme, setTheme] = useLocalStorageState('theme', DefaultTheme);
-  console.log(theme);
-  // const [theme, setTheme] = React.useState(
-  //   () => JSON.parse(window.localStorage.getItem('test')) || DefaultTheme
-  // );
-
-  React.useEffect(() => {
-    window.localStorage.setItem('test', JSON.stringify(theme));
-  }, [theme]);
 
   return (
     <ThemeProvider theme={theme}>
