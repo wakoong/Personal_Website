@@ -74,9 +74,9 @@ const Nav = styled.nav`
 const Header = () => {
   return (
     <StyledHeader>
-      <Link to='/'>
-        <Logo>WOOSIK.K</Logo>
-      </Link>
+      <Logo>
+        <Link to='/'>WOOSIK.K</Link>
+      </Logo>
       <Nav>
         <ul>
           <Link to='/projects'>

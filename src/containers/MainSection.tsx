@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import ProfileImage from '../assets/images/steph.png';
+import ProfileImage from '../assets/images/profile.png';
 import { useLocalStorageState } from '../hooks';
 import { Article, IThemeProps, Section, themes } from '../utils';
 
@@ -60,7 +60,7 @@ const Image = styled.aside`
     flex-direction: column;
     align-items: center;
     height: 25em;
-    width: auto;
+    width: 19em;
 
     img {
       max-height: 100%;
@@ -73,7 +73,7 @@ const Image = styled.aside`
 const ThemeSelectContainer = styled.div`
   position: absolute;
   top: 28em;
-  width: 80%;
+  width: 100%;
 
   button {
     cursor: pointer;
