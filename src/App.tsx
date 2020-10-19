@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: none;
       color: inherit
     }
+
+    li, ol {
+      list-style: none;
+    }
   }
 `;
 
