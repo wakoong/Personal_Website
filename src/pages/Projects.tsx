@@ -8,7 +8,7 @@ import { projectData, Section } from '../utils';
 
 // map data for projects in array of objects
 
-interface ProjectProps extends RouteComponentProps {
+interface IProjectProps extends RouteComponentProps {
   children: JSX.Element[];
 }
 
@@ -31,7 +31,7 @@ const ProjectListsSection = styled(Section)`
     }
   }
 `;
-const Projects = (props: ProjectProps) => {
+const Projects = (props: IProjectProps) => {
   const location = useLocation();
 
   React.useEffect(() => {

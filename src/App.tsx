@@ -63,6 +63,7 @@ const App = () => {
             <RouterPage path='/laboratory' pageComponent={<Laboratory />} />
             <RouterPage path='/robinhood/*' pageComponent={<Robinhood />} />
             <Projects path='/projects'>
+              <Redirect noThrow={true} from="/" to="rh" />
               <ProjectDescription path=':projectId' />
             </Projects>
           </Router>
