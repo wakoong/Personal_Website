@@ -15,7 +15,8 @@ interface IProjectData {
   url: string,
   tags: string[],
   thumbnailImage: any,
-  images?: any[]
+  images?: any[],
+  live: boolean
 }
 
 export const projectData:IProjectData[] = [
@@ -31,9 +32,10 @@ export const projectData:IProjectData[] = [
     but I may expand this project for other users if I do find a more reliable api`
     ],
     path: 'rh',
-    url: 'localhost:1234/projects/rh',
+    url: 'https://www.woosika.com/robinhood',
     tags: ['React', 'TypeScript', 'Redux', 'D3.js'],
-    images: [rh1]
+    images: [rh1],
+    live: true,
   },
   {
     thumbnailImage: bmotivate,
@@ -51,7 +53,8 @@ export const projectData:IProjectData[] = [
     path: 'bmotivate',
     url: 'https://www.bmotivate.com',
     tags: ['React', 'Gatsby', 'GraphQL', 'CSS-in-JS'],
-    images: [bmotivate1]
+    images: [bmotivate1],
+    live: true
   },
   {
     thumbnailImage: milo,
@@ -66,6 +69,7 @@ export const projectData:IProjectData[] = [
     path: 'bilo',
     url: 'localhost:1234/projects/bilo',
     tags: ['React', 'Gatsby', 'GraphQL', 'CSS-in-JS'],
-    images: [bilo1]
+    images: [bilo1],
+    live: false,
   },
 ];

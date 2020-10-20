@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link, RouteComponentProps } from '@reach/router';
 import styled from 'styled-components';
 
+import { Button } from '../components';
 import { projectData } from '../utils';
 
 const ProjectDescription = styled.article`
@@ -47,6 +48,7 @@ const ProjectImageContainer = styled.div`
   flex-direction: column;
   height: 25vh;
   transition: ease all .5s;
+  margin-top: 1em;
 
   @media (min-width: 768px) {
     height: 35vh;
@@ -79,7 +81,7 @@ interface ProjectDescriptionProps extends RouteComponentProps {
 
 export default (props: ProjectDescriptionProps) => {
   const data = projectData.filter((d) => d.path === props.projectId);
-  const { title, subtitle, url, description, images, tags } = data[0];
+  const { title, subtitle, url, description, images, tags. live } = data[0];
   return (
     <React.Fragment>
       <ProjectDescription>
@@ -93,11 +95,11 @@ export default (props: ProjectDescriptionProps) => {
 
         {description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
 
-        {url !== '' && (
-          <a href={url}>
-            <button>Visit</button>
+        {live ? (
+          <a href={url} target="_blank">
+            <Button text="Check it out!" />
           </a>
-        )}
+        ) : <Button text="Project will be deployed soon" />}
       </ProjectDescription>
       <ProjectImageContainer>
         {images.length ? images.map((image, idx) => <ProjectImageStyles key={idx} image={image} />) : null}

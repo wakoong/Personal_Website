@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 
-import { ProjectCard } from '../components';
+import { Button, ProjectCard } from '../components';
 import { projectData, Section } from '../utils';
 
 const ProjectSection = styled(Section)`
@@ -12,8 +12,6 @@ const ProjectSection = styled(Section)`
     position: absolute;
     bottom: 2em;
     right: 2em;
-    cursor: pointer;
-    padding: 1em 2em;
 
     @media (min-width: 768px) {
       bottom: 3em;
@@ -62,7 +60,7 @@ export default () => {
         ))}
       </ol>
       <Link to='/projects/rh'>
-        <button>More Projects . . .</button>
+        <Button text="More Projects . . ." />
       </Link>
     </ProjectSection>
   );
