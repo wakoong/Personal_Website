@@ -9,10 +9,12 @@ const Button = styled.button`
 
 interface IButtonProps {
   background?: string;
+  className?: string;
   color?: string;
   text: string;
+  onClick?: boolean | (() => void);
 }
 
-export default ({ color, text}: IButtonProps) => {
-  return <Button color={color}>{text}</Button>
+export default ({ className, color, onClick, text}: IButtonProps) => {
+  return <Button className={className} color={color} onClick={onClick}>{text}</Button>
 }

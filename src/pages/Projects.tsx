@@ -19,11 +19,16 @@ const ProjectDescriptionSection = styled(Section)`
 `;
 
 const ProjectListsSection = styled(Section)`
-  min-height: 0;
-  height: auto;
-  ul {
-    display: flex;
-    gap: 1em;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    min-height: 0;
+    height: auto;
+    ul {
+      display: flex;
+      gap: 1em;
+    }
   }
 `;
 const Projects = (props: ProjectProps) => {

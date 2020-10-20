@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from '@reach/router';
-
 import styled from 'styled-components';
+
+import CV from '../assets/files/cv.pdf'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -83,7 +84,9 @@ const Header = () => {
             <li>Projects</li>
           </Link>
           <li>Writings</li>
-          <li>CV</li>
+          <a href={CV} target="_blank">
+            <li>CV</li>
+          </a>
         </ul>
       </Nav>
     </StyledHeader>

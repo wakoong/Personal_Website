@@ -3,6 +3,7 @@ import { Link, RouteComponentProps } from '@reach/router';
 import styled from 'styled-components';
 
 import { Button } from '../components';
+import { useToggle } from '../hooks';
 import { projectData } from '../utils';
 
 const ProjectDescription = styled.article`
@@ -40,6 +41,17 @@ const ProjectDescription = styled.article`
     font-size: 1.2em;
     text-align: justify;
     letter-spacing: -0.04em;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1em;
+
+    @media (min-width: 768px) {
+      .mobile {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -80,8 +92,11 @@ interface ProjectDescriptionProps extends RouteComponentProps {
 }
 
 export default (props: ProjectDescriptionProps) => {
+  const [modal, setModal] = useToggle(false);
+
   const data = projectData.filter((d) => d.path === props.projectId);
-  const { title, subtitle, url, description, images, tags. live } = data[0];
+  const { title, subtitle, url, description, images, tags, live } = data[0];
+
   return (
     <React.Fragment>
       <ProjectDescription>
@@ -95,11 +110,17 @@ export default (props: ProjectDescriptionProps) => {
 
         {description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
 
-        {live ? (
-          <a href={url} target="_blank">
-            <Button text="Check it out!" />
-          </a>
-        ) : <Button text="Project will be deployed soon" />}
+        <div className="buttons">
+          {live ? (
+            <React.Fragment>
+              <a href={url} target="_blank">
+                <Button text="Check it out!" />
+              </a>
+              <Button className="mobile" text="Other projects" onClick={setModal} />
+            </React.Fragment>
+          ) : <Button text="Project will be deployed soon" />}
+        </div>
+
       </ProjectDescription>
       <ProjectImageContainer>
         {images.length ? images.map((image, idx) => <ProjectImageStyles key={idx} image={image} />) : null}
