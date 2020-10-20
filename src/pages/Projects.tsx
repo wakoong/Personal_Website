@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, RouteComponentProps } from '@reach/router';
+import { Link, RouteComponentProps, useLocation } from '@reach/router';
 import styled from 'styled-components';
 
 import { ProjectCard } from '../components';
@@ -32,6 +32,12 @@ const ProjectListsSection = styled(Section)`
   }
 `;
 const Projects = (props: ProjectProps) => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location])
+
   return (
     <React.Fragment>
       <ProjectDescriptionSection>{props.children}</ProjectDescriptionSection>
