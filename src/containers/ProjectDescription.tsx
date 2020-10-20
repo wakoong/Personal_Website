@@ -3,7 +3,6 @@ import { Link, RouteComponentProps } from '@reach/router';
 import styled from 'styled-components';
 
 import { projectData } from '../utils';
-import ProjectImage from '../assets/images/rh-preview.png';
 
 const ProjectDescription = styled.article`
   position: relative;
@@ -21,7 +20,6 @@ const ProjectDescription = styled.article`
     }
 
     h4 {
-      text-transform: capitalize;
       font-weight: 500;
       margin-top: 0.5em;
     }
@@ -47,19 +45,25 @@ const ProjectDescription = styled.article`
 const ProjectImageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 25vh;
+  transition: ease all .5s;
+
+  @media (min-width: 768px) {
+    height: 35vh;
+  }
+
+  @media (min-width: 1200px) {
+    height: 55vh;
+  }
 `;
 
 const ProjectImageStyles = styled.div`
-  background-image: url(${ProjectImage});
+  background-image: url(${props => props.image});
   width: 100%;
-  height: 20em;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right;
-
-  @media (min-width: 768px) {
-    background-size: contain;
-  }
+  background-position: top center;
 `;
 
 const ToolTag = styled.span`
@@ -75,32 +79,19 @@ interface ProjectDescriptionProps extends RouteComponentProps {
 
 export default (props: ProjectDescriptionProps) => {
   const data = projectData.filter((d) => d.path === props.projectId);
-  const { title, subtitle, url } = data[0];
+  const { title, subtitle, url, description, images, tags } = data[0];
   return (
     <React.Fragment>
       <ProjectDescription>
         <header>
           <h1>{title}</h1>
-          <h4>{subtitle}</h4>
+          <i><h4>{subtitle}</h4></i>
           <div className='tools'>
-            <ToolTag color='blue'>React</ToolTag>
-            <ToolTag>TypeScript</ToolTag>
-            <ToolTag>CSS-in-JS</ToolTag>
+            {tags.map((tag, idx) => <ToolTag key={idx}>{tag}</ToolTag>)}
           </div>
         </header>
 
-        <p>
-          I teamed up with a friend on a game for people to play during the 2020
-          United States Democratic Primary Debates. While they watched, users
-          could click on a candidate's balloon when they agreed with what they
-          were saying.
-        </p>
-        <p>
-          At the end, we have a quantified metric for how well each candidate
-          resonated with players. It was really fun to create an in-browser
-          game, and figuring out the best ways to sync the game with an external
-          video.
-        </p>
+        {description.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
 
         {url !== '' && (
           <a href={url}>
@@ -109,6 +100,7 @@ export default (props: ProjectDescriptionProps) => {
         )}
       </ProjectDescription>
       <ProjectImageContainer>
+        {images.length ? images.map((image, idx) => <ProjectImageStyles key={idx} image={image} />) : null}
         {/* map around images... */}
       </ProjectImageContainer>
     </React.Fragment>
