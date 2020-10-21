@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 
+import { useToggle } from '../hooks';
 import CV from '../assets/files/cv.pdf'
 
 const StyledHeader = styled.header`
@@ -53,15 +54,29 @@ const Nav = styled.nav`
   }
 
   li {
+    position: relative;
     padding: 0 1em;
     list-style: none;
     cursor: pointer;
 
+    .temp-tooltip {
+      position: absolute;
+      display: none;
+      bottom: -2em;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      z-index: 10;
+    }
+
     &:hover,
-    &:active {
+    &:active,
+    &:hover .temp-tooltip {
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
+      display: block;
     }
+
+
   }
 
   @media (min-width: 768px) {
@@ -83,7 +98,10 @@ const Header = () => {
           <Link to='/projects'>
             <li>Projects</li>
           </Link>
-          <li>Writings</li>
+          <li>
+            <p>Writing</p>
+            <div className="temp-tooltip">Coming soon!</div>
+          </li>
           <a href={CV} target="_blank">
             <li>CV</li>
           </a>
