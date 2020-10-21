@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import ProfileImage from '../assets/images/profile.png';
-import { useLocalStorageState } from '../hooks';
 import { Article, IThemeProps, Section, themes } from '../utils';
 
 const MainSection = styled(Section)`
@@ -11,25 +10,37 @@ const MainSection = styled(Section)`
     'image'
     'about'
     'skills';
+  gap: 1em;
   background: ${(props) => props.theme.primaryColor};
   color: ${(props) => props.theme.textColor};
   text-align: justify;
   letter-spacing: -0.04em;
   transition: ease all .5s;
   min-height: 80vh;
-  font-size: 1.4em;
+
+  p,
+  div {
+    font-size: 1.1em;
+  }
+
 
   @media (min-width: 768px) {
     grid-template-areas:
       'about image'
       'skills image';
-    font-size: 1em;
+    p,
+    div {
+      font-size: 1em;
+    }
   }
 
   @media (min-width: 1200px) {
-    font-size: 1.1em;
     grid-template-areas:
-      'about skills image'
+      'about skills image';
+
+    p,div {
+      font-size: 1.1em;
+    }
   }
 `;
 
@@ -53,8 +64,11 @@ const Skills = styled(Article)`
     display: flex;
     flex-direction: column;
     gap: 2em;
-  }
 
+    @media (min-width: 1200px) {
+      margin-top: 2em;
+    }
+  }
 `;
 
 const Image = styled.aside`

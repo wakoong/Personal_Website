@@ -12,7 +12,7 @@ const ProjectDescription = styled.article`
     h1 {
       color: ${(props) =>
         props.theme.primaryColor === '#FEFEFE'
-          ? 'black'
+          ? '#454545'
           : props.theme.primaryColor};
       line-height: 1.1em;
       font-weight: 900;

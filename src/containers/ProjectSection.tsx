@@ -37,7 +37,7 @@ const ProjectSection = styled(Section)`
   h1 {
     color: ${(props) =>
       props.theme.primaryColor === '#FEFEFE'
-        ? 'black'
+        ? '#454545'
         : props.theme.primaryColor};
   }
 `;
