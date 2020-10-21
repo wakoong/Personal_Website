@@ -3,10 +3,7 @@ import { Link, RouteComponentProps, useLocation } from '@reach/router';
 import styled from 'styled-components';
 
 import { ProjectCard } from '../components';
-import { ProjectDescription } from '../containers';
 import { projectData, Section } from '../utils';
-
-// map data for projects in array of objects
 
 interface IProjectProps extends RouteComponentProps {
   children: JSX.Element[];
@@ -19,15 +16,20 @@ const ProjectDescriptionSection = styled(Section)`
 `;
 
 const ProjectListsSection = styled(Section)`
-  display: none;
+  min-height: auto;
+  height: auto;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
 
   @media (min-width: 768px) {
-    display: block;
-    min-height: 0;
-    height: auto;
     ul {
-      display: flex;
-      gap: 1em;
+      flex-direction: row;
+      min-height: 0;
+      height: auto;
     }
   }
 `;
@@ -42,7 +44,7 @@ const Projects = (props: IProjectProps) => {
     <React.Fragment>
       <ProjectDescriptionSection>{props.children}</ProjectDescriptionSection>
       <ProjectListsSection>
-        <ul className='projects'>
+        <ul>
           {projectData.map((c) => (
             <li key={c.title}>
               <Link to={`/projects/${c.path}`}>

@@ -3,7 +3,6 @@ import { Link, RouteComponentProps } from '@reach/router';
 import styled from 'styled-components';
 
 import { Button } from '../components';
-import { useToggle } from '../hooks';
 import { projectData } from '../utils';
 
 const ProjectDescription = styled.article`
@@ -91,10 +90,8 @@ interface ProjectDescriptionProps extends RouteComponentProps {
   projectId?: string;
 }
 
-export default (props: ProjectDescriptionProps) => {
-  const [modal, setModal] = useToggle(false);
-
-  const data = projectData.filter((d) => d.path === props.projectId);
+export default ({projectId}: ProjectDescriptionProps) => {
+  const data = projectData.filter((d) => d.path === projectId);
   const { title, subtitle, url, description, images, tags, live } = data[0];
 
   return (
@@ -116,7 +113,6 @@ export default (props: ProjectDescriptionProps) => {
               <a href={url} target="_blank">
                 <Button text="Check it out!" />
               </a>
-              <Button className="mobile" text="Other projects" onClick={setModal} />
             </React.Fragment>
           ) : <Button text="Project will be deployed soon" />}
         </div>
