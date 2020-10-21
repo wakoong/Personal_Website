@@ -8,7 +8,7 @@ var rp = require('request-promise');
 var bodyParser = require('body-parser');
 
 var port = process.env.PORT || 5000;
-// console.log(process.env.RH_USERNAME, process.env.NODE_ENV);
+
 promise.then(function(credentials) {
   app.get('/api/login', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
