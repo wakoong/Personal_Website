@@ -13,11 +13,23 @@ const MainSection = styled(Section)`
     'skills';
   background: ${(props) => props.theme.primaryColor};
   color: ${(props) => props.theme.textColor};
+  text-align: justify;
+  letter-spacing: -0.04em;
+  transition: ease all .5s;
+  min-height: 80vh;
+  font-size: 1.4em;
 
   @media (min-width: 768px) {
     grid-template-areas:
-      'about about image'
-      'skills skills image';
+      'about image'
+      'skills image';
+    font-size: 1em;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.1em;
+    grid-template-areas:
+      'about skills image'
   }
 `;
 
@@ -30,18 +42,19 @@ const About = styled(Article)`
   @media (min-width: 768px) {
     margin: 0;
   }
-  @media (min-width: 1200px) {
-    justify-content: flex-start;
-  }
 `;
 
 const Skills = styled(Article)`
   grid-area: skills;
   justify-content: center;
+  text-align: center;
 
-  @media (min-width: 1200px) {
-    justify-content: flex-end;
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
   }
+
 `;
 
 const Image = styled.aside`
@@ -49,10 +62,6 @@ const Image = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  @media (min-width: 768px) {
-    padding: 0 1em;
-  }
 
   .image-container {
     position: relative;
@@ -68,6 +77,25 @@ const Image = styled.aside`
       width: 100%;
     }
   }
+
+  @media (min-width: 768px) {
+    padding: 0 1em;
+    justify-content: center;
+
+    .image-container {
+      margin-top: -10em;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    justify-content: start;
+
+    .image-container {
+      margin-top: 0;
+    }
+  }
+
+
 `;
 
 const ThemeSelectContainer = styled.div`
@@ -92,6 +120,7 @@ const ThemeSelectContainer = styled.div`
     margin: 0;
     padding: 0;
     position: relative;
+    z-index: 10;
   }
 
   .suggestions li {
@@ -134,23 +163,30 @@ export default ({ setTheme }: IMainSectionProps) => {
         <div className='content'>
           <h1>About</h1>
           <p>
-            I'm probably not the typical designer positioned behind an
-            Illustrator artboard adjusting pixels, but I design. Immersed in
-            stylesheets tweaking font sizes and contemplating layouts is where
-            you'll find me (~_^). I'm committed to creating fluent user
-            experiences while staying fashionable.
+            Hello! I am Woosik, a JavaScript engineer based in Albany, CA. I am a self-taught engineer who constantly strives to write clean and readable codes.
+            My goal as a software engineer is to deep dive into the world of JavaScript and explore various fields of studies from web development to machine learning.
+            I am always interested in integrating sports with web development and data visualization. Feel free to take a look around the website I built with color themes of my favorite sports teams!
           </p>
         </div>
       </About>
       <Skills>
         <div className='content'>
           <h1>Skills</h1>
-          <p>
-            In building JavaScript applications, I'm equipped with just the
-            right tools, and can absolutely function independently of them to
-            deliver fast, resilient solutions optimized for scale — performance
-            and scalabilty are priorities on my radar.
-          </p>
+          <div className="skills">
+            <ul>
+              <b><u>Frontend</u></b>
+              <li>{'JavaScript (ES6) & TypeScript'}</li>
+              <li>{'React (hooks, context)'}</li>
+              <li>{'SASS & CSS-in-JS'}</li>
+              <li>{'GraphQL & Redux'}</li>
+            </ul>
+            <ul>
+              <b><u>Backend</u></b>
+              <li>{'Node.js & Express.js'}</li>
+              <li>{'MongoDB'}</li>
+              <li>{'Django'}</li>
+            </ul>
+          </div>
         </div>
       </Skills>
       <Image>
