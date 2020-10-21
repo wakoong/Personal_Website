@@ -46,6 +46,7 @@ export const login = () => ({
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE],
   },
@@ -57,6 +58,7 @@ export const logout = () => ({
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE],
   },
@@ -68,6 +70,7 @@ export const getPortfolio = () => ({
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [PORTFOLIO_REQUEST, PORTFOLIO_SUCCESS, PORTFOLIO_FAILURE],
   },
@@ -80,6 +83,7 @@ export const getOrders = () => ({
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [ORDERS_REQUEST, ORDERS_SUCCESS, ORDERS_FAILURE],
   },
@@ -92,6 +96,7 @@ export const getInstrument = (url, index) => ({
     body: JSON.stringify({url, index}),
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [INSTRUMENT_REQUEST, {type: INSTRUMENT_SUCCESS, meta: {order: index}}, INSTRUMENT_FAILURE],
   },
@@ -104,6 +109,7 @@ export const getQuotes = (symbol, index) => ({
     body: JSON.stringify({symbol}),
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [QUOTES_REQUEST, {type: QUOTES_SUCCESS, meta: {order: index}}, QUOTES_FAILURE],
   },
@@ -116,6 +122,7 @@ export const getPositions = () => ({
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [POSITIONS_REQUEST, POSITIONS_SUCCESS, POSITIONS_FAILURE],
   },
