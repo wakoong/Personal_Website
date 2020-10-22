@@ -8,7 +8,15 @@ var rp = require('request-promise');
 var bodyParser = require('body-parser');
 
 var port = process.env.PORT || 5000;
-// console.log(process.env.RH_USERNAME, process.env.NODE_ENV);
+
+app.use(cors({
+  origin: ['http://localhost:1234', 'https://www.woosika.com'],
+  credentials: true,
+}));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({extended: false})); // support encoded bodies
+var apiUrl = 'https://api.robinhood.com/';
+
 promise.then(function(credentials) {
   app.get('/api/login', function(req, res) {
     var Robinhood = require('robinhood')(credentials, function() {
@@ -107,11 +115,6 @@ promise.then(function(credentials) {
     });
   });
 });
-
-app.use(cors({origin: true}));
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({extended: false})); // support encoded bodies
-var apiUrl = 'https://api.robinhood.com/';
 
 app.post('/api/instrument', function(req, res) {
   var instrument = request(req.body.url, function(error, response, body) {
