@@ -9,12 +9,26 @@ var bodyParser = require('body-parser');
 
 var port = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: ['http://localhost:1234', 'https://www.woosika.com'],
-  credentials: true,
-}));
+const whitelist = ['http://localhost:1234', 'https://www.woosika.com']; // list of allow domain
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        if (whitelist.indexOf(origin) === -1) {
+            var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended: false})); // support encoded bodies
+app.use(cors(corsOptions))
 var apiUrl = 'https://api.robinhood.com/';
 
 promise.then(function(credentials) {

@@ -39,7 +39,7 @@ export const loginWithData = () => (dispatch) => {
   });
 };
 
-const heroku = 'http://rocky-brook-26449.herokuapp.com/';
+const heroku = 'https://wk-playground.herokuapp.com';
 export const login = () => ({
   [RSAA]: {
     endpoint: `${heroku}/api/login`,
@@ -104,6 +104,7 @@ export const getQuotes = (symbol, index) => ({
     body: JSON.stringify({symbol}),
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [QUOTES_REQUEST, {type: QUOTES_SUCCESS, meta: {order: index}}, QUOTES_FAILURE],
   },
@@ -116,6 +117,7 @@ export const getPositions = () => ({
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.ROBINHOOD_TOKEN}`,
+      'Access-Control-Allow-Origin': 'https://www.woosika.com/'
     },
     types: [POSITIONS_REQUEST, POSITIONS_SUCCESS, POSITIONS_FAILURE],
   },
