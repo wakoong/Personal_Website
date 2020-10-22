@@ -23,7 +23,7 @@ const ProjectSection = styled(Section)`
   .projects {
     position: relative;
     display: grid;
-    grid-template-rows: minmax(10em, 20em) minmax(10, 20em) minmax(10, 20em);
+    grid-template-rows: minmax(100px, 200px) minmax(100px, 200px) minmax(100px, 200px);
     grid-gap: 2em;
     padding: 5em 0;
     list-style: none;
