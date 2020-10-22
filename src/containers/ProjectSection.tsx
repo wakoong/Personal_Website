@@ -7,6 +7,7 @@ import { projectData, Section } from '../utils';
 
 const ProjectSection = styled(Section)`
   position: relative;
+  min-height: auto;
 
   button {
     position: absolute;
