@@ -45,6 +45,7 @@ const Nav = styled.nav`
   font-weight: 300;
   margin: 0;
   width: 100%;
+  font-size: 1.2em;
 
   ul {
     display: flex;

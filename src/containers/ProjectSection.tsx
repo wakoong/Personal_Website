@@ -23,14 +23,14 @@ const ProjectSection = styled(Section)`
     position: relative;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 5em;
+    grid-gap: 2em;
     padding: 5em 0;
     list-style: none;
 
     @media (min-width: 768px) {
       grid-template-rows: auto;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 2em;
+
     }
   }
 
@@ -55,8 +55,8 @@ export default () => {
               <ProjectCard title={c.title} subtitle={c.subtitle}>
                 <img src={c.thumbnailImage} alt={c.title} />
               </ProjectCard>
-          </Link>
-            </li>
+            </Link>
+          </li>
         ))}
       </ol>
       <Link to='/projects/rh'>

@@ -37,10 +37,6 @@ const MainSection = styled(Section)`
   @media (min-width: 1200px) {
     grid-template-areas:
       'about skills image';
-
-    p,div {
-      font-size: 1.1em;
-    }
   }
 `;
 
