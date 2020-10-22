@@ -22,7 +22,7 @@ const ProjectSection = styled(Section)`
   .projects {
     position: relative;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: minmax(10em, 20em) minmax(10, 20em) minmax(10, 20em);
     grid-gap: 2em;
     padding: 5em 0;
     list-style: none;
@@ -30,7 +30,6 @@ const ProjectSection = styled(Section)`
     @media (min-width: 768px) {
       grid-template-rows: auto;
       grid-template-columns: repeat(3, 1fr);
-
     }
   }
 
